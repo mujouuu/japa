@@ -2012,5 +2012,488 @@
             applyFilter();
         })();
     </script>
+        </script>
+
+    <!-- ==================== SEÇÃO HARRY POTTER ==================== -->
+    <div class="container" style="margin-top: 30px; border-top: 2px solid #333; padding-top: 20px;">
+        <span class="section-label" style="background: rgba(255,179,0,0.12); color: #ffb300; border: 1px solid rgba(255,179,0,0.2); display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 0.73rem; font-weight: 700; letter-spacing: 0.4px; margin-bottom: 10px;">📖 LEITURA GUIADA</span>
+        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; letter-spacing: -0.8px; margin-bottom: 8px; color: #fff;">Harry Potter — História Completa em Japonês Falado</h2>
+        <p class="subtitle" style="color: #a0a0b8; margin-bottom: 20px;">Texto com vocabulário frequente (N5–N3) · Explicação linha a linha · Clique em cada frase para ver a análise</p>
+
+        <div class="word-list" id="harryPotterList" style="display: flex; flex-direction: column; gap: 6px;"></div>
+    </div>
+
+    <script>
+        (function() {
+            // ========== TEXTO HARRY POTTER COM EXPLICAÇÃO LINHA A LINHA ==========
+            const harryPotterText = [
+                {
+                    jp: "これはハリー・ポッターという少年の物語です。",
+                    trad: "Esta é a história de um menino chamado Harry Potter.",
+                    exp: "<strong>これは</strong> = 'isto (tópico)'. <em>これ</em>=isto, <em>は</em>=partícula de tópico.<br><strong>ハリー・ポッターという</strong> = 'chamado Harry Potter'. <em>〜という</em> = 'chamado ~' (nome).<br><strong>少年</strong> = 'menino/garoto' (shounen).<br><strong>の</strong> = partícula possessiva — conecta 'menino' a 'história'.<br><strong>物語</strong> = 'história/conto' (monogatari).<br><strong>です</strong> = cópula polida 'é'."
+                },
+                {
+                    jp: "ハリーは普通の男の子ではありませんでした。",
+                    trad: "Harry não era um menino comum.",
+                    exp: "<strong>ハリーは</strong> = 'Harry (tópico)'.<br><strong>普通の</strong> = 'comum/normal'. <em>普通</em>=comum, <em>の</em>=atributivo.<br><strong>男の子</strong> = 'menino' (otokonoko).<br><strong>ではありませんでした</strong> = 'não era'. Passado negativo polido de <em>です</em>."
+                },
+                {
+                    jp: "彼は魔法使いだったのです。",
+                    trad: "Ele era um bruxo.",
+                    exp: "<strong>彼は</strong> = 'ele (tópico)'.<br><strong>魔法使い</strong> = 'bruxo/feiticeiro'. <em>魔法</em>=magia, <em>使い</em>=usuário.<br><strong>だった</strong> = passado informal de <em>だ</em> (cópula 'ser').<br><strong>のです</strong> = <em>の</em> (explicativo) + <em>です</em>. Dá tom explicativo: 'a questão é que ele era um bruxo'."
+                },
+                {
+                    jp: "ハリーがまだ赤ちゃんだった時、悪い魔法使いヴォルデモートが彼の両親を殺しました。",
+                    trad: "Quando Harry ainda era bebê, o bruxo malvado Voldemort matou seus pais.",
+                    exp: "<strong>ハリーが</strong> = 'Harry (sujeito)'.<br><strong>まだ</strong> = 'ainda'.<br><strong>赤ちゃんだった</strong> = 'era bebê'. <em>赤ちゃん</em>=bebê, <em>だった</em>=era (passado de <em>だ</em>).<br><strong>時</strong> = 'quando/momento'.<br><strong>悪い魔法使い</strong> = 'bruxo malvado'. <em>悪い</em>=mau, <em>魔法使い</em>=bruxo.<br><strong>ヴォルデモートが</strong> = 'Voldemort (sujeito)'.<br><strong>彼の両親を</strong> = 'os pais dele (objeto)'. <em>両親</em>=pais (pai e mãe).<br><strong>殺しました</strong> = 'matou'. Passado polido de <em>殺す</em>."
+                },
+                {
+                    jp: "でも、ハリーは死にませんでした。",
+                    trad: "Mas Harry não morreu.",
+                    exp: "<strong>でも</strong> = 'mas/porém' (conjunção no início da frase).<br><strong>死にませんでした</strong> = 'não morreu'. Passado negativo polido de <em>死ぬ</em> (morrer)."
+                },
+                {
+                    jp: "ヴォルデモートの呪文がはね返って、彼は消えてしまいました。",
+                    trad: "O feitiço de Voldemort ricocheteou e ele desapareceu.",
+                    exp: "<strong>ヴォルデモートの呪文が</strong> = 'o feitiço de Voldemort (sujeito)'. <em>呪文</em>=feitiço/palavras mágicas.<br><strong>はね返って</strong> = 'ricocheteou e...'. Forma <em>te</em> de <em>はね返る</em> (ricochetear).<br><strong>消えてしまいました</strong> = 'desapareceu completamente'. <em>消える</em>=desaparecer + <em>〜てしまう</em> (conclusão total) + <em>ました</em> (passado polido)."
+                },
+                {
+                    jp: "ハリーのおでこには雷の形をした傷跡が残りました。",
+                    trad: "Na testa de Harry ficou uma cicatriz em forma de raio.",
+                    exp: "<strong>ハリーのおでこには</strong> = 'na testa de Harry'. <em>おでこ</em>=testa, <em>に</em>=local, <em>は</em>=tópico.<br><strong>雷の形をした</strong> = 'em forma de raio'. <em>雷</em>=raio/trovão, <em>形</em>=forma, <em>をした</em>=expressão 'que tem forma de'.<br><strong>傷跡が</strong> = 'cicatriz (sujeito)'.<br><strong>残りました</strong> = 'ficou/permaneceu'. Passado polido de <em>残る</em>."
+                },
+                {
+                    jp: "それがハリーが「生き残った男の子」と呼ばれる理由です。",
+                    trad: "Essa é a razão pela qual Harry é chamado de 'o menino que sobreviveu'.",
+                    exp: "<strong>それが</strong> = 'isso (sujeito)'.<br><strong>ハリーが〜と呼ばれる</strong> = 'Harry é chamado de ~'. <em>と</em>=citação, <em>呼ばれる</em>=forma passiva de <em>呼ぶ</em> (chamar).<br><strong>「生き残った男の子」</strong> = 'o menino que sobreviveu'. <em>生き残る</em>=sobreviver.<br><strong>理由です</strong> = 'é a razão'."
+                },
+                {
+                    jp: "10年後、ハリーは意地悪な伯父さんと伯母さん、そして従兄弟のダドリーと一緒に暮らしていました。",
+                    trad: "Dez anos depois, Harry vivia com seus tios malvados e seu primo Dudley.",
+                    exp: "<strong>10年後</strong> = 'dez anos depois'. <em>後</em>=depois.<br><strong>意地悪な伯父さんと伯母さん</strong> = 'tio e tia malvados'. <em>意地悪</em>=malvado/mesquinho, <em>伯父さん</em>=tio, <em>伯母さん</em>=tia.<br><strong>そして</strong> = 'e/então'.<br><strong>従兄弟のダドリー</strong> = 'o primo Dudley'. <em>従兄弟</em>=primo.<br><strong>と一緒に暮らしていました</strong> = 'vivia junto com'. <em>〜と一緒に</em>=junto com, <em>暮らす</em>=viver/morar, <em>〜ていた</em>=passado contínuo."
+                },
+                {
+                    jp: "ダーズリー家の人たちはハリーに全然優しくありませんでした。",
+                    trad: "A família Dursley não era nada gentil com Harry.",
+                    exp: "<strong>ダーズリー家の人たちは</strong> = 'as pessoas da família Dursley (tópico)'. <em>家</em>=família/casa, <em>人たち</em>=pessoas.<br><strong>ハリーに</strong> = 'a Harry' (alvo).<br><strong>全然優しくありませんでした</strong> = 'não eram nada gentis'. <em>全然</em>=totalmente (com negativa), <em>優しい</em>=gentil, <em>〜くありません</em>=negativo polido de adjetivo-<em>i</em>, <em>でした</em>=passado."
+                },
+                {
+                    jp: "ハリーは階段の下にある小さな物置部屋で寝ていました。",
+                    trad: "Harry dormia num pequeno armário embaixo da escada.",
+                    exp: "<strong>階段の下にある</strong> = 'que fica embaixo da escada'. <em>階段</em>=escada, <em>下</em>=embaixo, <em>にある</em>=existir/localizar-se.<br><strong>小さな物置部屋で</strong> = 'no pequeno armário'. <em>物置部屋</em>=despensa/armário.<br><strong>寝ていました</strong> = 'dormia/estava dormindo'. Passado contínuo de <em>寝る</em>."
+                },
+                {
+                    jp: "でも、11歳の誕生日に全てが変わりました。",
+                    trad: "Mas tudo mudou no seu aniversário de 11 anos.",
+                    exp: "<strong>11歳の誕生日に</strong> = 'no aniversário de 11 anos'. <em>歳</em>=anos de idade, <em>誕生日</em>=aniversário, <em>に</em>=ponto temporal.<br><strong>全てが</strong> = 'tudo (sujeito)'.<br><strong>変わりました</strong> = 'mudou'. Passado polido de <em>変わる</em> (mudar, intransitivo)."
+                },
+                {
+                    jp: "突然、手紙が届き始めました。",
+                    trad: "De repente, começaram a chegar cartas.",
+                    exp: "<strong>突然</strong> = 'de repente/súbito'.<br><strong>手紙が</strong> = 'cartas (sujeito)'.<br><strong>届き始めました</strong> = 'começaram a chegar'. <em>届く</em>=chegar/ser entregue (raiz: <em>届き</em>) + <em>始める</em>=começar."
+                },
+                {
+                    jp: "それはホグワーツ魔法魔術学校からの招待状でした。",
+                    trad: "Era uma carta de convite da Escola de Magia e Bruxaria de Hogwarts.",
+                    exp: "<strong>それは</strong> = 'isso (tópico)'.<br><strong>ホグワーツ魔法魔術学校からの</strong> = 'da Escola de Magia e Bruxaria de Hogwarts'. <em>から</em>=de (origem), <em>の</em>=atributivo.<br><strong>招待状でした</strong> = 'era uma carta-convite'. <em>招待状</em>=carta de convite."
+                },
+                {
+                    jp: "最初、伯父さんは手紙を隠しました。",
+                    trad: "No início, o tio escondeu as cartas.",
+                    exp: "<strong>最初</strong> = 'no início/primeiro'.<br><strong>伯父さんは</strong> = 'o tio (tópico)'.<br><strong>手紙を隠しました</strong> = 'escondeu as cartas'. <em>隠す</em>=esconder."
+                },
+                {
+                    jp: "でも、手紙はどんどん来ました。",
+                    trad: "Mas as cartas continuaram vindo cada vez mais.",
+                    exp: "<strong>どんどん</strong> = 'cada vez mais / sem parar' (onomatopeia).<br><strong>来ました</strong> = 'vieram'. Passado polido de <em>来る</em>."
+                },
+                {
+                    jp: "最後に、大きな男の人がバイクに乗って現れました。",
+                    trad: "Finalmente, um homem grande apareceu numa moto.",
+                    exp: "<strong>最後に</strong> = 'finalmente/por último'.<br><strong>大きな男の人が</strong> = 'um homem grande (sujeito)'. <em>大きな</em>=grande (atributivo).<br><strong>バイクに乗って</strong> = 'montado numa moto'. <em>バイク</em>=moto, <em>に乗る</em>=montar/andar em.<br><strong>現れました</strong> = 'apareceu'. Passado polido de <em>現れる</em>."
+                },
+                {
+                    jp: "その人の名前はハグリッドでした。",
+                    trad: "O nome daquela pessoa era Hagrid.",
+                    exp: "<strong>その人の名前は</strong> = 'o nome daquela pessoa (tópico)'.<br><strong>ハグリッドでした</strong> = 'era Hagrid'."
+                },
+                {
+                    jp: "ハグリッドはハリーに本当のことを全部話しました。",
+                    trad: "Hagrid contou toda a verdade para Harry.",
+                    exp: "<strong>ハリーに</strong> = 'para Harry (alvo)'.<br><strong>本当のことを</strong> = 'a verdade (objeto)'. <em>本当</em>=verdade/real.<br><strong>全部話しました</strong> = 'contou tudo'. <em>全部</em>=tudo, <em>話す</em>=contar/falar."
+                },
+                {
+                    jp: "「お前は魔法使いだ」とハグリッドは言いました。",
+                    trad: "\"Você é um bruxo\", disse Hagrid.",
+                    exp: "<strong>「お前は魔法使いだ」</strong> = citação: 'você é um bruxo'. <em>お前</em>='você' (informal/rude).<br><strong>と</strong> = partícula de citação.<br><strong>言いました</strong> = 'disse'."
+                },
+                {
+                    jp: "ハリーは最初信じられませんでした。",
+                    trad: "Harry não conseguia acreditar no início.",
+                    exp: "<strong>最初</strong> = 'no início'.<br><strong>信じられませんでした</strong> = 'não conseguia acreditar'. <em>信じる</em>=acreditar, <em>〜られる</em>=potencial, <em>〜ませんでした</em>=passado negativo polido."
+                },
+                {
+                    jp: "でも、ハグリッドの話を聞いて、だんだん分かってきました。",
+                    trad: "Mas, ouvindo a história de Hagrid, ele foi entendendo aos poucos.",
+                    exp: "<strong>話を聞いて</strong> = 'ouvindo a história e...'. Forma <em>te</em> de <em>聞く</em>.<br><strong>だんだん分かってきました</strong> = 'foi entendendo gradualmente'. <em>だんだん</em>=gradualmente, <em>分かってくる</em>=começar a entender (mudança gradual)."
+                },
+                {
+                    jp: "次の日、ハグリッドはハリーを連れてダイアゴン横丁に行きました。",
+                    trad: "No dia seguinte, Hagrid levou Harry ao Beco Diagonal.",
+                    exp: "<strong>次の日</strong> = 'no dia seguinte'.<br><strong>ハリーを連れて</strong> = 'levando Harry'. <em>連れる</em>=levar/acompanhar (transitivo).<br><strong>ダイアゴン横丁に</strong> = 'ao Beco Diagonal' (destino).<br><strong>行きました</strong> = 'foi'."
+                },
+                {
+                    jp: "そこは魔法使いのための商店街でした。",
+                    trad: "Aquele lugar era uma rua comercial para bruxos.",
+                    exp: "<strong>そこは</strong> = 'aquele lugar (tópico)'.<br><strong>魔法使いのための</strong> = 'para bruxos'. <em>〜のための</em>=para/em benefício de.<br><strong>商店街でした</strong> = 'era uma rua comercial'."
+                },
+                {
+                    jp: "ハリーは初めて魔法の世界を体験しました。",
+                    trad: "Harry experimentou o mundo mágico pela primeira vez.",
+                    exp: "<strong>初めて</strong> = 'pela primeira vez'.<br><strong>魔法の世界を</strong> = 'o mundo mágico (objeto)'.<br><strong>体験しました</strong> = 'experimentou/vivenciou'. Passado polido de <em>体験する</em>."
+                },
+                {
+                    jp: "彼は杖とローブと本と、そして白いふくろうのヘドウィグを買いました。",
+                    trad: "Ele comprou uma varinha, vestes, livros e uma coruja branca chamada Hedwig.",
+                    exp: "<strong>杖とローブと本と</strong> = 'varinha, vestes e livros'. <em>と</em>=conecta itens de lista.<br><strong>そして</strong> = 'e então'.<br><strong>白いふくろうのヘドウィグを</strong> = 'a coruja branca Hedwig (objeto)'.<br><strong>買いました</strong> = 'comprou'."
+                },
+                {
+                    jp: "その後、ハリーはキングス・クロス駅の9と3/4番線からホグワーツ特急に乗りました。",
+                    trad: "Depois disso, Harry embarcou no Expresso de Hogwarts na plataforma 9¾ da estação King's Cross.",
+                    exp: "<strong>その後</strong> = 'depois disso'.<br><strong>キングス・クロス駅の9と3/4番線から</strong> = 'da plataforma 9¾ da estação King's Cross'. <em>〜から</em>=de (ponto de partida).<br><strong>ホグワーツ特急に乗りました</strong> = 'embarcou no Expresso de Hogwarts'. <em>特急</em>=trem expresso, <em>に乗る</em>=embarcar."
+                },
+                {
+                    jp: "電車の中でハリーはロン・ウィーズリーとハーマイオニー・グレンジャーに出会いました。",
+                    trad: "Dentro do trem, Harry conheceu Ron Weasley e Hermione Granger.",
+                    exp: "<strong>電車の中で</strong> = 'dentro do trem'. <em>で</em>=local da ação.<br><strong>ロン〜とハーマイオニー〜に</strong> = 'Ron e Hermione (alvo)'. <em>に</em> com <em>出会う</em> marca quem se encontra.<br><strong>出会いました</strong> = 'conheceu/encontrou'. Passado polido de <em>出会う</em>."
+                },
+                {
+                    jp: "彼らはすぐに親友になりました。",
+                    trad: "Eles rapidamente se tornaram melhores amigos.",
+                    exp: "<strong>彼らは</strong> = 'eles (tópico)'.<br><strong>すぐに</strong> = 'rapidamente/imediatamente'.<br><strong>親友になりました</strong> = 'tornaram-se melhores amigos'. <em>親友</em>=melhor amigo, <em>になる</em>=tornar-se."
+                },
+                {
+                    jp: "ホグワーツに着くと、生徒たちは四つの寮に分けられました。",
+                    trad: "Ao chegar a Hogwarts, os alunos foram divididos em quatro casas.",
+                    exp: "<strong>ホグワーツに着くと</strong> = 'ao chegar a Hogwarts'. <em>着く</em>=chegar, <em>と</em>=condicional 'quando'.<br><strong>生徒たちは</strong> = 'os alunos (tópico)'.<br><strong>四つの寮に</strong> = 'em quatro casas'. <em>寮</em>=dormitório/casa.<br><strong>分けられました</strong> = 'foram divididos'. Passado passivo polido de <em>分ける</em>."
+                },
+                {
+                    jp: "グリフィンドール、スリザリン、レイブンクロー、ハッフルパフです。",
+                    trad: "Grifinória, Sonserina, Corvinal e Lufa-Lufa.",
+                    exp: "<strong>〜です</strong> = 'são ~'. Enumeração simples com entonação de lista."
+                },
+                {
+                    jp: "ハリーはグリフィンドールに入りました。",
+                    trad: "Harry entrou para a Grifinória.",
+                    exp: "<strong>グリフィンドールに</strong> = 'na Grifinória'. <em>に</em> indica o grupo onde se entra.<br><strong>入りました</strong> = 'entrou'. Passado polido de <em>入る</em>."
+                },
+                {
+                    jp: "そこで彼は多くのことを学びました。",
+                    trad: "Lá ele aprendeu muitas coisas.",
+                    exp: "<strong>そこで</strong> = 'lá (naquele lugar)'.<br><strong>多くのことを</strong> = 'muitas coisas (objeto)'. <em>多くの</em>=muitos (atributivo), <em>こと</em>=coisa.<br><strong>学びました</strong> = 'aprendeu'. Passado polido de <em>学ぶ</em>."
+                },
+                {
+                    jp: "魔法薬学、変身術、闇の魔術に対する防衛術など、たくさんの授業がありました。",
+                    trad: "Havia muitas aulas como Poções, Transfiguração e Defesa Contra as Artes das Trevas.",
+                    exp: "<strong>魔法薬学、変身術、闇の魔術に対する防衛術</strong> = nomes das matérias.<br><strong>など</strong> = 'etc / entre outros'.<br><strong>たくさんの授業がありました</strong> = 'havia muitas aulas'. <em>授業</em>=aula, <em>がありました</em>=havia."
+                },
+                {
+                    jp: "ハリーは箒に乗って空を飛ぶクィディッチというスポーツも始めました。",
+                    trad: "Harry também começou um esporte chamado Quadribol, em que se voa montado numa vassoura.",
+                    exp: "<strong>箒に乗って</strong> = 'montado numa vassoura'.<br><strong>空を飛ぶ</strong> = 'voar no céu'. <em>飛ぶ</em>=voar.<br><strong>クィディッチというスポーツ</strong> = 'um esporte chamado Quadribol'.<br><strong>も始めました</strong> = 'também começou'. <em>も</em>=também."
+                },
+                {
+                    jp: "彼は一番若いシーカーとして大活躍しました。",
+                    trad: "Ele fez grande sucesso como o mais jovem apanhador.",
+                    exp: "<strong>一番若いシーカーとして</strong> = 'como o apanhador mais jovem'. <em>〜として</em>=na função de/como.<br><strong>大活躍しました</strong> = 'teve grande atuação/sucesso'. <em>大</em>=grande, <em>活躍</em>=atuação."
+                },
+                {
+                    jp: "しかし、ホグワーツには危険も潜んでいました。",
+                    trad: "No entanto, também havia perigos escondidos em Hogwarts.",
+                    exp: "<strong>しかし</strong> = 'no entanto/mas'.<br><strong>ホグワーツには</strong> = 'em Hogwarts'. <em>に</em>=local de existência.<br><strong>危険も</strong> = 'perigos também'.<br><strong>潜んでいました</strong> = 'estavam escondidos/espreitando'. Passado contínuo de <em>潜む</em>."
+                },
+                {
+                    jp: "ヴォルデモートは完全に死んでいませんでした。",
+                    trad: "Voldemort não estava completamente morto.",
+                    exp: "<strong>完全に</strong> = 'completamente'.<br><strong>死んでいませんでした</strong> = 'não estava morto'. <em>死ぬ</em>=morrer, <em>〜でいる</em>=estado resultante, <em>〜ませんでした</em>=passado negativo polido."
+                },
+                {
+                    jp: "彼は色々な方法で戻ってこようとしていました。",
+                    trad: "Ele estava tentando voltar de várias maneiras.",
+                    exp: "<strong>色々な方法で</strong> = 'de várias maneiras'. <em>色々な</em>=vários, <em>方法</em>=método, <em>で</em>=meio.<br><strong>戻ってこようとしていました</strong> = 'estava tentando voltar'. <em>戻ってくる</em>=voltar (vir de volta), forma volitiva <em>〜ようとする</em>=tentar fazer."
+                },
+                {
+                    jp: "一年目、ハリーは賢者の石を守りました。",
+                    trad: "No primeiro ano, Harry protegeu a Pedra Filosofal.",
+                    exp: "<strong>一年目</strong> = 'no primeiro ano'.<br><strong>賢者の石を</strong> = 'a Pedra Filosofal (objeto)'.<br><strong>守りました</strong> = 'protegeu'. Passado polido de <em>守る</em>."
+                },
+                {
+                    jp: "ヴォルデモートはクィレル先生の体を使ってその石を盗もうとしました。",
+                    trad: "Voldemort tentou roubar a pedra usando o corpo do professor Quirrell.",
+                    exp: "<strong>クィレル先生の体を使って</strong> = 'usando o corpo do professor Quirrell'. <em>使う</em>=usar, forma <em>te</em> indica meio.<br><strong>その石を盗もうとしました</strong> = 'tentou roubar aquela pedra'. <em>盗む</em>=roubar, <em>〜うとする</em>=tentar fazer."
+                },
+                {
+                    jp: "でも、ハリーの勇気と母親の愛に守られて、ヴォルデモートはまた失敗しました。",
+                    trad: "Mas, protegido pela coragem de Harry e pelo amor de sua mãe, Voldemort falhou novamente.",
+                    exp: "<strong>ハリーの勇気と母親の愛に守られて</strong> = 'protegido pela coragem de Harry e pelo amor da mãe'. <em>守られる</em>=ser protegido (passivo).<br><strong>また失敗しました</strong> = 'falhou novamente'. <em>また</em>=de novo."
+                },
+                {
+                    jp: "二年目には「秘密の部屋」が開き、巨大な蛇が生徒たちを襲いました。",
+                    trad: "No segundo ano, a \"Câmara Secreta\" se abriu e uma cobra gigante atacou os alunos.",
+                    exp: "<strong>二年目には</strong> = 'no segundo ano'.<br><strong>「秘密の部屋」が開き</strong> = 'a Câmara Secreta abriu'. <em>開く</em>=abrir (intransitivo).<br><strong>巨大な蛇が</strong> = 'uma cobra gigante (sujeito)'.<br><strong>襲いました</strong> = 'atacou'. Passado polido de <em>襲う</em>."
+                },
+                {
+                    jp: "ハリーはその蛇を倒して、友達の妹を救いました。",
+                    trad: "Harry derrotou a cobra e salvou a irmã de um amigo.",
+                    exp: "<strong>その蛇を倒して</strong> = 'derrotou a cobra e...'. <em>倒す</em>=derrotar.<br><strong>友達の妹を救いました</strong> = 'salvou a irmã do amigo'. <em>救う</em>=salvar."
+                },
+                {
+                    jp: "三年目、ハリーは脱獄した囚人シリウス・ブラックが自分を狙っていることを知りました。",
+                    trad: "No terceiro ano, Harry soube que o prisioneiro fugitivo Sirius Black estava atrás dele.",
+                    exp: "<strong>脱獄した囚人</strong> = 'prisioneiro fugitivo'. <em>脱獄</em>=fuga da prisão.<br><strong>自分を狙っていることを知りました</strong> = 'soube que estava mirando em si mesmo'. <em>狙う</em>=mirar/almejar, <em>〜ている</em>=ação contínua, <em>こと</em>=nominalizador, <em>知る</em>=saber."
+                },
+                {
+                    jp: "でも実は、シリウスはハリーの名付け親で、無実でした。",
+                    trad: "Mas na verdade, Sirius era o padrinho de Harry e era inocente.",
+                    exp: "<strong>実は</strong> = 'na verdade'.<br><strong>名付け親で</strong> = 'era padrinho e...'. <em>名付け親</em>=padrinho (quem dá nome).<br><strong>無実でした</strong> = 'era inocente'. <em>無実</em>=inocência."
+                },
+                {
+                    jp: "本当の裏切り者はピーター・ペティグリューでした。",
+                    trad: "O verdadeiro traidor era Pedro Pettigrew.",
+                    exp: "<strong>本当の裏切り者は</strong> = 'o verdadeiro traidor (tópico)'. <em>裏切り者</em>=traidor.<br><strong>〜でした</strong> = 'era'."
+                },
+                {
+                    jp: "四年目、ハリーは「炎のゴブレット」によって三大魔法学校対抗試合の選手に選ばれました。",
+                    trad: "No quarto ano, Harry foi escolhido pelo \"Cálice de Fogo\" como competidor do Torneio Tribruxo.",
+                    exp: "<strong>「炎のゴブレット」によって</strong> = 'pelo Cálice de Fogo'. <em>によって</em>=por meio de (agente).<br><strong>選手に選ばれました</strong> = 'foi escolhido como competidor'. <em>選手</em>=competidor, <em>選ばれる</em>=ser escolhido (passivo)."
+                },
+                {
+                    jp: "最後の試練で、ハリーとセドリックは一緒に優勝カップを取りました。",
+                    trad: "Na prova final, Harry e Cedric pegaram a taça da vitória juntos.",
+                    exp: "<strong>最後の試練で</strong> = 'na prova final'.<br><strong>一緒に優勝カップを取りました</strong> = 'pegaram a taça juntos'. <em>優勝カップ</em>=taça da vitória."
+                },
+                {
+                    jp: "しかし、そのカップは移動キーで、二人は墓場に飛ばされてしまいました。",
+                    trad: "Mas a taça era uma Chave de Portal e os dois foram transportados para um cemitério.",
+                    exp: "<strong>移動キーで</strong> = 'era uma Chave de Portal'. <em>移動</em>=transferência/teletransporte.<br><strong>墓場に飛ばされてしまいました</strong> = 'foram transportados para o cemitério'. <em>飛ばされる</em>=ser lançado/voado (passivo de <em>飛ばす</em>)."
+                },
+                {
+                    jp: "そこでヴォルデモートが復活しました。",
+                    trad: "Lá, Voldemort ressuscitou.",
+                    exp: "<strong>そこで</strong> = 'lá/naquele lugar'.<br><strong>復活しました</strong> = 'ressuscitou/reviveu'. Passado polido de <em>復活する</em>."
+                },
+                {
+                    jp: "セドリックは殺され、ハリーは間一髪で逃げ帰りました。",
+                    trad: "Cedric foi morto e Harry escapou por um triz e voltou.",
+                    exp: "<strong>セドリックは殺され</strong> = 'Cedric foi morto'. Passivo de <em>殺す</em>.<br><strong>間一髪で逃げ帰りました</strong> = 'escapou por um triz'. <em>間一髪</em>=por um fio, <em>逃げ帰る</em>=escapar e voltar."
+                },
+                {
+                    jp: "この日から、魔法界は二度と前と同じではなくなりました。",
+                    trad: "A partir deste dia, o mundo bruxo nunca mais foi o mesmo.",
+                    exp: "<strong>この日から</strong> = 'a partir deste dia'.<br><strong>二度と前と同じではなくなりました</strong> = 'nunca mais ficou igual a antes'. <em>二度と〜ない</em>=nunca mais, <em>前と同じ</em>=igual a antes, <em>ではなくなる</em>=deixar de ser."
+                },
+                {
+                    jp: "五年目、魔法省はヴォルデモートの復活を認めませんでした。",
+                    trad: "No quinto ano, o Ministério da Magia não reconheceu a volta de Voldemort.",
+                    exp: "<strong>魔法省は</strong> = 'o Ministério da Magia (tópico)'.<br><strong>復活を認めませんでした</strong> = 'não reconheceu a ressurreição'. <em>認める</em>=reconhecer/admitir."
+                },
+                {
+                    jp: "ハリーと友達は「ダンブルドア軍団」という秘密のグループを作って、自分たちで魔法を練習しました。",
+                    trad: "Harry e seus amigos formaram um grupo secreto chamado \"Armada de Dumbledore\" e praticaram magia por conta própria.",
+                    exp: "<strong>「ダンブルドア軍団」という秘密のグループを作って</strong> = 'fizeram um grupo secreto chamado Armada de Dumbledore'.<br><strong>自分たちで魔法を練習しました</strong> = 'praticaram magia por si mesmos'. <em>自分たちで</em>=por conta própria."
+                },
+                {
+                    jp: "その年の終わりに、魔法省でヴォルデモートと戦いが起こりました。",
+                    trad: "No final daquele ano, uma batalha com Voldemort aconteceu no Ministério da Magia.",
+                    exp: "<strong>その年の終わりに</strong> = 'no final daquele ano'.<br><strong>戦いが起こりました</strong> = 'uma batalha aconteceu'. <em>戦い</em>=batalha, <em>起こる</em>=acontecer/ocorrer."
+                },
+                {
+                    jp: "シリウス・ブラックはハリーを守るために戦って、命を落としました。",
+                    trad: "Sirius Black lutou para proteger Harry e perdeu a vida.",
+                    exp: "<strong>ハリーを守るために</strong> = 'para proteger Harry'. <em>〜ために</em>=propósito.<br><strong>命を落としました</strong> = 'perdeu a vida'. <em>命</em>=vida, <em>落とす</em>=deixar cair/perder."
+                },
+                {
+                    jp: "ハリーは深い悲しみを味わいました。",
+                    trad: "Harry experimentou uma profunda tristeza.",
+                    exp: "<strong>深い悲しみを</strong> = 'tristeza profunda (objeto)'.<br><strong>味わいました</strong> = 'experimentou/sentiu'. Passado polido de <em>味わう</em>."
+                },
+                {
+                    jp: "でも、ダンブルドア先生はハリーに大切なことを教えました。",
+                    trad: "Mas o professor Dumbledore ensinou coisas importantes a Harry.",
+                    exp: "<strong>ハリーに</strong> = 'a Harry'.<br><strong>大切なことを教えました</strong> = 'ensinou coisas importantes'."
+                },
+                {
+                    jp: "「愛こそが一番強い魔法だ」と。",
+                    trad: "\"O amor é a magia mais forte de todas.\"",
+                    exp: "<strong>「愛こそが一番強い魔法だ」</strong> = citação. <em>こそ</em>=partícula enfática 'é justamente', <em>一番強い</em>=a mais forte.<br><strong>と</strong> = partícula de citação (verbo <em>言う/教える</em> implícito)."
+                },
+                {
+                    jp: "六年目、ハリーはヴォルデモートが「分霊箱」というものに魂を分けて隠していることを知りました。",
+                    trad: "No sexto ano, Harry descobriu que Voldemort havia dividido sua alma em objetos chamados \"Horcruxes\".",
+                    exp: "<strong>ヴォルデモートが〜していることを知りました</strong> = 'soube que Voldemort estava fazendo ~'.<br><strong>「分霊箱」というものに</strong> = 'em objetos chamados Horcruxes'.<br><strong>魂を分けて隠している</strong> = 'dividiu e escondeu a alma'. <em>魂</em>=alma, <em>分ける</em>=dividir, <em>隠す</em>=esconder, <em>〜ている</em>=estado resultante."
+                },
+                {
+                    jp: "ヴォルデモートを倒すためには、その分霊箱を全部破壊しなければなりませんでした。",
+                    trad: "Para derrotar Voldemort, era necessário destruir todas as Horcruxes.",
+                    exp: "<strong>倒すためには</strong> = 'para derrotar'. <em>〜ためには</em>=para o propósito de.<br><strong>破壊しなければなりませんでした</strong> = 'era necessário destruir'. <em>破壊する</em>=destruir, <em>〜なければならない</em>=precisa fazer."
+                },
+                {
+                    jp: "その年、ダンブルドア先生はスネイプ先生に殺されてしまいました。",
+                    trad: "Naquele ano, o professor Dumbledore acabou sendo morto pelo professor Snape.",
+                    exp: "<strong>スネイプ先生に殺されてしまいました</strong> = 'foi morto pelo professor Snape'. <em>に</em>=agente do passivo, <em>殺される</em>=ser morto, <em>〜てしまう</em>=conclusão com pesar."
+                },
+                {
+                    jp: "ハリーはもう学校に戻らず、分霊箱を探す旅に出ることを決めました。",
+                    trad: "Harry decidiu não voltar mais à escola e sair em uma jornada para encontrar as Horcruxes.",
+                    exp: "<strong>学校に戻らず</strong> = 'sem voltar à escola'. <em>戻る</em>=voltar, <em>〜ず</em>=forma negativa formal (sem fazer).<br><strong>旅に出ることを決めました</strong> = 'decidiu sair em jornada'. <em>旅に出る</em>=partir em jornada, <em>ことにする</em>=decidir fazer."
+                },
+                {
+                    jp: "七年目は学校に行かず、ロンとハーマイオニーと一緒に旅を続けました。",
+                    trad: "No sétimo ano, ele não foi à escola e continuou viajando com Ron e Hermione.",
+                    exp: "<strong>学校に行かず</strong> = 'sem ir à escola'.<br><strong>旅を続けました</strong> = 'continuou a jornada'. <em>続ける</em>=continuar."
+                },
+                {
+                    jp: "それは本当に大変な旅でした。",
+                    trad: "Foi uma jornada realmente difícil.",
+                    exp: "<strong>それは</strong> = 'aquilo (tópico)'.<br><strong>本当に大変な旅でした</strong> = 'foi uma jornada realmente difícil'. <em>大変</em>=difícil/árduo."
+                },
+                {
+                    jp: "食べ物も少なく、危険も多く、三人は時々喧嘩もしました。",
+                    trad: "A comida era pouca, os perigos muitos, e os três às vezes também brigavam.",
+                    exp: "<strong>食べ物も少なく</strong> = 'comida também pouca'. Forma <em>te</em> do adjetivo <em>少ない</em> conectando razões.<br><strong>危険も多く</strong> = 'perigos também muitos'.<br><strong>時々喧嘩もしました</strong> = 'às vezes também brigavam'. <em>喧嘩する</em>=brigar."
+                },
+                {
+                    jp: "でも、お互いを信じて、最後まで諦めませんでした。",
+                    trad: "Mas, confiando uns nos outros, não desistiram até o final.",
+                    exp: "<strong>お互いを信じて</strong> = 'confiando uns nos outros'. <em>お互い</em>=mutuamente.<br><strong>最後まで諦めませんでした</strong> = 'não desistiram até o final'. <em>諦める</em>=desistir."
+                },
+                {
+                    jp: "ハリーは分霊箱を一つずつ見つけて壊していきました。",
+                    trad: "Harry foi encontrando e destruindo as Horcruxes uma a uma.",
+                    exp: "<strong>一つずつ</strong> = 'uma a uma'.<br><strong>見つけて壊していきました</strong> = 'foi encontrando e destruindo'. <em>〜ていく</em>=ação contínua para o futuro."
+                },
+                {
+                    jp: "最後に、ハリーは自分自身が知らないうちにヴォルデモートの分霊箱の一つになっていたことを知りました。",
+                    trad: "Finalmente, Harry descobriu que ele mesmo havia se tornado uma das Horcruxes de Voldemort sem saber.",
+                    exp: "<strong>自分自身が知らないうちに</strong> = 'sem ele mesmo saber'. <em>〜うちに</em>=enquanto/durante o estado de.<br><strong>分霊箱の一つになっていた</strong> = 'tinha se tornado uma das Horcruxes'. <em>〜になっていた</em>=tinha se tornado (passado do estado resultante)."
+                },
+                {
+                    jp: "彼は自ら犠牲になることを選びました。",
+                    trad: "Ele escolheu se sacrificar.",
+                    exp: "<strong>自ら犠牲になることを</strong> = 'tornar-se sacrifício por si mesmo (objeto)'. <em>自ら</em>=por si mesmo, <em>犠牲</em>=sacrifício.<br><strong>選びました</strong> = 'escolheu'."
+                },
+                {
+                    jp: "ヴォルデモートはハリーに死の呪文をかけました。",
+                    trad: "Voldemort lançou o feitiço da morte em Harry.",
+                    exp: "<strong>ハリーに</strong> = 'em Harry (alvo)'.<br><strong>死の呪文をかけました</strong> = 'lançou o feitiço da morte'. <em>呪文をかける</em>=lançar feitiço."
+                },
+                {
+                    jp: "でも、ハリーは死にませんでした。",
+                    trad: "Mas Harry não morreu.",
+                    exp: "<strong>死にませんでした</strong> = 'não morreu'. Passado negativo polido de <em>死ぬ</em>."
+                },
+                {
+                    jp: "なぜなら、ヴォルデモートがハリーの血を使って復活した時、ハリーの母親の愛がヴォルデモートの中にも生き続けていたからです。",
+                    trad: "Porque, quando Voldemort ressuscitou usando o sangue de Harry, o amor da mãe de Harry continuou vivendo também dentro de Voldemort.",
+                    exp: "<strong>なぜなら〜からです</strong> = 'porque ~'. Estrutura formal de explicação.<br><strong>血を使って復活した時</strong> = 'quando ressuscitou usando o sangue'.<br><strong>生き続けていた</strong> = 'continuava vivendo'. <em>生き続ける</em>=continuar vivo."
+                },
+                {
+                    jp: "最後の戦いで、ネビル・ロングボトムが最後の分霊箱である蛇のナギニを倒しました。",
+                    trad: "Na batalha final, Neville Longbottom derrotou a cobra Nagini, que era a última Horcrux.",
+                    exp: "<strong>最後の戦いで</strong> = 'na batalha final'.<br><strong>最後の分霊箱である蛇のナギニ</strong> = 'Nagini, a cobra que era a última Horcrux'. <em>〜である</em>=ser (formal/escrito).<br><strong>倒しました</strong> = 'derrotou'."
+                },
+                {
+                    jp: "そして、ハリーとヴォルデモートの最後の決闘が始まりました。",
+                    trad: "E então, o duelo final entre Harry e Voldemort começou.",
+                    exp: "<strong>ハリーとヴォルデモートの最後の決闘が</strong> = 'o duelo final entre Harry e Voldemort (sujeito)'.<br><strong>始まりました</strong> = 'começou'."
+                },
+                {
+                    jp: "ハリーは「エクスペリアームス」と叫び、ヴォルデモートは「アバダケダブラ」と叫びました。",
+                    trad: "Harry gritou \"Expelliarmus\" e Voldemort gritou \"Avada Kedavra\".",
+                    exp: "<strong>「エクスペリアームス」と叫び</strong> = 'gritou \"Expelliarmus\"'. <em>叫ぶ</em>=gritar.<br><strong>「アバダケダブラ」と叫びました</strong> = 'gritou \"Avada Kedavra\"'."
+                },
+                {
+                    jp: "しかし、杖の主はハリーだったので、死の呪文は再びはね返りました。",
+                    trad: "No entanto, como o mestre da varinha era Harry, o feitiço da morte ricocheteou novamente.",
+                    exp: "<strong>杖の主はハリーだったので</strong> = 'como o mestre da varinha era Harry'. <em>主</em>=mestre/dono, <em>〜なので</em>=porque (explicativo).<br><strong>再びはね返りました</strong> = 'ricocheteou novamente'. <em>再び</em>=novamente."
+                },
+                {
+                    jp: "ヴォルデモートは自分の呪文で倒れ、ついに死にました。",
+                    trad: "Voldemort caiu com seu próprio feitiço e finalmente morreu.",
+                    exp: "<strong>自分の呪文で倒れ</strong> = 'caiu com o próprio feitiço'. <em>倒れる</em>=cair/tombar.<br><strong>ついに死にました</strong> = 'finalmente morreu'. <em>ついに</em>=finalmente."
+                },
+                {
+                    jp: "こうして、長い戦いが終わりました。",
+                    trad: "Assim, a longa batalha terminou.",
+                    exp: "<strong>こうして</strong> = 'assim/desta forma'.<br><strong>長い戦いが終わりました</strong> = 'a longa batalha terminou'. <em>戦い</em>=batalha, <em>終わる</em>=terminar."
+                },
+                {
+                    jp: "ハリーは生き残り、魔法界に平和が戻りました。",
+                    trad: "Harry sobreviveu e a paz voltou ao mundo bruxo.",
+                    exp: "<strong>生き残り</strong> = 'sobreviveu e...'. <em>生き残る</em>=sobreviver.<br><strong>平和が戻りました</strong> = 'a paz voltou'. <em>平和</em>=paz, <em>戻る</em>=voltar."
+                },
+                {
+                    jp: "後年、ハリーはジニーと結婚し、三人の子供をもうけました。",
+                    trad: "Anos depois, Harry se casou com Gina e tiveram três filhos.",
+                    exp: "<strong>後年</strong> = 'anos depois'.<br><strong>ジニーと結婚し</strong> = 'casou com Gina'.<br><strong>三人の子供をもうけました</strong> = 'tiveram três filhos'. <em>もうける</em>=ter filhos (formal)."
+                },
+                {
+                    jp: "ロンとハーマイオニーも結婚して、幸せな家庭を築きました。",
+                    trad: "Ron e Hermione também se casaram e construíram famílias felizes.",
+                    exp: "<strong>結婚して</strong> = 'casaram-se e...'.<br><strong>幸せな家庭を築きました</strong> = 'construíram um lar feliz'. <em>築く</em>=construir/estabelecer."
+                },
+                {
+                    jp: "ハリーの額の傷跡はもう痛むことはありませんでした。",
+                    trad: "A cicatriz na testa de Harry nunca mais doeu.",
+                    exp: "<strong>額の傷跡は</strong> = 'a cicatriz da testa (tópico)'.<br><strong>もう痛むことはありませんでした</strong> = 'nunca mais doeu'. <em>痛む</em>=doer, <em>〜ことはない</em>=não há ocasião de / nunca acontece."
+                },
+                {
+                    jp: "全てがうまくいきました。",
+                    trad: "Tudo terminou bem.",
+                    exp: "<strong>全てが</strong> = 'tudo (sujeito)'.<br><strong>うまくいきました</strong> = 'foi bem/deu certo'. <em>うまくいく</em>=dar certo/ir bem."
+                },
+                {
+                    jp: "これは愛と勇気と友情の物語です。",
+                    trad: "Esta é uma história de amor, coragem e amizade.",
+                    exp: "<strong>愛と勇気と友情の物語です</strong> = 'é uma história de amor, coragem e amizade'. <em>勇気</em>=coragem, <em>友情</em>=amizade."
+                },
+            ];
+
+            const listEl = document.getElementById('harryPotterList');
+            if (listEl) {
+                listEl.innerHTML = harryPotterText.map((item, i) => `
+                <div class="word-card" style="background: #0e0e1e; border: 1px solid #222240; border-radius: 10px; overflow: hidden;">
+                    <div class="word-header" onclick="this.parentElement.classList.toggle('open')" style="display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; cursor: pointer; user-select: none; flex-wrap: wrap;">
+                        <span class="rank" style="font-size:0.65rem;color:#555;min-width:24px;font-weight:700;text-align:right;">${i+1}</span>
+                        <span class="kanji" style="font-size:0.95rem;font-weight:700;color:#fff;flex:1;min-width:200px;">${item.jp}</span>
+                        <span class="arrow" style="font-size:0.6rem;color:#444;transition:transform 0.3s;">▼</span>
+                    </div>
+                    <div class="word-body" style="display:none;padding:0 14px 14px;border-top:1px solid #222240;">
+                        <div class="example-block" style="background:#161630;border-radius:8px;padding:10px;margin:8px 0;border-left:3px solid #ffb300;">
+                            <div class="translation" style="font-size:0.82rem;color:#bbb;margin-bottom:6px;">${item.trad}</div>
+                        </div>
+                        <div class="line-explanation" style="font-size:0.74rem;color:#999;line-height:1.7;padding-left:8px;border-left:2px solid #2a2a40;">${item.exp}</div>
+                    </div>
+                </div>`).join('');
+
+                // Adicionar listener para expandir/recolher
+                listEl.querySelectorAll('.word-header').forEach(header => {
+                    header.addEventListener('click', function() {
+                        const card = this.parentElement;
+                        card.classList.toggle('open');
+                        const body = card.querySelector('.word-body');
+                        const arrow = card.querySelector('.arrow');
+                        if (card.classList.contains('open')) {
+                            body.style.display = 'block';
+                            arrow.style.transform = 'rotate(180deg)';
+                        } else {
+                            body.style.display = 'none';
+                            arrow.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
