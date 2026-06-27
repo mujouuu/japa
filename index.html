@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japonês Essencial N5-N3 — Vocabulário Real + Gramática para Falar</title>
+    <title>Japonês Essencial N5-N3 — Frequência 500% · Frases e Gramática</title>
     <style>
         :root {
-            --bg: #08080f;
-            --surface: #111122;
-            --surface2: #1a1a30;
-            --text: #e4e4f0;
+            --bg: #060610;
+            --surface: #0e0e1e;
+            --surface2: #161630;
+            --text: #e8e8f4;
             --text2: #a0a0b8;
-            --accent: #c0392b;
-            --accent2: #e74c3c;
-            --gold: #d4a017;
-            --blue: #4a8bf5;
-            --green: #2ecc71;
-            --border: #252540;
+            --accent: #d32f2f;
+            --accent2: #f44336;
+            --gold: #e6b800;
+            --blue: #5c9cef;
+            --green: #4caf84;
+            --purple: #9c7cec;
+            --border: #222240;
             --radius: 10px;
         }
         * {
@@ -34,22 +35,22 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(8, 8, 15, 0.94);
-            backdrop-filter: blur(14px);
+            background: rgba(6, 6, 16, 0.95);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
-            padding: 10px 16px;
+            padding: 8px 14px;
         }
         .header-inner {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
         .logo {
             font-weight: 900;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #fff;
             white-space: nowrap;
             letter-spacing: -0.3px;
@@ -59,58 +60,58 @@
         }
         .search-box {
             flex: 1;
-            min-width: 180px;
+            min-width: 160px;
         }
         .search-box input {
             width: 100%;
-            padding: 9px 14px;
-            border-radius: 22px;
+            padding: 8px 14px;
+            border-radius: 20px;
             border: 1px solid var(--border);
             background: var(--surface2);
             color: #fff;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             outline: none;
             transition: 0.2s;
         }
         .search-box input:focus {
             border-color: var(--accent2);
-            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+            box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.08);
         }
         .search-box input::placeholder {
-            color: #666;
+            color: #555;
         }
         .stats {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text2);
         }
         .stats span {
             background: var(--surface2);
-            padding: 4px 10px;
-            border-radius: 12px;
+            padding: 3px 8px;
+            border-radius: 10px;
             white-space: nowrap;
         }
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 12px 16px;
+            padding: 10px 14px;
         }
         .controls {
             display: flex;
-            gap: 6px;
+            gap: 5px;
             flex-wrap: wrap;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .filter-btn {
-            padding: 6px 12px;
-            border-radius: 16px;
+            padding: 5px 10px;
+            border-radius: 14px;
             border: 1px solid var(--border);
             background: var(--surface);
             color: var(--text2);
             cursor: pointer;
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             font-weight: 600;
             transition: 0.2s;
             white-space: nowrap;
@@ -124,15 +125,10 @@
             color: #fff;
             border-color: var(--accent);
         }
-        .filter-btn.grammar-active {
-            background: #6c3483;
-            color: #fff;
-            border-color: #6c3483;
-        }
         .word-list {
             display: flex;
             flex-direction: column;
-            gap: 7px;
+            gap: 6px;
         }
         .word-card {
             background: var(--surface);
@@ -143,50 +139,52 @@
         }
         .word-card:hover {
             border-color: #444;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
         }
-        .word-card.grammar {
+        .word-card.grammar-card {
             border-left: 3px solid #8e44ad;
         }
         .word-card.particle-card {
             border-left: 3px solid var(--gold);
         }
+        .word-card.verb-card {
+            border-left: 3px solid var(--accent2);
+        }
         .word-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 14px;
+            gap: 8px;
+            padding: 10px 12px;
             cursor: pointer;
             user-select: none;
             flex-wrap: wrap;
         }
         .word-header .rank {
-            font-size: 0.7rem;
-            color: #666;
-            min-width: 30px;
+            font-size: 0.65rem;
+            color: #555;
+            min-width: 26px;
             font-weight: 700;
             text-align: right;
         }
         .word-header .kanji {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #fff;
-            min-width: 55px;
+            min-width: 50px;
         }
         .word-header .kana {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text2);
-            min-width: 70px;
+            min-width: 60px;
         }
         .word-header .meaning {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #ccc;
             flex: 1;
-            min-width: 100px;
+            min-width: 90px;
         }
         .word-header .arrow {
-            font-size: 0.65rem;
-            color: #555;
+            font-size: 0.6rem;
+            color: #444;
             transition: transform 0.3s;
         }
         .word-card.open .word-header .arrow {
@@ -194,7 +192,7 @@
         }
         .word-body {
             display: none;
-            padding: 0 14px 14px;
+            padding: 0 12px 12px;
             border-top: 1px solid var(--border);
             animation: slideDown 0.3s ease;
         }
@@ -204,37 +202,57 @@
         @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(-6px);
+                transform: translateY(-4px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        .example-block {
+        .example-set {
             background: var(--surface2);
             border-radius: 8px;
-            padding: 12px;
-            margin: 10px 0;
-            border-left: 3px solid var(--accent);
+            padding: 10px;
+            margin: 8px 0;
+            border-left: 3px solid var(--blue);
         }
-        .example-block .jp {
-            font-size: 0.95rem;
+        .example-set .jp {
+            font-size: 0.9rem;
             color: #fff;
-            margin-bottom: 5px;
-            line-height: 1.8;
+            margin-bottom: 3px;
+            line-height: 1.7;
         }
-        .example-block .translation {
-            font-size: 0.82rem;
+        .example-set .romaji {
+            font-size: 0.7rem;
+            color: #777;
+            font-style: italic;
+            margin-bottom: 2px;
+        }
+        .example-set .translation {
+            font-size: 0.78rem;
             color: #bbb;
-            margin-bottom: 8px;
+            margin-bottom: 2px;
+        }
+        .example-set.q {
+            border-left-color: var(--accent2);
+        }
+        .example-set.q .jp {
+            color: #ffaaaa;
+        }
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 8px 0 4px;
         }
         .line-explanation {
-            font-size: 0.76rem;
+            font-size: 0.74rem;
             color: #999;
             line-height: 1.7;
             padding-left: 8px;
-            border-left: 2px solid #333;
+            border-left: 2px solid #2a2a40;
         }
         .line-explanation strong {
             color: var(--accent2);
@@ -245,11 +263,11 @@
         }
         .tag {
             display: inline-block;
-            padding: 2px 7px;
-            border-radius: 9px;
-            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.58rem;
             font-weight: 700;
-            margin-right: 3px;
+            margin-right: 2px;
         }
         .tag-n5 {
             background: #1a3a1a;
@@ -271,26 +289,29 @@
             background: #3a2a00;
             color: #ffd54f;
         }
+        .tag-verb {
+            background: #3a0a0a;
+            color: #ef5350;
+        }
         .no-results {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             color: #555;
             font-size: 1rem;
             display: none;
         }
         .load-more {
             text-align: center;
-            margin: 16px 0;
-            display: block;
+            margin: 14px 0;
         }
         .load-more button {
-            padding: 10px 22px;
-            border-radius: 20px;
+            padding: 9px 20px;
+            border-radius: 18px;
             border: 1px solid var(--border);
             background: var(--surface2);
             color: #fff;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             transition: 0.2s;
         }
@@ -300,19 +321,22 @@
         }
         @media (max-width: 600px) {
             .word-header {
-                gap: 6px;
-                padding: 10px;
+                gap: 5px;
+                padding: 8px 10px;
             }
             .word-header .kanji {
-                font-size: 1rem;
-                min-width: 40px;
+                font-size: 0.95rem;
+                min-width: 38px;
             }
             .word-header .kana {
-                font-size: 0.7rem;
-                min-width: 50px;
+                font-size: 0.68rem;
+                min-width: 45px;
             }
             .word-header .meaning {
-                font-size: 0.75rem;
+                font-size: 0.72rem;
+            }
+            .example-set .jp {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -321,12 +345,12 @@
 
     <div class="header">
         <div class="header-inner">
-            <div class="logo">日本語 <span>N5→N3</span> · Fala Real</div>
+            <div class="logo">日本語 <span>500%</span> · N5→N3</div>
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Buscar palavra, kanji, gramática...">
+                <input type="text" id="searchInput" placeholder="Buscar palavra, kanji, gramática, português...">
             </div>
             <div class="stats">
-                <span id="visibleCount">~1100 itens</span>
+                <span id="visibleCount">~600 itens</span>
                 <span id="filterLabel">Todos</span>
             </div>
         </div>
@@ -345,1265 +369,1529 @@
         </div>
         <div class="word-list" id="wordList"></div>
         <div class="load-more" id="loadMoreArea">
-            <button id="loadMoreBtn">Mostrar mais 50 ▼</button>
+            <button id="loadMoreBtn">Mostrar mais 30 ▼</button>
         </div>
         <div class="no-results" id="noResults">🔍 Nenhum item encontrado. Tente outro termo.</div>
     </div>
 
     <script>
         (function() {
-            // ========== BANCO DE DADOS: N5, N4, N3 — Vocabulário Real + Gramática ==========
-            // Estrutura: [rank, kanji, kana, significado, nivel, tipo, frase_exemplo, traducao, explicacao]
-            // tipo: 'particle', 'grammar', 'verb', 'adj', 'noun', 'adv', 'expression', 'conversation'
+            // ========== BANCO DE DADOS EXPANDIDO: Múltiplas frases + perguntas por entrada ==========
+            // Estrutura: [rank, kanji, kana, significado, nivel, tipo,
+            //   [[frase1, trad1], [frase2, trad2], [pergunta1, tradP1], ...],
+            //   explicacao_detalhada]
 
             const data = [
-                // ========== PARTÍCULAS ESSENCIAIS (1-12) ==========
-                [1, "は", "は", "partícula de tópico (wa)", "n5", "particle",
-                    "私は学生です。日本語は面白いです。",
-                    "Eu sou estudante. Japonês é interessante.",
-                    "<strong>私は</strong> = 'eu (tópico)'. O <em>は</em> (wa) marca o assunto principal da frase. Tudo depois dele é informação sobre esse tópico.<br><strong>日本語は</strong> = 'japonês (tópico)'. Aqui o tópico muda para 'japonês'."
+                // ==================== PARTÍCULAS ESSENCIAIS ====================
+                [1, "は", "は", "partícula de tópico (wa)", "n5", "particle", [
+                        ["私は学生です。", "Eu sou estudante."],
+                        ["日本語は面白いです。", "Japonês é interessante."],
+                        ["今日は何曜日ですか？", "Que dia da semana é hoje?"],
+                        ["あなたは日本人ですか？", "Você é japonês(a)?"],
+                        ["これは誰のペンですか？", "De quem é esta caneta?"]
+                    ],
+                    "<strong>は</strong> (lê-se <em>wa</em>) marca o <strong>tópico</strong> da frase — aquilo sobre o qual se fala. Tudo depois do <em>は</em> é informação sobre esse tópico. Nas perguntas, o <em>は</em> continua marcando o assunto principal."
                 ],
-                [2, "が", "が", "partícula de sujeito / mas", "n5", "particle",
-                    "雨が降っていますが、傘がありません。",
-                    "Está chovendo, mas não tenho guarda-chuva.",
-                    "<strong>雨が</strong> = 'chuva (sujeito)'. <em>が</em> marca o sujeito que realiza a ação ou estado.<br><strong>降っています</strong> = 'está caindo'.<br><strong>が</strong> (segundo) = conjunção 'mas'.<br><strong>傘が</strong> = 'guarda-chuva (sujeito)'. <em>が</em> com <em>ある/ない</em> marca o que existe/não existe."
+                [2, "が", "が", "partícula de sujeito / mas", "n5", "particle", [
+                        ["雨が降っています。", "Está chovendo."],
+                        ["誰が来ますか？", "Quem vem?"],
+                        ["猫が好きですが、犬は嫌いです。", "Gosto de gatos, mas não gosto de cachorros."],
+                        ["何が食べたいですか？", "O que você quer comer?"],
+                        ["お金がありますか？", "Você tem dinheiro?"]
+                    ],
+                    "<strong>が</strong> marca o <strong>sujeito</strong> gramatical — quem realiza a ação ou estado. Também funciona como conjunção 'mas' no meio da frase. Com verbos de existência (<em>ある/いる</em>) e desejo (<em>〜たい</em>), usa-se <em>が</em> para o objeto."
                 ],
-                [3, "を", "を", "partícula de objeto direto", "n5", "particle",
-                    "毎朝パンを食べて、コーヒーを飲みます。",
-                    "Toda manhã como pão e bebo café.",
-                    "<strong>パンを</strong> = 'pão (objeto)'. <em>を</em> marca o objeto direto do verbo <em>食べる</em>.<br><strong>コーヒーを</strong> = 'café (objeto)'. Objeto de <em>飲む</em>."
+                [3, "を", "を", "partícula de objeto direto", "n5", "particle", [
+                        ["毎朝パンを食べます。", "Como pão toda manhã."],
+                        ["日本語を勉強しています。", "Estou estudando japonês."],
+                        ["何をしていますか？", "O que você está fazendo?"],
+                        ["この本を読んだことがありますか？", "Você já leu este livro?"],
+                        ["窓を開けてもいいですか？", "Posso abrir a janela?"]
+                    ],
+                    "<strong>を</strong> marca o <strong>objeto direto</strong> do verbo — a coisa que recebe a ação. Com verbos de movimento como <em>出る、歩く、渡る</em>, indica o local percorrido ou de saída."
                 ],
-                [4, "に", "に", "partícula de localização / direção / tempo", "n5", "particle",
-                    "7時に駅に行って、友達に会います。",
-                    "Vou à estação às 7h e encontro um amigo.",
-                    "<strong>7時に</strong> = 'às 7 horas'. <em>に</em> marca ponto temporal específico.<br><strong>駅に</strong> = 'à estação'. Direção/destino com verbo de movimento.<br><strong>友達に</strong> = 'com o amigo'. <em>に</em> marca o alvo/pessoa com quem se encontra."
+                [4, "に", "に", "localização / direção / tempo / alvo", "n5", "particle", [
+                        ["7時に起きます。", "Acordo às 7h."],
+                        ["学校に行きます。", "Vou à escola."],
+                        ["机の上に本があります。", "Há um livro em cima da mesa."],
+                        ["何時に寝ますか？", "A que horas você dorme?"],
+                        ["友達にプレゼントをあげました。", "Dei um presente ao amigo."]
+                    ],
+                    "<strong>に</strong> tem múltiplos usos: 1) <strong>ponto temporal</strong> específico (às 7h); 2) <strong>destino</strong> com verbos de movimento; 3) <strong>local de existência</strong> com <em>ある/いる</em>; 4) <strong>alvo/recipiente</strong> com verbos como <em>あげる、会う、教える</em>."
                 ],
-                [5, "で", "で", "partícula de meio / local de ação", "n5", "particle",
-                    "図書館で本を読んで、電車で帰ります。",
-                    "Leio livro na biblioteca e volto de trem.",
-                    "<strong>図書館で</strong> = 'na biblioteca'. <em>で</em> marca o local onde uma ação ocorre.<br><strong>電車で</strong> = 'de trem'. <em>で</em> indica o meio de transporte."
+                [5, "で", "で", "local de ação / meio / causa", "n5", "particle", [
+                        ["図書館で勉強します。", "Estudo na biblioteca."],
+                        ["電車で会社に行きます。", "Vou de trem para a empresa."],
+                        ["どこで食べましょうか？", "Onde vamos comer?"],
+                        ["何で来ましたか？", "Como você veio?"],
+                        ["病気で学校を休みました。", "Faltei à escola por doença."]
+                    ],
+                    "<strong>で</strong> indica: 1) <strong>local da ação</strong> (onde algo acontece); 2) <strong>meio/instrumento</strong> (como se faz); 3) <strong>causa/motivo</strong> (por que algo ocorre)."
                 ],
-                [6, "と", "と", "partícula 'e' / 'com' / citação", "n5", "particle",
-                    "彼は「行く」と言って、友達と出かけた。",
-                    "Ele disse 'vou' e saiu com um amigo.",
-                    "<strong>「行く」と</strong> = citação + <em>と</em>. Marca o que foi dito antes de <em>言う</em>.<br><strong>友達と</strong> = 'com amigo'. <em>と</em> indica companhia."
+                [6, "と", "と", "e / com / citação", "n5", "particle", [
+                        ["パンと卵を食べます。", "Como pão e ovo."],
+                        ["友達と映画を見ました。", "Assisti a um filme com um amigo."],
+                        ["彼は「行く」と言いました。", "Ele disse 'vou'."],
+                        ["誰と来ましたか？", "Com quem você veio?"],
+                        ["これとそれ、どちらがいいですか？", "Qual você prefere, este ou esse?"]
+                    ],
+                    "<strong>と</strong> conecta: 1) <strong>substantivos</strong> (lista exaustiva); 2) <strong>companhia</strong>; 3) <strong>citação</strong> antes de verbos como <em>言う、思う、書く</em>."
                 ],
-                [7, "の", "の", "partícula possessiva / nominalizador", "n5", "particle",
-                    "これは私の本です。読むのが好きです。",
-                    "Este é meu livro. Gosto de ler.",
-                    "<strong>私の</strong> = 'meu'. <em>の</em> conecta possuidor e possuído.<br><strong>読むの</strong> = 'ler (substantivado)'. <em>の</em> transforma verbo em substantivo."
+                [7, "の", "の", "possessivo / nominalizador", "n5", "particle", [
+                        ["これは私の本です。", "Este é meu livro."],
+                        ["料理を作るのが好きです。", "Gosto de cozinhar."],
+                        ["これは誰のですか？", "De quem é isto?"],
+                        ["何をするのが趣味ですか？", "Qual é o seu hobby?"],
+                        ["赤いのが欲しいです。", "Quero o vermelho."]
+                    ],
+                    "<strong>の</strong> funciona como: 1) <strong>possessivo</strong> ('de'); 2) <strong>nominalizador</strong> — transforma verbo/adjetivo em substantivo; 3) <strong>pronome possessivo</strong> (substitui o substantivo)."
                 ],
-                [8, "も", "も", "também / inclusive", "n5", "particle",
-                    "私もそれを見たいです。何もありません。",
-                    "Eu também quero ver isso. Não há nada.",
-                    "<strong>私も</strong> = 'eu também'. Substitui <em>は/が</em>.<br><strong>何も</strong> = 'nada'. Com verbo negativo, <em>も</em> reforça a negação total."
+                [8, "も", "も", "também / inclusive / nem", "n5", "particle", [
+                        ["私も行きます。", "Eu também vou."],
+                        ["何もありません。", "Não há nada."],
+                        ["誰も来ませんでした。", "Ninguém veio."],
+                        ["これもそれも好きですか？", "Você gosta tanto deste quanto desse?"],
+                        ["一度も日本に行ったことがありません。", "Nunca fui ao Japão."]
+                    ],
+                    "<strong>も</strong> substitui <em>は/が/を</em> para 'também'. Com palavras interrogativas + verbo negativo, significa 'nada/ninguém/nunca' (negação total)."
                 ],
-                [9, "から", "から", "de / desde / porque", "n5", "particle",
-                    "ブラジルから来ました。暑いから窓を開けます。",
-                    "Vim do Brasil. Como está quente, vou abrir a janela.",
-                    "<strong>ブラジルから</strong> = 'do Brasil'. Origem.<br><strong>暑いから</strong> = 'porque está quente'. <em>から</em> após frase informal indica causa."
+                [9, "から", "から", "de / desde / porque", "n5", "particle", [
+                        ["ブラジルから来ました。", "Vim do Brasil."],
+                        ["9時から働きます。", "Trabalho desde as 9h."],
+                        ["暑いから窓を開けます。", "Como está quente, vou abrir a janela."],
+                        ["どこから来ましたか？", "De onde você veio?"],
+                        ["なぜ日本語を勉強しているのですか？—好きだからです。", "Por que estuda japonês? — Porque gosto."]
+                    ],
+                    "<strong>から</strong> marca: 1) <strong>origem/ponto de partida</strong>; 2) <strong>causa/razão</strong> (após frase informal); 3) <strong>início temporal</strong> (desde)."
                 ],
-                [10, "まで", "まで", "até (limite)", "n5", "particle",
-                    "家から駅まで歩いて10分です。",
-                    "Da casa até a estação são 10 minutos a pé.",
-                    "<strong>家から駅まで</strong> = 'da casa até a estação'. <em>から〜まで</em> = 'de ~ até'."
-                ],
-                [11, "へ", "へ", "partícula de direção (e)", "n5", "particle",
-                    "来年、日本へ留学に行きます。",
-                    "Ano que vem vou estudar no Japão.",
-                    "<strong>日本へ</strong> = 'ao Japão'. <em>へ</em> (lê-se <em>e</em>) indica direção/rumo, similar a <em>に</em> mas mais poético."
-                ],
-                [12, "や", "や", "partícula de lista não exaustiva (e)", "n5", "particle",
-                    "冷蔵庫に牛乳や卵があります。",
-                    "Na geladeira tem leite, ovos, etc.",
-                    "<strong>牛乳や卵</strong> = 'leite e ovos (entre outras coisas)'. <em>や</em> lista itens sugerindo que há mais."
-                ],
-
-                // ========== GRAMÁTICA ESSENCIAL (13-50) ==========
-                [13, "〜ている", "〜ている", "ação contínua / estado resultante", "n5", "grammar",
-                    "今、日本語を勉強しています。",
-                    "Agora estou estudando japonês.",
-                    "<strong>勉強して</strong> = forma <em>te</em> de <em>勉強する</em>.<br><strong>います</strong> = verbo <em>いる</em> (estar). Juntos: ação em progresso.<br>Também indica estado: <em>結婚している</em> = 'estou casado(a)' (estado resultante de ter casado)."
-                ],
-                [14, "〜たい", "〜たい", "querer fazer algo", "n5", "grammar",
-                    "日本に行きたいです。寿司が食べたい。",
-                    "Quero ir ao Japão. Quero comer sushi.",
-                    "<strong>行き</strong> = raiz do verbo <em>行く</em>.<br><strong>たい</strong> = sufixo de desejo. Conjuga-se como adjetivo-<em>i</em>: <em>たくない</em> (não quero), <em>たかった</em> (queria).<br>O objeto pode usar <em>が</em> em vez de <em>を</em>: <em>寿司が食べたい</em>."
-                ],
-                [15, "〜ない", "〜ない", "negação informal", "n5", "grammar",
-                    "今日は働かない。全然分からない。",
-                    "Hoje não trabalho. Não entendo nada.",
-                    "<strong>働か</strong> = raiz negativa de <em>働く</em> (grupo 1: troca <em>u</em> por <em>a</em>).<br><strong>ない</strong> = sufixo de negação informal.<br><strong>分から</strong> = raiz negativa de <em>分かる</em>.<br>Forma polida: <em>働きません</em>."
-                ],
-                [16, "〜た", "〜た", "passado informal", "n5", "grammar",
-                    "昨日映画を見た。面白かった。",
-                    "Ontem vi um filme. Foi interessante.",
-                    "<strong>見た</strong> = passado de <em>見る</em> (grupo 2: troca <em>る</em> por <em>た</em>).<br><strong>面白かった</strong> = passado do adjetivo <em>面白い</em> (troca <em>い</em> por <em>かった</em>)."
-                ],
-                [17, "〜てください", "〜てください", "por favor faça", "n5", "grammar",
-                    "ここに名前を書いてください。",
-                    "Por favor, escreva seu nome aqui.",
-                    "<strong>書いて</strong> = forma <em>te</em> de <em>書く</em>.<br><strong>ください</strong> = 'por favor me dê/faça'. Forma educada de pedido."
-                ],
-                [18, "〜てもいい", "〜てもいい", "pode fazer / permitido", "n5", "grammar",
-                    "写真を撮ってもいいですか？",
-                    "Posso tirar foto?",
-                    "<strong>撮って</strong> = forma <em>te</em> de <em>撮る</em>.<br><strong>もいい</strong> = 'é bom/ok mesmo que'. Pergunta: <em>〜てもいいですか？</em> = 'Posso ~?'."
-                ],
-                [19, "〜てはいけない", "〜てはいけない", "não pode / proibido", "n5", "grammar",
-                    "ここでタバコを吸ってはいけません。",
-                    "Não pode fumar aqui.",
-                    "<strong>吸って</strong> = forma <em>te</em> de <em>吸う</em>.<br><strong>はいけない</strong> = 'não é bom/aceitável'. Proibição formal."
-                ],
-                [20, "〜たことがある", "〜たことがある", "já fez / tem experiência de", "n4", "grammar",
-                    "日本に行ったことがありますか？",
-                    "Você já foi ao Japão?",
-                    "<strong>行った</strong> = passado de <em>行く</em>.<br><strong>ことがある</strong> = 'existe o fato de ter feito'. Indica experiência de vida.<br>Resposta: <em>はい、あります</em> ou <em>いいえ、ありません</em>."
-                ],
-                [21, "〜つもり", "〜つもり", "pretensão / plano", "n4", "grammar",
-                    "来年日本に留学するつもりです。",
-                    "Pretendo estudar no Japão ano que vem.",
-                    "<strong>留学する</strong> = 'estudar no exterior'.<br><strong>つもり</strong> = 'intenção/plano'. Indica algo que você decidiu fazer. Não se usa para eventos fora do seu controle."
-                ],
-                [22, "〜と思う", "〜とおもう", "achar que / pensar que", "n5", "grammar",
-                    "この映画は面白いと思います。",
-                    "Acho que este filme é interessante.",
-                    "<strong>面白い</strong> = 'interessante'.<br><strong>と</strong> = partícula de citação.<br><strong>思います</strong> = 'penso'. Sempre na forma informal antes do <em>と</em>."
-                ],
-                [23, "〜と言う", "〜という", "dizer que / chamar-se", "n5", "grammar",
-                    "彼は「大丈夫」と言いました。これは何と言いますか？",
-                    "Ele disse 'tudo bem'. Como se chama isto?",
-                    "<strong>「大丈夫」と</strong> = citação + <em>と</em>.<br><strong>何と</strong> = 'como (citando o nome)'. <em>〜と言う</em> = 'dizer ~ / chamar-se ~'."
-                ],
-                [24, "〜になる", "〜になる", "tornar-se (estado/advérbio)", "n5", "grammar",
-                    "将来、医者になりたいです。",
-                    "No futuro, quero me tornar médico.",
-                    "<strong>医者に</strong> = 'médico (como alvo)'.<br><strong>なる</strong> = 'tornar-se'. Indica mudança de estado ou profissão.<br>Com adjetivos: <em>大きく</em> + <em>なる</em> = 'ficar grande'."
-                ],
-                [25, "〜にする", "〜にする", "decidir / escolher / fazer com que", "n5", "grammar",
-                    "コーヒーにします。部屋を綺麗にします。",
-                    "Vou querer café. Vou limpar o quarto.",
-                    "<strong>コーヒーに</strong> = 'café (como escolha)'.<br><strong>します</strong> = 'faço/decido'. Indica decisão ou ação de transformar algo."
-                ],
-                [26, "〜ているところ", "〜ているところ", "estar no meio de fazer", "n4", "grammar",
-                    "今、ご飯を食べているところです。",
-                    "Estou no meio da refeição agora.",
-                    "<strong>食べている</strong> = ação contínua.<br><strong>ところ</strong> = 'lugar/momento'. Juntos: 'no exato momento em que se faz algo'."
-                ],
-                [27, "〜たばかり", "〜たばかり", "acabou de fazer", "n4", "grammar",
-                    "さっき起きたばかりです。",
-                    "Acabei de acordar agora há pouco.",
-                    "<strong>起きた</strong> = passado de <em>起きる</em>.<br><strong>ばかり</strong> = 'somente/apenas'. Indica que a ação ocorreu há pouco tempo."
-                ],
-                [28, "〜ながら", "〜ながら", "enquanto faz / fazendo simultaneamente", "n4", "grammar",
-                    "音楽を聞きながら勉強します。",
-                    "Estudo enquanto ouço música.",
-                    "<strong>聞き</strong> = raiz de <em>聞く</em>.<br><strong>ながら</strong> = 'enquanto'. Duas ações simultâneas; a principal é o segundo verbo."
-                ],
-                [29, "〜たり〜たり", "〜たり〜たり", "fazer coisas como A e B (lista não exaustiva)", "n4", "grammar",
-                    "週末は映画を見たり、買い物したりします。",
-                    "No fim de semana faço coisas como ver filmes e fazer compras.",
-                    "<strong>見たり</strong> = forma <em>tari</em> de <em>見る</em>.<br><strong>したり</strong> = forma <em>tari</em> de <em>する</em>. Lista ações exemplificativas, não exaustivas."
-                ],
-                [30, "〜そうだ (伝聞)", "〜そうだ", "ouvi dizer que / parece que", "n4", "grammar",
-                    "明日は雨が降るそうです。",
-                    "Ouvi dizer que amanhã vai chover.",
-                    "<strong>降る</strong> = forma informal.<br><strong>そうだ</strong> = 'dizem que'. Indica informação obtida de terceiros, não sua própria observação."
-                ],
-                [31, "〜そうだ (様態)", "〜そうだ", "parece que vai (pela aparência)", "n4", "grammar",
-                    "このケーキは美味しそうです。",
-                    "Este bolo parece gostoso.",
-                    "<strong>美味し</strong> = raiz do adjetivo <em>美味しい</em>.<br><strong>そう</strong> = 'parece'. Baseado na sua própria observação direta. Não se usa com informação de terceiros."
-                ],
-                [32, "〜にくい", "〜にくい", "difícil de fazer", "n4", "grammar",
-                    "この漢字は書きにくいです。",
-                    "Este kanji é difícil de escrever.",
-                    "<strong>書き</strong> = raiz de <em>書く</em>.<br><strong>にくい</strong> = 'difícil de'. Indica dificuldade objetiva."
-                ],
-                [33, "〜やすい", "〜やすい", "fácil de fazer", "n4", "grammar",
-                    "このペンは書きやすいです。",
-                    "Esta caneta é fácil de escrever.",
-                    "<strong>書き</strong> = raiz.<br><strong>やすい</strong> = 'fácil de'. Indica facilidade objetiva."
-                ],
-                [34, "〜すぎる", "〜すぎる", "fazer demais / excesso", "n4", "grammar",
-                    "食べすぎました。この服は高すぎます。",
-                    "Comi demais. Esta roupa é cara demais.",
-                    "<strong>食べ</strong> = raiz.<br><strong>すぎる</strong> = 'passar/exceder'. Com adjetivos: remove o <em>い</em> final: <em>高い</em> → <em>高すぎる</em>."
-                ],
-                [35, "〜なければならない", "〜なければならない", "precisa fazer / tem que", "n4", "grammar",
-                    "明日早く起きなければなりません。",
-                    "Amanhã preciso acordar cedo.",
-                    "<strong>起きなければ</strong> = forma condicional negativa de <em>起きる</em> ('se não acordar').<br><strong>ならない</strong> = 'não se torna/torna-se inevitável'. Juntos: 'é inevitável se não fizer' = 'precisa fazer'."
-                ],
-                [36, "〜なくてもいい", "〜なくてもいい", "não precisa fazer", "n4", "grammar",
-                    "明日は来なくてもいいです。",
-                    "Não precisa vir amanhã.",
-                    "<strong>来なくて</strong> = forma <em>te</em> negativa de <em>来る</em>.<br><strong>もいい</strong> = 'também está bem'. Permissão para não fazer."
-                ],
-                [37, "〜ことができる", "〜ことができる", "conseguir / ser capaz de", "n4", "grammar",
-                    "日本語を話すことができます。",
-                    "Consigo falar japonês.",
-                    "<strong>話す</strong> = 'falar'.<br><strong>ことができる</strong> = 'o ato é possível'. Alternativa mais formal ao potencial simples."
-                ],
-                [38, "〜かもしれない", "〜かもしれない", "talvez / pode ser que", "n4", "grammar",
-                    "明日は雨が降るかもしれません。",
-                    "Talvez chova amanhã.",
-                    "<strong>降る</strong> = forma informal.<br><strong>かもしれない</strong> = 'pode ser que'. Indica incerteza (~50% de probabilidade)."
-                ],
-                [39, "〜ようだ", "〜ようだ", "parece que / como se", "n3", "grammar",
-                    "彼は疲れているようだ。",
-                    "Parece que ele está cansado.",
-                    "<strong>疲れている</strong> = 'está cansado'.<br><strong>ようだ</strong> = 'parece que'. Baseado em observação/evidência. Similar a <em>みたいだ</em> (mais informal)."
-                ],
-                [40, "〜みたいだ", "〜みたいだ", "parece que (informal)", "n3", "grammar",
-                    "あの人は日本人みたいだ。",
-                    "Aquela pessoa parece japonesa.",
-                    "<strong>日本人</strong> = 'japonesa'.<br><strong>みたいだ</strong> = 'parece que'. Mais coloquial que <em>ようだ</em>."
-                ],
-                [41, "〜たら", "〜たら", "se / quando (condicional)", "n4", "grammar",
-                    "雨が降ったら家にいます。",
-                    "Se chover, ficarei em casa.",
-                    "<strong>降ったら</strong> = forma <em>tara</em> de <em>降る</em>. Indica condição ou momento: 'se/quando acontecer A, então B'."
-                ],
-                [42, "〜ば", "〜ば", "se (condicional hipotético)", "n4", "grammar",
-                    "お金があれば旅行したいです。",
-                    "Se tivesse dinheiro, gostaria de viajar.",
-                    "<strong>あれば</strong> = forma <em>ba</em> de <em>ある</em>. Condicional mais hipotético que <em>たら</em>."
-                ],
-                [43, "〜のに", "〜のに", "apesar de / mesmo que", "n4", "grammar",
-                    "勉強したのに試験に落ちました。",
-                    "Apesar de ter estudado, reprovei no exame.",
-                    "<strong>勉強した</strong> = 'estudei'.<br><strong>のに</strong> = 'apesar de'. Indica frustração ou surpresa com resultado contrário ao esperado."
-                ],
-                [44, "〜ので", "〜ので", "porque / já que (explicação objetiva)", "n4", "grammar",
-                    "疲れたので早く寝ます。",
-                    "Como estou cansado, vou dormir cedo.",
-                    "<strong>疲れた</strong> = 'cancei'.<br><strong>ので</strong> = 'já que/porque'. Mais formal e objetivo que <em>から</em>."
-                ],
-                [45, "〜し", "〜し", "e também / além disso (enumeração de razões)", "n4", "grammar",
-                    "この店は安いし美味しいし、いつも来ます。",
-                    "Esta loja é barata, e também é gostosa, por isso sempre venho.",
-                    "<strong>安いし</strong> = 'é barato e...'.<br><strong>美味しいし</strong> = 'é gostoso e...'. Lista razões de forma não exaustiva."
-                ],
-                [46, "〜てしまう", "〜てしまう", "fazer completamente / acabar fazendo (com pesar)", "n4", "grammar",
-                    "電車に傘を忘れてしまいました。",
-                    "Acabei esquecendo o guarda-chuva no trem.",
-                    "<strong>忘れて</strong> = forma <em>te</em> de <em>忘れる</em>.<br><strong>しまう</strong> = 'guardar/fechar'. Indica conclusão total da ação, muitas vezes com nuance de arrependimento ou acidente."
-                ],
-                [47, "〜ておく", "〜ておく", "fazer com antecedência / deixar preparado", "n4", "grammar",
-                    "旅行の前にチケットを買っておきます。",
-                    "Vou comprar o bilhete com antecedência antes da viagem.",
-                    "<strong>買って</strong> = forma <em>te</em>.<br><strong>おく</strong> = 'colocar/deixar'. Indica ação preparatória para o futuro."
-                ],
-                [48, "〜ていく", "〜ていく", "fazer e ir / continuar fazendo (para o futuro)", "n4", "grammar",
-                    "これからも日本語を勉強していきます。",
-                    "Continuarei estudando japonês daqui para frente.",
-                    "<strong>勉強して</strong> = forma <em>te</em>.<br><strong>いく</strong> = 'ir'. Indica ação que continua do presente para o futuro."
-                ],
-                [49, "〜てくる", "〜てくる", "fazer e vir / começar a (mudança)", "n4", "grammar",
-                    "日本語が分かってきました。",
-                    "Comecei a entender japonês.",
-                    "<strong>分かって</strong> = forma <em>te</em>.<br><strong>くる</strong> = 'vir'. Indica mudança gradual que se aproxima do presente."
-                ],
-                [50, "〜ことにする", "〜ことにする", "decidir fazer", "n4", "grammar",
-                    "毎日運動することにしました。",
-                    "Decidi fazer exercício todo dia.",
-                    "<strong>運動する</strong> = 'fazer exercício'.<br><strong>ことにする</strong> = 'fazer disso uma decisão'. Indica decisão consciente."
+                [10, "まで", "まで", "até (limite)", "n5", "particle", [
+                        ["駅まで歩いて10分です。", "São 10 minutos a pé até a estação."],
+                        ["5時まで待ちます。", "Espero até as 5h."],
+                        ["何時まで働きますか？", "Até que horas você trabalha?"],
+                        ["ここから東京までどのくらいですか？", "Quanto tempo leva daqui até Tóquio?"],
+                        ["締め切りは明日までです。", "O prazo é até amanhã."]
+                    ],
+                    "<strong>まで</strong> indica o <strong>limite final</strong> de tempo, espaço ou quantidade. Frequentemente usado com <em>から</em> para 'de ~ até'."
                 ],
 
-                // ========== VERBOS ESSENCIAIS N5 (51-100) ==========
-                [51, "する", "する", "fazer", "n5", "verb",
-                    "何をしていますか？仕事をします。",
-                    "O que você está fazendo? Vou trabalhar.",
-                    "Verbo irregular mais comum. Forma polida: <em>します</em>. Passado: <em>した</em>. Negativo: <em>しない</em>."
+                // ==================== GRAMÁTICA ESSENCIAL ====================
+                [11, "〜ている", "〜ている", "ação contínua / estado resultante", "n5", "grammar", [
+                        ["今、日本語を勉強しています。", "Agora estou estudando japonês."],
+                        ["姉は結婚しています。", "Minha irmã mais velha está casada."],
+                        ["何をしていますか？", "O que você está fazendo?"],
+                        ["もう食べましたか？—はい、もう食べています。", "Já comeu? — Sim, já comi (estou no estado de ter comido)."],
+                        ["この映画を知っていますか？", "Você conhece este filme?"]
+                    ],
+                    "<strong>〜ている</strong> tem dois sentidos principais: 1) <strong>ação em progresso</strong> ('estar fazendo'); 2) <strong>estado resultante</strong> ('estar casado', 'ter comido', 'saber/conhecer'). A diferença depende do verbo."
                 ],
-                [52, "いる", "いる", "estar / existir (vivos)", "n5", "verb",
-                    "公園に猫がいます。私は部屋にいます。",
-                    "Tem um gato no parque. Estou no quarto.",
-                    "Para seres vivos. <em>ある</em> é para objetos. Forma <em>te</em> + <em>いる</em> = ação contínua."
+                [12, "〜たい", "〜たい", "querer fazer", "n5", "grammar", [
+                        ["日本に行きたいです。", "Quero ir ao Japão."],
+                        ["何が食べたいですか？", "O que você quer comer?"],
+                        ["映画を見たくないですか？", "Você não quer ver um filme?"],
+                        ["子供の頃、医者になりたかったです。", "Quando criança, queria ser médico."],
+                        ["何をしたいですか？", "O que você quer fazer?"]
+                    ],
+                    "<strong>〜たい</strong> expressa <strong>desejo</strong> de fazer algo. Conjuga-se como adjetivo-<em>i</em>: <em>たくない</em> (não quero), <em>たかった</em> (queria). O objeto pode usar <em>が</em> em vez de <em>を</em>."
                 ],
-                [53, "ある", "ある", "existir / ter (objetos)", "n5", "verb",
-                    "机の上に本があります。時間がありません。",
-                    "Há um livro em cima da mesa. Não tenho tempo.",
-                    "Para objetos e conceitos abstratos. Negativo: <em>ない</em>. Polido: <em>あります</em>."
+                [13, "〜ない", "〜ない", "negação informal", "n5", "grammar", [
+                        ["今日は働きません。", "Hoje não trabalho."],
+                        ["まだ食べていない。", "Ainda não comi."],
+                        ["なぜ来なかったのですか？", "Por que você não veio?"],
+                        ["分からないことがありますか？", "Há algo que você não entende?"],
+                        ["全然面白くない。", "Não é nada interessante."]
+                    ],
+                    "<strong>〜ない</strong> é a forma negativa informal. Grupo 1: troca <em>u</em> por <em>a</em> + <em>ない</em> (書く→書かない). Grupo 2: troca <em>る</em> por <em>ない</em> (食べる→食べない). Forma polida: <em>〜ません</em>."
                 ],
-                [54, "行く", "いく", "ir", "n5", "verb",
-                    "明日学校に行きます。一緒に行こう。",
-                    "Amanhã vou à escola. Vamos juntos.",
+                [14, "〜た", "〜た", "passado informal", "n5", "grammar", [
+                        ["昨日映画を見た。", "Ontem vi um filme."],
+                        ["もう宿題をやった？", "Já fez a lição de casa?"],
+                        ["何を食べましたか？", "O que você comeu?"],
+                        ["いつ日本に行きましたか？", "Quando você foi ao Japão?"],
+                        ["面白かったです。", "Foi interessante."]
+                    ],
+                    "<strong>〜た</strong> marca o passado informal. Grupo 1: variações conforme final (書く→書いた, 読む→読んだ, 話す→話した). Grupo 2: troca <em>る</em> por <em>た</em>. Adjetivos-<em>i</em>: troca <em>い</em> por <em>かった</em>."
+                ],
+                [15, "〜てください", "〜てください", "por favor faça", "n5", "grammar", [
+                        ["ここに名前を書いてください。", "Por favor, escreva seu nome aqui."],
+                        ["ちょっと待ってください。", "Espere um momento, por favor."],
+                        ["もう一度言ってくださいませんか？", "Poderia dizer mais uma vez?"],
+                        ["窓を閉めてください。", "Feche a janela, por favor."],
+                        ["教えてください。", "Me ensine, por favor."]
+                    ],
+                    "<strong>〜てください</strong> é um pedido educado. Forma: verbo na forma <em>te</em> + <em>ください</em>. Para ser ainda mais polido: <em>〜てくださいませんか</em>."
+                ],
+                [16, "〜てもいい", "〜てもいい", "pode fazer / permitido", "n5", "grammar", [
+                        ["写真を撮ってもいいですか？", "Posso tirar foto?"],
+                        ["ここに座ってもいいですよ。", "Pode sentar aqui."],
+                        ["何を聞いてもいいですか？", "O que posso perguntar?"],
+                        ["帰ってもいいですか？", "Posso ir embora?"],
+                        ["タバコを吸ってもいいですか？", "Posso fumar?"]
+                    ],
+                    "<strong>〜てもいい</strong> pergunta ou concede permissão. Literalmente: 'mesmo que faça, está bem'. Forma negativa: <em>〜てはいけない</em> (não pode/proibido)."
+                ],
+                [17, "〜たことがある", "〜たことがある", "já fez / tem experiência de", "n4", "grammar", [
+                        ["日本に行ったことがありますか？", "Você já foi ao Japão?"],
+                        ["寿司を食べたことがあります。", "Já comi sushi."],
+                        ["富士山に登ったことがありますか？", "Já escalou o Monte Fuji?"],
+                        ["一度も見たことがありません。", "Nunca vi."],
+                        ["どんな国に行ったことがありますか？", "Para quais países você já foi?"]
+                    ],
+                    "<strong>〜たことがある</strong> expressa <strong>experiência de vida</strong>. Literalmente: 'existe o fato de ter feito'. Negativa: <em>〜たことがない</em>. A forma polida é <em>〜たことがあります</em>."
+                ],
+                [18, "〜つもり", "〜つもり", "pretensão / plano / intenção", "n4", "grammar", [
+                        ["来年日本に留学するつもりです。", "Pretendo estudar no Japão ano que vem."],
+                        ["明日何をするつもりですか？", "O que você pretende fazer amanhã?"],
+                        ["タバコをやめるつもりです。", "Pretendo parar de fumar."],
+                        ["彼女と結婚するつもりですか？", "Você pretende se casar com ela?"],
+                        ["今日は出かけないつもりです。", "Não pretendo sair hoje."]
+                    ],
+                    "<strong>〜つもり</strong> indica <strong>intenção ou plano</strong> que a pessoa já decidiu. Não se usa para eventos fora do controle (ex: 'vai chover' não usa <em>つもり</em>)."
+                ],
+                [19, "〜と思う", "〜とおもう", "achar que / pensar que", "n5", "grammar", [
+                        ["この映画は面白いと思います。", "Acho que este filme é interessante."],
+                        ["彼は来ると思いますか？", "Você acha que ele vem?"],
+                        ["いいアイデアだと思います。", "Acho que é uma boa ideia."],
+                        ["どう思いますか？", "O que você acha?"],
+                        ["私は違うと思います。", "Eu acho diferente / discordo."]
+                    ],
+                    "<strong>〜と思う</strong> expressa opinião. A frase antes do <em>と</em> deve estar na forma informal. Para opinião negativa: <em>〜ないと思う</em>. Não se usa <em>〜と思う</em> para terceiros sem ressalvas."
+                ],
+                [20, "〜になる", "〜になる", "tornar-se", "n5", "grammar", [
+                        ["将来医者になりたいです。", "No futuro quero me tornar médico."],
+                        ["部屋が暖かくなりました。", "O quarto ficou quente."],
+                        ["どんな仕事になりたいですか？", "Que tipo de trabalho você quer ter?"],
+                        ["もうすぐ春になりますね。", "Já já será primavera, não é?"],
+                        ["日本語が上手になりましたか？", "Seu japonês melhorou (tornou-se bom)?"]
+                    ],
+                    "<strong>〜になる</strong> indica <strong>mudança de estado</strong>. Com substantivos: <em>N+になる</em>; com adjetivos-<em>na</em>: <em>N+になる</em>; com adjetivos-<em>i</em>: <em>くなる</em> (暖かい→暖かくなる)."
+                ],
+                [21, "〜にする", "〜にする", "decidir / escolher", "n5", "grammar", [
+                        ["コーヒーにします。", "Vou querer café (decidi)."],
+                        ["何にしますか？", "O que você vai querer?"],
+                        ["毎日運動することにしました。", "Decidi fazer exercício todo dia."],
+                        ["どちらにしますか？", "Qual você escolhe?"],
+                        ["旅行は来月にしましょう。", "Vamos deixar a viagem para o mês que vem."]
+                    ],
+                    "<strong>〜にする</strong> expressa <strong>decisão ou escolha</strong>. <em>〜ことにする</em> = 'decidir fazer'. <em>〜にする</em> = 'vou querer/escolher' (em restaurantes, por exemplo)."
+                ],
+                [22, "〜ながら", "〜ながら", "enquanto faz (simultâneo)", "n4", "grammar", [
+                        ["音楽を聞きながら勉強します。", "Estudo enquanto ouço música."],
+                        ["歩きながら話しましょう。", "Vamos conversar enquanto andamos."],
+                        ["何をしながら食べますか？", "O que você faz enquanto come?"],
+                        ["テレビを見ながら料理してもいい？", "Posso cozinhar enquanto vejo TV?"],
+                        ["働きながら日本語を勉強しています。", "Estudo japonês enquanto trabalho."]
+                    ],
+                    "<strong>〜ながら</strong> conecta duas ações simultâneas. A ação principal é o segundo verbo; a ação secundária usa a forma raiz + <em>ながら</em>."
+                ],
+                [23, "〜たり〜たり", "〜たり〜たり", "fazer coisas como A e B", "n4", "grammar", [
+                        ["週末は映画を見たり買い物したりします。", "No fim de semana faço coisas como ver filmes e fazer compras."],
+                        ["休みの日は何をしたりしますか？", "O que você costuma fazer nos dias de folga?"],
+                        ["泣いたり笑ったり、忙しい一日だった。", "Chorando e rindo, foi um dia agitado."],
+                        ["暑かったり寒かったり、変な天気です。", "Ora quente ora frio, o tempo está estranho."],
+                        ["日本語を読んだり書いたりできますか？", "Você consegue ler e escrever em japonês?"]
+                    ],
+                    "<strong>〜たり〜たり</strong> lista ações ou estados de forma exemplificativa, não exaustiva. O último <em>たり</em> geralmente é seguido de <em>する</em>."
+                ],
+                [24, "〜やすい / 〜にくい", "〜やすい / 〜にくい", "fácil de / difícil de", "n4", "grammar", [
+                        ["このペンは書きやすいです。", "Esta caneta é fácil de escrever."],
+                        ["この漢字は覚えにくい。", "Este kanji é difícil de memorizar."],
+                        ["この靴は歩きやすいですか？", "Estes sapatos são confortáveis para andar?"],
+                        ["何が一番食べやすいですか？", "O que é mais fácil de comer?"],
+                        ["この町は住みにくいと思います。", "Acho esta cidade difícil de morar."]
+                    ],
+                    "<strong>〜やすい</strong> = 'fácil de fazer'; <strong>〜にくい</strong> = 'difícil de fazer'. Ambos se anexam à raiz do verbo e formam novos adjetivos-<em>i</em>."
+                ],
+                [25, "〜てしまう", "〜てしまう", "fazer completamente / acabar fazendo", "n4", "grammar", [
+                        ["宿題を全部やってしまいました。", "Terminei toda a lição de casa."],
+                        ["電車に傘を忘れてしまった。", "Acabei esquecendo o guarda-chuva no trem."],
+                        ["もう食べてしまいましたか？", "Você já comeu tudo?"],
+                        ["どうして壊してしまったのですか？", "Por que você acabou quebrando?"],
+                        ["言わないで！—もう言ってしまった。", "Não diga! — Já acabei dizendo."]
+                    ],
+                    "<strong>〜てしまう</strong> indica: 1) <strong>conclusão total</strong> da ação; 2) <strong>arrependimento ou acidente</strong>. Na fala coloquial, contrai-se: <em>〜ちゃう</em> (食べちゃった = acabei comendo)."
+                ],
+                [26, "〜ておく", "〜ておく", "fazer com antecedência / deixar preparado", "n4", "grammar", [
+                        ["旅行の前にチケットを買っておきます。", "Vou comprar o bilhete antes da viagem."],
+                        ["ドアを開けておいてください。", "Deixe a porta aberta, por favor."],
+                        ["何を準備しておけばいいですか？", "O que devo preparar com antecedência?"],
+                        ["もう予約しておきましたか？", "Você já reservou?"],
+                        ["メモしておかないと忘れるよ。", "Se não anotar, você esquece."]
+                    ],
+                    "<strong>〜ておく</strong> = fazer algo <strong>preparatório</strong> para o futuro ou <strong>deixar</strong> algo em determinado estado. Na fala: <em>〜とく</em> (買っとく = vou comprar)."
+                ],
+                [27, "〜ていく / 〜てくる", "〜ていく / 〜てくる", "fazer e ir / fazer e vir (mudança)", "n4", "grammar", [
+                        ["これからも勉強していきます。", "Continuarei estudando daqui para frente."],
+                        ["日本語が分かってきました。", "Comecei a entender japonês."],
+                        ["将来どうなっていくと思いますか？", "Como você acha que vai ficar no futuro?"],
+                        ["最近寒くなってきましたね。", "Começou a ficar frio recentemente, não é?"],
+                        ["何を持って行きますか？", "O que você vai levar?"]
+                    ],
+                    "<strong>〜ていく</strong> = ação que continua do presente para o futuro ou movimento de afastamento. <strong>〜てくる</strong> = mudança gradual que se aproxima do presente ou movimento de aproximação."
+                ],
+                [28, "〜そうだ (様態)", "〜そうだ", "parece que (pela aparência)", "n4", "grammar", [
+                        ["このケーキは美味しそうです。", "Este bolo parece gostoso."],
+                        ["雨が降りそうですね。", "Parece que vai chover, não é?"],
+                        ["彼は元気そうですか？", "Ele parece estar bem?"],
+                        ["この荷物は重そうですね。", "Esta bagagem parece pesada, não é?"],
+                        ["どんな味がしそうですか？", "Que gosto parece ter?"]
+                    ],
+                    "<strong>〜そうだ</strong> (様態) baseia-se na <strong>observação direta</strong>. Adjetivos-<em>i</em>: remove o <em>い</em> (美味しい→美味しそう). Verbos: raiz + <em>そう</em> (降る→降りそう)."
+                ],
+                [29, "〜かもしれない", "〜かもしれない", "talvez / pode ser que", "n4", "grammar", [
+                        ["明日は雨が降るかもしれません。", "Talvez chova amanhã."],
+                        ["彼はもう帰ったかもしれない。", "Talvez ele já tenha ido embora."],
+                        ["この答えは間違いかもしれませんか？", "Será que esta resposta está errada?"],
+                        ["遅れるかもしれないから電話します。", "Como talvez me atrase, vou ligar."],
+                        ["あなたが正しいかもしれません。", "Talvez você esteja certo."]
+                    ],
+                    "<strong>〜かもしれない</strong> expressa <strong>incerteza</strong> (~50% de probabilidade). É mais suave que afirmações diretas. Forma polida: <em>〜かもしれません</em>."
+                ],
+                [30, "〜たら", "〜たら", "se / quando (condicional)", "n4", "grammar", [
+                        ["雨が降ったら家にいます。", "Se chover, ficarei em casa."],
+                        ["日本に行ったら何をしたいですか？", "Quando for ao Japão, o que quer fazer?"],
+                        ["安かったら買います。", "Se estiver barato, compro."],
+                        ["時間があったら映画を見ませんか？", "Se tiver tempo, vamos ver um filme?"],
+                        ["分からなかったら質問してください。", "Se não entender, pergunte."]
+                    ],
+                    "<strong>〜たら</strong> é o condicional mais comum na fala. Indica condição ou momento ('se/quando A acontecer, então B'). Forma: passado informal + <em>ら</em>."
+                ],
+                [31, "〜のに", "〜のに", "apesar de / mesmo que", "n4", "grammar", [
+                        ["勉強したのに試験に落ちました。", "Apesar de ter estudado, reprovei."],
+                        ["高いのにあまり美味しくない。", "Apesar de caro, não é muito gostoso."],
+                        ["なぜ来なかったのに連絡しなかったの？", "Por que não avisou, mesmo não tendo vindo?"],
+                        ["頑張っているのに結果が出ない。", "Mesmo me esforçando, não sai resultado."],
+                        ["彼はお金があるのに幸せそうじゃない。", "Ele tem dinheiro, mas não parece feliz."]
+                    ],
+                    "<strong>〜のに</strong> expressa <strong>frustração, surpresa ou contraste</strong> entre o esperado e o real. A frase antes do <em>のに</em> está na forma informal."
+                ],
+                [32, "〜ので", "〜ので", "porque / já que (objetivo)", "n4", "grammar", [
+                        ["疲れたので早く寝ます。", "Como estou cansado, vou dormir cedo."],
+                        ["明日試験があるので勉強しています。", "Como tenho prova amanhã, estou estudando."],
+                        ["なぜ遅れたのですか？—電車が遅れたので。", "Por que atrasou? — Porque o trem atrasou."],
+                        ["寒いので窓を閉めてもいいですか？", "Como está frio, posso fechar a janela?"],
+                        ["用事があるので先に帰ります。", "Tenho um compromisso, então vou embora mais cedo."]
+                    ],
+                    "<strong>〜ので</strong> é uma explicação mais <strong>objetiva e formal</strong> que <em>から</em>. Muito usado em situações educadas e no trabalho. A frase antes do <em>ので</em> geralmente está na forma polida em contextos formais."
+                ],
+
+                // ==================== VERBOS ESSENCIAIS ====================
+                [33, "する", "する", "fazer", "n5", "verb", [
+                        ["何をしていますか？", "O que você está fazendo?"],
+                        ["仕事をします。", "Vou trabalhar."],
+                        ["何か手伝いましょうか？", "Posso ajudar em algo?"],
+                        ["電話してもいいですか？", "Posso ligar?"],
+                        ["毎日運動をすることにしました。", "Decidi fazer exercício todo dia."]
+                    ],
+                    "Verbo irregular mais comum do japonês. Forma polida: <em>します</em>. Passado: <em>した</em>. Negativo: <em>しない</em>. Potencial: <em>できる</em>."
+                ],
+                [34, "いる", "いる", "estar / existir (vivos)", "n5", "verb", [
+                        ["公園に子供がいます。", "Há crianças no parque."],
+                        ["部屋に誰かいますか？", "Tem alguém no quarto?"],
+                        ["猫を飼っていますか？", "Você tem gato?"],
+                        ["何時間もここにいる。", "Estou aqui há horas."],
+                        ["彼女はどこにいますか？", "Onde ela está?"]
+                    ],
+                    "<strong>いる</strong> = existir/estar para seres vivos. <em>ある</em> é para objetos. Forma <em>te</em> + <em>いる</em> = ação contínua ou estado."
+                ],
+                [35, "ある", "ある", "existir / ter (objetos)", "n5", "verb", [
+                        ["机の上に本があります。", "Há um livro em cima da mesa."],
+                        ["質問がありますか？", "Você tem alguma pergunta?"],
+                        ["時間がありません。", "Não tenho tempo."],
+                        ["どんな経験がありますか？", "Que tipo de experiência você tem?"],
+                        ["ここに何がありましたか？", "O que havia aqui?"]
+                    ],
+                    "<strong>ある</strong> = existir/ter para objetos, conceitos e eventos. Negativo: <em>ない</em>. Polido: <em>あります</em>. Para posse: <em>〜がある</em>."
+                ],
+                [36, "行く", "いく", "ir", "n5", "verb", [
+                        ["明日学校に行きます。", "Amanhã vou à escola."],
+                        ["一緒に行きませんか？", "Vamos juntos?"],
+                        ["どこに行きたいですか？", "Onde você quer ir?"],
+                        ["日本に行ったことがありますか？", "Você já foi ao Japão?"],
+                        ["もう行かないと。", "Já tenho que ir."]
+                    ],
                     "Forma <em>te</em>: <em>行って</em>. Passado: <em>行った</em>. Direção marcada com <em>に/へ</em>."
                 ],
-                [55, "来る", "くる", "vir", "n5", "verb",
-                    "友達が家に来ます。早く来てください。",
-                    "Um amigo vem à minha casa. Venha rápido.",
-                    "Irregular. Forma <em>te</em>: <em>来て</em>. Passado: <em>来た</em>. Negativo: <em>来ない</em>."
+                [37, "来る", "くる", "vir", "n5", "verb", [
+                        ["友達が家に来ます。", "Um amigo vem à minha casa."],
+                        ["いつ来られますか？", "Quando você pode vir?"],
+                        ["誰と来ましたか？", "Com quem você veio?"],
+                        ["早く来てください！", "Venha rápido!"],
+                        ["バスがまだ来ていません。", "O ônibus ainda não chegou."]
+                    ],
+                    "Irregular. Forma <em>te</em>: <em>来て</em>. Passado: <em>来た</em>. Negativo: <em>来ない</em>. Potencial: <em>来られる</em>."
                 ],
-                [56, "見る", "みる", "ver / assistir", "n5", "verb",
-                    "昨日面白い映画を見ました。",
-                    "Ontem assisti a um filme interessante.",
-                    "Grupo 2. Forma <em>te</em>: <em>見て</em>. Potencial: <em>見られる</em> (conseguir ver)."
+                [38, "見る", "みる", "ver / assistir", "n5", "verb", [
+                        ["昨日面白い映画を見ました。", "Ontem assisti a um filme interessante."],
+                        ["何を見ていますか？", "O que você está vendo?"],
+                        ["これを見てください。", "Olhe isto, por favor."],
+                        ["その景色を見たいです。", "Quero ver aquela paisagem."],
+                        ["誰が作ったか見てみましょう。", "Vamos ver quem fez."]
+                    ],
+                    "Grupo 2. Forma <em>te</em>: <em>見て</em>. Potencial: <em>見られる</em>. <em>〜てみる</em> = 'tentar fazer para ver'."
                 ],
-                [57, "聞く", "きく", "ouvir / perguntar", "n5", "verb",
-                    "音楽を聞きます。先生に質問を聞きました。",
-                    "Ouço música. Fiz uma pergunta ao professor.",
-                    "Dois significados: 1) ouvir/escutar 2) perguntar. O contexto define."
+                [39, "聞く", "きく", "ouvir / perguntar", "n5", "verb", [
+                        ["音楽を聞いています。", "Estou ouvindo música."],
+                        ["先生に質問を聞きました。", "Fiz uma pergunta ao professor."],
+                        ["何を聞きたいですか？", "O que você quer perguntar?"],
+                        ["この音が聞こえますか？", "Você consegue ouvir este som?"],
+                        ["道を聞いてもいいですか？", "Posso perguntar o caminho?"]
+                    ],
+                    "Dois significados: 1) <strong>ouvir/escutar</strong>; 2) <strong>perguntar</strong>. O contexto define. <em>聞こえる</em> = 'ser audível' (intransitivo)."
                 ],
-                [58, "話す", "はなす", "falar / conversar", "n5", "verb",
-                    "日本語で話すのは楽しいです。",
-                    "Falar em japonês é divertido.",
-                    "Grupo 1. Forma <em>te</em>: <em>話して</em>. Objeto marcado com <em>を</em> (idioma) ou <em>と</em> (pessoa)."
+                [40, "話す", "はなす", "falar / conversar", "n5", "verb", [
+                        ["日本語で話してください。", "Fale em japonês, por favor."],
+                        ["誰と話していましたか？", "Com quem você estava falando?"],
+                        ["もっとゆっくり話してもらえますか？", "Poderia falar mais devagar?"],
+                        ["何について話しましょうか？", "Sobre o que vamos conversar?"],
+                        ["電話で話したいことがあります。", "Tenho algo para falar por telefone."]
+                    ],
+                    "Grupo 1. Forma <em>te</em>: <em>話して</em>. Pessoa com quem se fala: <em>〜と話す</em>. Idioma: <em>〜で話す</em>."
                 ],
-                [59, "読む", "よむ", "ler", "n5", "verb",
-                    "毎日新聞を読みます。この本読んだ？",
-                    "Leio jornal todo dia. Já leu este livro?",
-                    "Grupo 1. Forma <em>te</em>: <em>読んで</em>. Passado: <em>読んだ</em>."
+                [41, "食べる", "たべる", "comer", "n5", "verb", [
+                        ["朝ごはんを食べましたか？", "Tomou café da manhã?"],
+                        ["何を食べたいですか？", "O que você quer comer?"],
+                        ["もう食べました。", "Já comi."],
+                        ["一緒に食べませんか？", "Vamos comer juntos?"],
+                        ["これは食べられますか？", "Isto pode ser comido?"]
+                    ],
+                    "Grupo 2. Forma <em>te</em>: <em>食べて</em>. Potencial: <em>食べられる</em>. Muito usado no dia a dia."
                 ],
-                [60, "書く", "かく", "escrever", "n5", "verb",
-                    "ここに名前を書いてください。",
-                    "Escreva seu nome aqui, por favor.",
-                    "Grupo 1. Forma <em>te</em>: <em>書いて</em>. Objeto: o que se escreve usa <em>を</em>."
-                ],
-                [61, "食べる", "たべる", "comer", "n5", "verb",
-                    "朝ごはんを食べましたか？",
-                    "Tomou café da manhã?",
-                    "Grupo 2. Forma <em>te</em>: <em>食べて</em>. Muito usado no dia a dia."
-                ],
-                [62, "飲む", "のむ", "beber", "n5", "verb",
-                    "冷たい水を飲みたいです。",
-                    "Quero beber água gelada.",
+                [42, "飲む", "のむ", "beber", "n5", "verb", [
+                        ["冷たい水を飲みたいです。", "Quero beber água gelada."],
+                        ["何を飲みますか？", "O que você vai beber?"],
+                        ["あまり飲まないでください。", "Não beba muito, por favor."],
+                        ["薬を飲みましたか？", "Você tomou o remédio?"],
+                        ["飲みすぎて頭が痛い。", "Bebi demais e minha cabeça dói."]
+                    ],
                     "Grupo 1. Forma <em>te</em>: <em>飲んで</em>. Para remédios também: <em>薬を飲む</em>."
                 ],
-                [63, "買う", "かう", "comprar", "n5", "verb",
-                    "新しいスマホを買いたいです。",
-                    "Quero comprar um smartphone novo.",
-                    "Grupo 1. Forma <em>te</em>: <em>買って</em>. Passado: <em>買った</em>."
+                [43, "買う", "かう", "comprar", "n5", "verb", [
+                        ["新しいスマホを買いたいです。", "Quero comprar um smartphone novo."],
+                        ["どこで買いましたか？", "Onde você comprou?"],
+                        ["何を買うつもりですか？", "O que você pretende comprar?"],
+                        ["いくらで買えるか知っていますか？", "Sabe por quanto posso comprar?"],
+                        ["買い物に行く前にリストを作っておきます。", "Faço a lista antes de ir comprar."]
+                    ],
+                    "Grupo 1. Forma <em>te</em>: <em>買って</em>. Passado: <em>買った</em>. Objeto usa <em>を</em>."
                 ],
-                [64, "会う", "あう", "encontrar (pessoa)", "n5", "verb",
-                    "明日友達に会います。初めて会う人。",
-                    "Amanhã encontro um amigo. Pessoa que encontro pela primeira vez.",
-                    "A pessoa encontrada usa <em>に</em>: <em>友達に会う</em>."
+                [44, "会う", "あう", "encontrar (pessoa)", "n5", "verb", [
+                        ["明日友達に会います。", "Amanhã encontro um amigo."],
+                        ["誰に会いたいですか？", "Quem você quer encontrar?"],
+                        ["初めて会う人と話すのは緊張します。", "Fico nervoso para falar com alguém que encontro pela primeira vez."],
+                        ["どこで会いましょうか？", "Onde nos encontramos?"],
+                        ["会えて嬉しいです。", "Fico feliz em te ver."]
+                    ],
+                    "Pessoa encontrada usa <em>に</em>: <em>友達に会う</em>. <em>会える</em> = 'poder encontrar' (potencial)."
                 ],
-                [65, "待つ", "まつ", "esperar", "n5", "verb",
-                    "ここでちょっと待ってください。",
-                    "Espere um pouco aqui, por favor.",
-                    "Grupo 1. Forma <em>te</em>: <em>待って</em>. Muito usado em conversação."
+                [45, "待つ", "まつ", "esperar", "n5", "verb", [
+                        ["ここでちょっと待ってください。", "Espere um pouco aqui, por favor."],
+                        ["どのくらい待ちましたか？", "Quanto tempo você esperou?"],
+                        ["誰を待っていますか？", "Quem você está esperando?"],
+                        ["もう待てない。", "Não posso mais esperar."],
+                        ["待たせてすみません。", "Desculpe por fazer você esperar."]
+                    ],
+                    "Grupo 1. Forma <em>te</em>: <em>待って</em>. Potencial: <em>待てる</em>. Causativo: <em>待たせる</em> = 'fazer esperar'."
                 ],
-                [66, "作る", "つくる", "fazer / criar / cozinhar", "n5", "verb",
-                    "母が美味しい料理を作りました。",
-                    "Minha mãe fez uma comida deliciosa.",
-                    "Grupo 1. Forma <em>te</em>: <em>作って</em>. Para comida, objetos, arte."
+                [46, "作る", "つくる", "fazer / criar / cozinhar", "n5", "verb", [
+                        ["母が美味しい料理を作りました。", "Minha mãe fez uma comida deliciosa."],
+                        ["何を作っていますか？", "O que você está fazendo?"],
+                        ["一緒にケーキを作りませんか？", "Vamos fazer um bolo juntos?"],
+                        ["これ、どうやって作るのですか？", "Como se faz isto?"],
+                        ["手作りのプレゼントが一番嬉しい。", "Presente feito à mão é o que mais alegra."]
+                    ],
+                    "Grupo 1. Forma <em>te</em>: <em>作って</em>. Para comida, objetos, arte — qualquer criação."
                 ],
-                [67, "使う", "つかう", "usar", "n5", "verb",
-                    "このアプリを使って勉強しています。",
-                    "Estou estudando usando este aplicativo.",
-                    "Grupo 1. Forma <em>te</em>: <em>使って</em>. Meio marcado com <em>で</em> ou forma <em>te</em>."
+                [47, "使う", "つかう", "usar", "n5", "verb", [
+                        ["このアプリを使って勉強しています。", "Estou estudando usando este aplicativo."],
+                        ["何を使えばいいですか？", "O que devo usar?"],
+                        ["お手洗いを使ってもいいですか？", "Posso usar o banheiro?"],
+                        ["毎日どれくらいインターネットを使いますか？", "Quanto você usa a internet por dia?"],
+                        ["これは何に使うのですか？", "Para que serve isto?"]
+                    ],
+                    "Grupo 1. Forma <em>te</em>: <em>使って</em>. Meio pode ser marcado com <em>で</em> ou a forma <em>te</em> pode conectar com o verbo principal."
                 ],
-                [68, "思う", "おもう", "pensar / achar", "n5", "verb",
-                    "私はこれは良いアイデアだと思います。",
-                    "Acho que esta é uma boa ideia.",
-                    "Sempre usado com <em>と</em>: <em>〜と思う</em>. Conteúdo do pensamento em forma informal antes do <em>と</em>."
+                [48, "思う", "おもう", "pensar / achar", "n5", "verb", [
+                        ["私はこれは良いアイデアだと思います。", "Acho que esta é uma boa ideia."],
+                        ["どう思いますか？", "O que você acha?"],
+                        ["彼は来ないと思いました。", "Achei que ele não viria."],
+                        ["あなたはどう思う？", "O que você acha?"],
+                        ["そうは思いません。", "Não penso assim."]
+                    ],
+                    "Sempre usado com <em>と</em>: <em>〜と思う</em>. O conteúdo antes do <em>と</em> fica na forma informal."
                 ],
-                [69, "言う", "いう", "dizer", "n5", "verb",
-                    "彼は「ありがとう」と言いました。",
-                    "Ele disse 'obrigado'.",
-                    "Grupo 1. Forma <em>te</em>: <em>言って</em>. Citação usa <em>と</em>: <em>〜と言う</em>."
+                [49, "言う", "いう", "dizer", "n5", "verb", [
+                        ["彼は「ありがとう」と言いました。", "Ele disse 'obrigado'."],
+                        ["何と言いましたか？", "O que você disse?"],
+                        ["日本語で何と言いますか？", "Como se diz em japonês?"],
+                        ["もう一度言ってください。", "Diga mais uma vez, por favor."],
+                        ["そんなこと言わないでください。", "Não diga isso, por favor."]
+                    ],
+                    "Grupo 1. Forma <em>te</em>: <em>言って</em>. Citação usa <em>と</em> antes do verbo."
                 ],
-                [70, "分かる", "わかる", "entender / compreender", "n5", "verb",
-                    "日本語が分かりますか？はい、少し。",
-                    "Você entende japonês? Sim, um pouco.",
-                    "Objeto usa <em>が</em>, não <em>を</em>: <em>日本語が分かる</em>. Indica compreensão espontânea."
+                [50, "分かる", "わかる", "entender / compreender", "n5", "verb", [
+                        ["日本語が分かりますか？", "Você entende japonês?"],
+                        ["何が分からないのですか？", "O que você não entende?"],
+                        ["意味がやっと分かりました。", "Finalmente entendi o significado."],
+                        ["分からないことがあったら聞いてください。", "Se tiver algo que não entende, pergunte."],
+                        ["彼の気持ちがよく分かる。", "Entendo bem os sentimentos dele."]
+                    ],
+                    "Objeto usa <em>が</em>: <em>〜が分かる</em>. Indica compreensão espontânea — não se usa <em>を</em>."
                 ],
-                [71, "できる", "できる", "conseguir / poder / ser feito", "n5", "verb",
-                    "日本語が話せます。料理ができます。",
-                    "Consigo falar japonês. Sei cozinhar.",
-                    "Potencial de <em>する</em>. Objeto usa <em>が</em>: <em>〜ができる</em>. Indica habilidade."
-                ],
-                [72, "出る", "でる", "sair", "n5", "verb",
-                    "家を出ます。会議に出ます。",
-                    "Saio de casa. Participo da reunião.",
-                    "Dois usos: 1) sair de um lugar (<em>を</em>) 2) participar (<em>に</em>)."
-                ],
-                [73, "入る", "はいる", "entrar", "n5", "verb",
-                    "どうぞお入りください。部屋に入ります。",
-                    "Por favor, entre. Entro no quarto.",
-                    "Local de entrada usa <em>に</em>: <em>部屋に入る</em>."
-                ],
-                [74, "帰る", "かえる", "voltar para casa", "n5", "verb",
-                    "もう遅いので帰ります。",
-                    "Já está tarde, vou para casa.",
-                    "Especificamente 'voltar para casa/base'. Destino usa <em>に/へ</em>."
-                ],
-                [75, "寝る", "ねる", "dormir", "n5", "verb",
-                    "昨日早く寝ました。寝る前に本を読む。",
-                    "Ontem dormi cedo. Leio livro antes de dormir.",
-                    "Grupo 2. Forma <em>te</em>: <em>寝て</em>. <em>寝る</em> = dormir; <em>起きる</em> = acordar."
-                ],
-                [76, "起きる", "おきる", "acordar / levantar", "n5", "verb",
-                    "毎朝6時に起きます。",
-                    "Toda manhã acordo às 6h.",
-                    "Grupo 2. Forma <em>te</em>: <em>起きて</em>. <em>朝起きる</em> = acordar de manhã."
-                ],
-                [77, "働く", "はたらく", "trabalhar", "n5", "verb",
-                    "父は病院で働いています。",
-                    "Meu pai trabalha num hospital.",
-                    "Grupo 1. Local de trabalho usa <em>で</em>: <em>会社で働く</em>."
-                ],
-                [78, "休む", "やすむ", "descansar / faltar", "n5", "verb",
-                    "今日は仕事を休みます。少し休もう。",
-                    "Hoje falto ao trabalho. Vamos descansar um pouco.",
-                    "Grupo 1. <em>会社を休む</em> = faltar ao trabalho. <em>休む</em> = descansar."
-                ],
-                [79, "歩く", "あるく", "andar / caminhar", "n5", "verb",
-                    "駅まで歩いて10分です。",
-                    "São 10 minutos andando até a estação.",
-                    "Grupo 1. Forma <em>te</em>: <em>歩いて</em>. <em>歩いて行く</em> = ir a pé."
-                ],
-                [80, "走る", "はしる", "correr", "n5", "verb",
-                    "毎朝公園で走っています。",
-                    "Toda manhã corro no parque.",
-                    "Grupo 1. Local da ação usa <em>で</em>: <em>公園で走る</em>."
-                ],
-                [81, "座る", "すわる", "sentar", "n5", "verb",
-                    "どうぞここに座ってください。",
-                    "Por favor, sente-se aqui.",
-                    "Grupo 1. Forma <em>te</em>: <em>座って</em>. Local usa <em>に</em>: <em>椅子に座る</em>."
-                ],
-                [82, "立つ", "たつ", "ficar de pé", "n5", "verb",
-                    "電車でずっと立っていました。",
-                    "Fiquei de pé o tempo todo no trem.",
-                    "Grupo 1. Forma <em>te</em>: <em>立って</em>."
-                ],
-                [83, "持つ", "もつ", "segurar / ter / possuir", "n5", "verb",
-                    "この荷物を持ってください。私は車を持っています。",
-                    "Segure esta bagagem, por favor. Eu tenho um carro.",
-                    "Grupo 1. <em>持っている</em> = 'ter/possuir' (estado resultante de ter pego)."
-                ],
-                [84, "知る", "しる", "saber / conhecer", "n5", "verb",
-                    "あの人を知っていますか？",
-                    "Você conhece aquela pessoa?",
-                    "Geralmente usado no estado: <em>知っている</em> = 'sei/conheço'. <em>知らない</em> = 'não sei'."
-                ],
-                [85, "住む", "すむ", "morar / residir", "n5", "verb",
-                    "東京に住んでいます。",
-                    "Moro em Tóquio.",
-                    "Local usa <em>に</em>: <em>東京に住む</em>."
-                ],
-                [86, "遊ぶ", "あそぶ", "brincar / divertir-se / sair", "n5", "verb",
-                    "週末友達と遊びます。",
-                    "No fim de semana saio com amigos.",
-                    "Grupo 1. Forma <em>te</em>: <em>遊んで</em>. Também significa 'sair para se divertir' entre adultos."
-                ],
-                [87, "泳ぐ", "およぐ", "nadar", "n5", "verb",
-                    "夏は海で泳ぎます。",
-                    "No verão nado no mar.",
-                    "Grupo 1. Forma <em>te</em>: <em>泳いで</em>. Local usa <em>で</em>."
-                ],
-                [88, "歌う", "うたう", "cantar", "n5", "verb",
-                    "カラオケで歌うのが好きです。",
-                    "Gosto de cantar no karaokê.",
-                    "Grupo 1. Forma <em>te</em>: <em>歌って</em>."
-                ],
-                [89, "始まる", "はじまる", "começar (intransitivo)", "n5", "verb",
-                    "授業は9時に始まります。",
-                    "A aula começa às 9h.",
-                    "Intransitivo: a coisa começa por si. Transitive: <em>始める</em> = 'começar algo'."
-                ],
-                [90, "終わる", "おわる", "terminar (intransitivo)", "n5", "verb",
-                    "仕事が終わりました。",
-                    "O trabalho terminou.",
-                    "Intransitivo. Transitive: <em>終える</em> = 'terminar algo'."
+                [51, "できる", "できる", "conseguir / poder / ser feito", "n5", "verb", [
+                        ["日本語が話せます。", "Consigo falar japonês."],
+                        ["何ができますか？", "O que você sabe fazer?"],
+                        ["料理ができますか？", "Você sabe cozinhar?"],
+                        ["ここで写真が撮れますか？", "Posso tirar foto aqui?"],
+                        ["いつできますか？", "Quando fica pronto?"]
+                    ],
+                    "Potencial de <em>する</em>. Objeto usa <em>が</em>. Também significa 'ficar pronto/terminado'."
                 ],
 
-                // ========== ADJETIVOS ESSENCIAIS (91-120) ==========
-                [91, "良い", "よい/いい", "bom", "n5", "adj",
-                    "今日は天気がいいですね。",
-                    "Hoje o tempo está bom, não é?",
-                    "<em>いい</em> é a forma mais comum na fala. Só muda para <em>よい</em> nas conjugações: <em>よくない</em> (não é bom), <em>よかった</em> (era bom)."
+                // ==================== CONVERSAÇÃO ====================
+                [52, "ありがとう", "ありがとう", "obrigado", "n5", "conversation", [
+                        ["ありがとうございます！", "Muito obrigado!"],
+                        ["本当にありがとう。", "Obrigado de verdade."],
+                        ["どうもありがとうございました。", "Muito obrigado (pelo que fez)."],
+                        ["プレゼントをありがとう！", "Obrigado pelo presente!"],
+                        ["いつもありがとうございます。", "Obrigado por tudo sempre."]
+                    ],
+                    "<em>ありがとう</em> é casual. <em>ありがとうございます</em> é polido. <em>ありがとうございました</em> é para ações concluídas."
                 ],
-                [92, "悪い", "わるい", "ruim / mau", "n5", "adj",
-                    "気分が悪いです。悪いことをした。",
-                    "Estou me sentindo mal. Fiz algo ruim.",
-                    "<em>気分が悪い</em> = sentir-se mal fisicamente. <em>悪いこと</em> = coisa ruim/moralmente errada."
+                [53, "すみません", "すみません", "com licença / desculpe", "n5", "conversation", [
+                        ["すみません、駅はどこですか？", "Com licença, onde fica a estação?"],
+                        ["遅れてすみません。", "Desculpe pelo atraso."],
+                        ["すみません、もう一度言ってください。", "Desculpe, diga mais uma vez."],
+                        ["ご迷惑をかけてすみませんでした。", "Desculpe pelo incômodo causado."],
+                        ["すみませんが、手伝っていただけますか？", "Desculpe incomodar, mas poderia me ajudar?"]
+                    ],
+                    "Multiuso: 1) chamar atenção; 2) pedir desculpas; 3) agradecer por um incômodo. <em>すいません</em> é a forma coloquial."
                 ],
-                [93, "大きい", "おおきい", "grande", "n5", "adj",
-                    "東京はとても大きい都市です。",
-                    "Tóquio é uma cidade muito grande.",
-                    "Para tamanho físico. Também <em>大きな</em> (atributivo, só antes de substantivo)."
+                [54, "大丈夫", "だいじょうぶ", "tudo bem / seguro", "n5", "conversation", [
+                        ["大丈夫ですか？", "Você está bem?"],
+                        ["はい、大丈夫です。", "Sim, estou bem."],
+                        ["もう大丈夫です。", "Já está tudo bem."],
+                        ["これで大丈夫ですか？", "Está tudo bem assim?"],
+                        ["大丈夫、心配しないで。", "Tudo bem, não se preocupe."]
+                    ],
+                    "Também para recusar ofertas educadamente: <em>大丈夫です</em> = 'não precisa, obrigado'."
                 ],
-                [94, "小さい", "ちいさい", "pequeno", "n5", "adj",
-                    "この部屋は小さいです。",
-                    "Este quarto é pequeno.",
-                    "Também <em>小さな</em> (atributivo)."
+                [55, "ちょっと", "ちょっと", "um pouco / um momento / recusa suave", "n5", "conversation", [
+                        ["ちょっと待ってください。", "Espere um momento."],
+                        ["それはちょっと…", "Isso é um pouco... (difícil/impossível)."],
+                        ["ちょっと分からないです。", "Não sei bem / Não entendo muito."],
+                        ["ちょっと手伝ってくれますか？", "Pode me ajudar um pouco?"],
+                        ["今日はちょっと忙しいです。", "Hoje estou um pouco ocupado."]
+                    ],
+                    "<em>ちょっと…</em> sem completar é uma <strong>recusa suave</strong> muito comum no Japão."
                 ],
-                [95, "高い", "たかい", "alto / caro", "n5", "adj",
-                    "このビルは高いです。値段が高い。",
-                    "Este prédio é alto. O preço é caro.",
-                    "Dois significados: altura física e preço elevado."
+
+                // ==================== ADJETIVOS COMUNS ====================
+                [56, "良い", "よい/いい", "bom", "n5", "adj", [
+                        ["今日は天気がいいですね。", "O tempo está bom hoje, não é?"],
+                        ["どれが一番いいですか？", "Qual é o melhor?"],
+                        ["このレストランは美味しくていいです。", "Este restaurante é gostoso e bom."],
+                        ["いいアイデアだと思います。", "Acho que é uma boa ideia."],
+                        ["それでいいですか？", "Está bem assim?"]
+                    ],
+                    "<em>いい</em> é a forma mais comum na fala. Conjugações usam <em>よい</em>: <em>よくない</em> (ruim), <em>よかった</em> (era bom)."
                 ],
-                [96, "安い", "やすい", "barato", "n5", "adj",
-                    "この店は何でも安いです。",
-                    "Tudo nesta loja é barato.",
+                [57, "悪い", "わるい", "ruim / mau", "n5", "adj", [
+                        ["気分が悪いです。", "Estou me sentindo mal."],
+                        ["何か悪いことしましたか？", "Fiz algo de errado?"],
+                        ["この映画は悪くなかったです。", "Este filme não foi ruim."],
+                        ["悪いけど、今日は行けない。", "Sinto muito, mas hoje não posso ir."],
+                        ["どこが悪いのですか？", "O que está ruim/errado?"]
+                    ],
+                    "<em>悪い</em> para qualidade ruim, saúde ou moral. <em>悪いけど</em> = 'desculpe, mas...' (introduzindo recusa)."
+                ],
+                [58, "大きい", "おおきい", "grande", "n5", "adj", [
+                        ["東京は大きい都市です。", "Tóquio é uma cidade grande."],
+                        ["どのサイズがいいですか？—大きい方。", "Qual tamanho prefere? — O maior."],
+                        ["声が大きすぎます。", "Sua voz está alta demais."],
+                        ["大きい声で話さないでください。", "Não fale em voz alta."],
+                        ["これは大きすぎますか？", "Isto é grande demais?"]
+                    ],
+                    "Para tamanho físico. <em>大きな</em> é a forma atributiva (antes de substantivo)."
+                ],
+                [59, "小さい", "ちいさい", "pequeno", "n5", "adj", [
+                        ["この部屋は小さいです。", "Este quarto é pequeno."],
+                        ["小さい声で話してください。", "Fale em voz baixa, por favor."],
+                        ["子供の頃は小さかった。", "Quando criança, eu era pequeno."],
+                        ["どれが一番小さいですか？", "Qual é o menor?"],
+                        ["小さく切ってください。", "Corte em pedaços pequenos."]
+                    ],
+                    "Oposto de <em>大きい</em>. <em>小さな</em> é a forma atributiva."
+                ],
+                [60, "高い", "たかい", "alto / caro", "n5", "adj", [
+                        ["このビルは高いです。", "Este prédio é alto."],
+                        ["値段が高すぎます。", "O preço é caro demais."],
+                        ["いくらですか？—高い！", "Quanto é? — Caro!"],
+                        ["給料は高いほうがいい。", "Salário mais alto é melhor."],
+                        ["一番高いのはどれですか？", "Qual é o mais caro/alto?"]
+                    ],
+                    "Dois significados principais: <strong>altura física</strong> e <strong>preço elevado</strong>."
+                ],
+                [61, "安い", "やすい", "barato", "n5", "adj", [
+                        ["この店は何でも安いです。", "Tudo nesta loja é barato."],
+                        ["もっと安いのはありますか？", "Tem um mais barato?"],
+                        ["安かったから買いました。", "Comprei porque estava barato."],
+                        ["これは安くていいですね。", "Este é barato e bom, não é?"],
+                        ["一番安いのをください。", "Me dê o mais barato."]
+                    ],
                     "Oposto de <em>高い</em> (caro). Para altura baixa, usa-se <em>低い</em>."
                 ],
-                [97, "新しい", "あたらしい", "novo", "n5", "adj",
-                    "新しい仕事を探しています。",
-                    "Estou procurando um trabalho novo.",
-                    "Para coisas. Para pessoas: <em>新しい友達</em> = novo amigo."
+                [62, "美味しい", "おいしい", "gostoso / delicioso", "n5", "adj", [
+                        ["このラーメンは本当に美味しい！", "Este lámen é realmente delicioso!"],
+                        ["美味しそうですね！", "Parece gostoso!"],
+                        ["何が一番美味しかったですか？", "O que estava mais gostoso?"],
+                        ["あまり美味しくない。", "Não é muito gostoso."],
+                        ["美味しくできましたか？", "Ficou gostoso?"]
+                    ],
+                    "Muito comum na fala. <em>うまい</em> é mais informal/masculino. <em>美味</em> é formal."
                 ],
-                [98, "古い", "ふるい", "velho / antigo", "n5", "adj",
-                    "この建物は古いです。",
-                    "Este edifício é antigo.",
-                    "Para objetos. Para pessoas idosas usa-se <em>年を取った</em> ou <em>お年寄り</em>."
+                [63, "面白い", "おもしろい", "interessante / divertido", "n5", "adj", [
+                        ["この本は面白いです。", "Este livro é interessante."],
+                        ["どんな映画が面白いですか？", "Que tipo de filme é interessante?"],
+                        ["彼の話はいつも面白い。", "As histórias dele são sempre interessantes."],
+                        ["面白くないから帰ろう。", "Não está divertido, vamos embora."],
+                        ["面白い人に会いました。", "Conheci uma pessoa interessante."]
+                    ],
+                    "Pode significar 'intelectualmente interessante' ou 'engraçado/divertido'. Contexto define."
                 ],
-                [99, "美味しい", "おいしい", "gostoso / delicioso", "n5", "adj",
-                    "このラーメンは本当に美味しい！",
-                    "Este lámen é realmente delicioso!",
-                    "Muito comum na fala cotidiana. Também se diz <em>うまい</em> (mais informal/masculino)."
-                ],
-                [100, "まずい", "まずい", "ruim (sabor) / inconveniente", "n5", "adj",
-                    "この薬はまずいです。",
-                    "Este remédio tem gosto ruim.",
-                    "Principalmente para sabor. Também significa 'estar em situação difícil': <em>まずいことになった</em>."
-                ],
-                [101, "嬉しい", "うれしい", "feliz / contente", "n5", "adj",
-                    "プレゼントをもらって嬉しいです。",
-                    "Fiquei feliz ao receber o presente.",
-                    "Expressa felicidade momentânea por algo bom que aconteceu. <em>楽しい</em> é para experiências em andamento."
-                ],
-                [102, "悲しい", "かなしい", "triste", "n5", "adj",
-                    "その映画の結末は悲しかった。",
-                    "O final daquele filme foi triste.",
-                    "Para tristeza emocional. <em>寂しい</em> é solidão/saudade."
-                ],
-                [103, "楽しい", "たのしい", "divertido / prazeroso", "n5", "adj",
-                    "旅行はとても楽しかったです。",
-                    "A viagem foi muito divertida.",
-                    "Descreve uma experiência em andamento que é prazerosa. Diferente de <em>嬉しい</em> (felicidade pontual)."
-                ],
-                [104, "面白い", "おもしろい", "interessante / divertido", "n5", "adj",
-                    "この本は面白いです。",
-                    "Este livro é interessante.",
-                    "Pode ser 'intelectualmente interessante' ou 'engraçado/divertido'. Contexto define."
-                ],
-                [105, "忙しい", "いそがしい", "ocupado / corrido", "n5", "adj",
-                    "最近とても忙しいです。",
-                    "Ultimamente estou muito ocupado.",
+                [64, "忙しい", "いそがしい", "ocupado / corrido", "n5", "adj", [
+                        ["最近とても忙しいです。", "Ultimamente estou muito ocupado."],
+                        ["いつが一番忙しいですか？", "Quando é mais corrido?"],
+                        ["忙しいから後で電話します。", "Estou ocupado, ligo depois."],
+                        ["忙しそうですね。手伝いましょうか？", "Parece ocupado. Quer ajuda?"],
+                        ["そんなに忙しくないです。", "Não estou tão ocupado."]
+                    ],
                     "Muito usado na vida diária. <em>仕事が忙しい</em> = trabalho está corrido."
                 ],
-                [106, "簡単", "かんたん", "fácil / simples", "n5", "adj",
-                    "この問題は簡単です。",
-                    "Este problema é fácil.",
-                    "Adjetivo-<em>na</em>: <em>簡単な問題</em>. Oposto: <em>難しい</em>."
-                ],
-                [107, "難しい", "むずかしい", "difícil", "n5", "adj",
-                    "日本語の文法は難しいです。",
-                    "A gramática japonesa é difícil.",
-                    "Adjetivo-<em>i</em>. <em>〜にくい</em> é 'difícil de fazer' (dificuldade física/técnica)."
-                ],
-                [108, "強い", "つよい", "forte", "n5", "adj",
-                    "彼は力が強いです。",
-                    "Ele tem força (é forte).",
-                    "<em>力が強い</em> = fisicamente forte. <em>気が強い</em> = personalidade forte."
-                ],
-                [109, "弱い", "よわい", "fraco", "n5", "adj",
-                    "私はお酒に弱いです。",
-                    "Sou fraco para bebida alcoólica.",
-                    "<em>〜に弱い</em> = 'sensível/vulnerável a'. <em>寒さに弱い</em> = sensível ao frio."
-                ],
-                [110, "好き", "すき", "gostar", "n5", "adj",
-                    "猫が好きです。音楽を聞くのが好き。",
-                    "Gosto de gatos. Gosto de ouvir música.",
+                [65, "好き", "すき", "gostar (adjetivo-na)", "n5", "adj", [
+                        ["猫が好きです。", "Gosto de gatos."],
+                        ["どんな食べ物が好きですか？", "De que comida você gosta?"],
+                        ["一番好きな色は青です。", "Minha cor favorita é azul."],
+                        ["あなたのことが好きです。", "Eu gosto de você."],
+                        ["好きな人はいますか？", "Você tem alguém de quem gosta?"]
+                    ],
                     "Adjetivo-<em>na</em>. Objeto usa <em>が</em>: <em>〜が好き</em>. Para ações: <em>〜のが好き</em>."
                 ],
-                [111, "嫌い", "きらい", "não gostar / odiar", "n5", "adj",
-                    "私は納豆が嫌いです。",
-                    "Eu não gosto de natto.",
-                    "Adjetivo-<em>na</em>. Oposto de <em>好き</em>. Objeto usa <em>が</em>."
-                ],
-                [112, "上手", "じょうず", "habilidoso / bom em", "n5", "adj",
-                    "彼女は日本語が上手です。",
-                    "Ela é boa em japonês.",
-                    "Adjetivo-<em>na</em>. Área de habilidade usa <em>が</em>: <em>〜が上手</em>."
-                ],
-                [113, "下手", "へた", "ruim em / inábil", "n5", "adj",
-                    "私は料理が下手です。",
-                    "Sou ruim na cozinha.",
-                    "Adjetivo-<em>na</em>. Oposto de <em>上手</em>."
-                ],
-                [114, "暑い", "あつい", "quente (clima)", "n5", "adj",
-                    "今日は本当に暑いですね。",
-                    "Hoje está muito quente, não é?",
-                    "Apenas para clima/ambiente. Para objetos quentes: <em>熱い</em> (também <em>あつい</em>)."
-                ],
-                [115, "寒い", "さむい", "frio (clima)", "n5", "adj",
-                    "冬は寒いからコートを着ます。",
-                    "No inverno é frio, então uso casaco.",
-                    "Para clima. Para objetos frios: <em>冷たい</em>."
-                ],
-                [116, "温かい", "あたたかい", "morno / acolhedor", "n5", "adj",
-                    "温かいスープが飲みたいです。",
-                    "Quero tomar uma sopa quente.",
-                    "Para comida, bebida, personalidade. Sensação agradável de calor."
-                ],
-                [117, "冷たい", "つめたい", "gelado / frio (objeto)", "n5", "adj",
-                    "冷たい水をください。",
-                    "Me dê água gelada, por favor.",
-                    "Para objetos, bebidas, atitude fria de pessoa."
-                ],
-                [118, "早い", "はやい", "cedo / rápido", "n5", "adj",
-                    "明日早く起きます。彼は走るのが早い。",
-                    "Amanhã acordo cedo. Ele corre rápido.",
-                    "Dois significados: 'cedo' (tempo) e 'rápido' (velocidade)."
-                ],
-                [119, "遅い", "おそい", "tarde / lento", "n5", "adj",
-                    "遅くなってすみません。歩くのが遅い。",
-                    "Desculpe pelo atraso. Ele anda devagar.",
-                    "Oposto de <em>早い</em> em ambos os sentidos."
-                ],
-                [120, "多い", "おおい", "muito / numeroso", "n5", "adj",
-                    "この町は観光客が多いです。",
-                    "Esta cidade tem muitos turistas.",
-                    "Só se usa como predicado: <em>〜が多い</em>. Não se usa antes de substantivo diretamente (usa-se <em>多くの</em>)."
-                ],
-                [121, "少ない", "すくない", "pouco / escasso", "n5", "adj",
-                    "今月はお金が少ないです。",
-                    "Este mês tenho pouco dinheiro.",
-                    "Oposto de <em>多い</em>. Também predicativo."
-                ],
-                [122, "近い", "ちかい", "perto", "n5", "adj",
-                    "駅はここから近いです。",
-                    "A estação é perto daqui.",
-                    "<em>〜から近い</em> = perto de. <em>〜に近い</em> = próximo a (mais formal)."
-                ],
-                [123, "遠い", "とおい", "longe", "n5", "adj",
-                    "実家は遠いからあまり帰れません。",
-                    "Minha cidade natal é longe, então não consigo voltar muito.",
-                    "<em>〜から遠い</em> = longe de."
-                ],
-                [124, "広い", "ひろい", "amplo / espaçoso", "n5", "adj",
-                    "この公園は広くて気持ちがいい。",
-                    "Este parque é amplo e agradável.",
-                    "Para espaços físicos."
-                ],
-                [125, "狭い", "せまい", "estreito / apertado", "n5", "adj",
-                    "東京のアパートは狭いです。",
-                    "Os apartamentos de Tóquio são apertados.",
-                    "Oposto de <em>広い</em>."
-                ],
-
-                // ========== SUBSTANTIVOS ESSENCIAIS (126-180) ==========
-                [126, "人", "ひと", "pessoa", "n5", "noun",
-                    "あの人は親切ですね。",
-                    "Aquela pessoa é gentil, não é?",
-                    "Um dos substantivos mais usados. <em>人々</em> = pessoas (plural)."
-                ],
-                [127, "私", "わたし", "eu", "n5", "noun",
-                    "私は学生です。",
-                    "Eu sou estudante.",
-                    "Pronome neutro/polido. Homens podem usar <em>僕</em> (informal) ou <em>俺</em> (muito informal)."
-                ],
-                [128, "友達", "ともだち", "amigo", "n5", "noun",
-                    "友達と映画を見に行きます。",
-                    "Vou ver um filme com um amigo.",
-                    "<em>友達</em> já pode ser singular ou plural. <em>親友</em> = melhor amigo."
-                ],
-                [129, "家族", "かぞく", "família", "n5", "noun",
-                    "家族と過ごす時間が一番大切です。",
-                    "O tempo com a família é o mais importante.",
-                    "Inclui pais, irmãos, cônjuge e filhos. <em>親戚</em> = parentes estendidos."
-                ],
-                [130, "金", "かね", "dinheiro", "n5", "noun",
-                    "お金が足りません。",
-                    "Não tenho dinheiro suficiente.",
-                    "Quase sempre com prefixo <em>お</em>: <em>お金</em>. <em>金持ち</em> = rico."
-                ],
-                [131, "時間", "じかん", "tempo / hora", "n5", "noun",
-                    "時間がありません。何時ですか？",
-                    "Não tenho tempo. Que horas são?",
-                    "<em>時間がない</em> = não ter tempo. <em>時間どおり</em> = pontualmente."
-                ],
-                [132, "今日", "きょう", "hoje", "n5", "noun",
-                    "今日はいい日ですね。",
-                    "Hoje está um dia bonito.",
-                    "Advérbio de tempo, não precisa de partícula."
-                ],
-                [133, "明日", "あした", "amanhã", "n5", "noun",
-                    "明日は休みです。",
-                    "Amanhã é folga.",
-                    "Também se diz <em>あす</em> (mais formal)."
-                ],
-                [134, "昨日", "きのう", "ontem", "n5", "noun",
-                    "昨日何をしましたか？",
-                    "O que você fez ontem?",
-                    "Advérbio de tempo."
-                ],
-                [135, "今", "いま", "agora", "n5", "noun",
-                    "今何時ですか？今行きます。",
-                    "Que horas são agora? Já vou.",
-                    "<em>今すぐ</em> = agora mesmo. <em>今まで</em> = até agora."
-                ],
-                [136, "前", "まえ", "frente / antes", "n5", "noun",
-                    "駅の前で待っています。食べる前に手を洗う。",
-                    "Estou esperando em frente à estação. Lavo as mãos antes de comer.",
-                    "Local: <em>〜の前</em>. Temporal: <em>〜前に</em> (antes de)."
-                ],
-                [137, "後", "あと", "depois / atrás", "n5", "noun",
-                    "後で電話します。",
-                    "Ligo depois.",
-                    "<em>後で</em> = mais tarde. <em>〜の後</em> = atrás de (local)."
-                ],
-                [138, "中", "なか", "dentro", "n5", "noun",
-                    "箱の中に何がありますか？",
-                    "O que tem dentro da caixa?",
-                    "<em>〜の中</em> = dentro de. <em>一日中</em> = o dia todo."
-                ],
-                [139, "上", "うえ", "cima / sobre", "n5", "noun",
-                    "机の上に本があります。",
-                    "Há um livro em cima da mesa.",
-                    "<em>〜の上</em> = em cima de."
-                ],
-                [140, "下", "した", "baixo / embaixo", "n5", "noun",
-                    "猫がテーブルの下にいます。",
-                    "O gato está embaixo da mesa.",
-                    "<em>〜の下</em> = embaixo de."
-                ],
-                [141, "横", "よこ", "lado", "n5", "noun",
-                    "銀行は郵便局の横にあります。",
-                    "O banco fica ao lado dos correios.",
-                    "<em>〜の横</em> = ao lado de."
-                ],
-                [142, "隣", "となり", "vizinho / ao lado", "n5", "noun",
-                    "隣の部屋は静かです。",
-                    "O quarto ao lado é silencioso.",
-                    "Mais específico que <em>横</em>: indica adjacência direta."
-                ],
-                [143, "近く", "ちかく", "perto / proximidade", "n5", "noun",
-                    "駅の近くに住んでいます。",
-                    "Moro perto da estação.",
-                    "<em>〜の近く</em> = perto de. Substantivo, não adjetivo."
-                ],
-                [144, "学校", "がっこう", "escola", "n5", "noun",
-                    "学校は8時に始まります。",
-                    "A escola começa às 8h.",
-                    "Genérico para instituição de ensino."
-                ],
-                [145, "会社", "かいしゃ", "empresa", "n5", "noun",
-                    "父は大きな会社で働いています。",
-                    "Meu pai trabalha numa empresa grande.",
-                    "<em>会社員</em> = funcionário de empresa."
-                ],
-                [146, "店", "みせ", "loja", "n5", "noun",
-                    "あの店のラーメンは美味しいです。",
-                    "O lámen daquela loja é delicioso.",
-                    "Também <em>お店</em> (mais polido)."
-                ],
-                [147, "駅", "えき", "estação", "n5", "noun",
-                    "東京駅で降ります。",
-                    "Vou descer na estação de Tóquio.",
-                    "Para trem e metrô."
-                ],
-                [148, "電車", "でんしゃ", "trem", "n5", "noun",
-                    "電車で通勤しています。",
-                    "Vou de trem para o trabalho.",
-                    "Literalmente 'veículo elétrico'."
-                ],
-                [149, "車", "くるま", "carro", "n5", "noun",
-                    "新しい車を買いました。",
-                    "Comprei um carro novo.",
-                    "<em>自動車</em> é o termo formal."
-                ],
-                [150, "道", "みち", "caminho / rua", "n5", "noun",
-                    "道に迷ってしまいました。",
-                    "Me perdi no caminho.",
-                    "<em>道に迷う</em> = perder-se. <em>近道</em> = atalho."
-                ],
-                [151, "水", "みず", "água", "n5", "noun",
-                    "冷たい水を一杯ください。",
-                    "Me dê um copo de água gelada.",
-                    "<em>お水</em> é mais polido em restaurantes."
-                ],
-                [152, "食べ物", "たべもの", "comida", "n5", "noun",
-                    "好きな食べ物は何ですか？",
-                    "Qual é sua comida favorita?",
-                    "<em>食べ物</em> = comida em geral. <em>料理</em> = prato/culinária."
-                ],
-                [153, "飲み物", "のみもの", "bebida", "n5", "noun",
-                    "飲み物は何になさいますか？",
-                    "O que gostaria de beber?",
-                    "Forma polida de perguntar em restaurante."
-                ],
-                [154, "天気", "てんき", "tempo / clima", "n5", "noun",
-                    "今日はいい天気ですね。",
-                    "Hoje o tempo está bom, não é?",
-                    "Muito usado em conversação para quebrar o gelo."
-                ],
-                [155, "雨", "あめ", "chuva", "n5", "noun",
-                    "雨が降りそうです。傘を持って行こう。",
-                    "Parece que vai chover. Vou levar guarda-chuva.",
-                    "<em>雨が降る</em> = chover. <em>大雨</em> = chuva forte."
-                ],
-                [156, "電話", "でんわ", "telefone", "n5", "noun",
-                    "後で電話します。電話番号を教えて。",
-                    "Ligo depois. Me diga seu número de telefone.",
-                    "<em>電話をかける</em> = fazer uma ligação. <em>電話に出る</em> = atender."
-                ],
-                [157, "手紙", "てがみ", "carta", "n5", "noun",
-                    "友達に手紙を書きました。",
-                    "Escrevi uma carta para um amigo.",
-                    "Menos comum hoje, mas ainda usado. <em>メール</em> é e-mail."
-                ],
-                [158, "写真", "しゃしん", "foto", "n5", "noun",
-                    "写真を撮ってもいいですか？",
-                    "Posso tirar uma foto?",
-                    "<em>写真を撮る</em> = tirar foto."
-                ],
-                [159, "旅行", "りょこう", "viagem", "n5", "noun",
-                    "夏休みに旅行に行きます。",
-                    "Nas férias de verão vou viajar.",
-                    "<em>旅行する</em> = viajar (verbo)."
-                ],
-                [160, "部屋", "へや", "quarto / cômodo", "n5", "noun",
-                    "部屋を掃除してください。",
-                    "Limpe o quarto, por favor.",
-                    "<em>自分の部屋</em> = próprio quarto."
-                ],
-                [161, "料理", "りょうり", "culinária / prato", "n5", "noun",
-                    "母の料理は世界一美味しい。",
-                    "A comida da minha mãe é a melhor do mundo.",
-                    "<em>料理する</em> = cozinhar. <em>料理人</em> = chef."
-                ],
-                [162, "買い物", "かいもの", "compras", "n5", "noun",
-                    "週末に買い物に行きます。",
-                    "No fim de semana vou fazer compras.",
-                    "<em>買い物する</em> = fazer compras."
-                ],
-                [163, "仕事", "しごと", "trabalho", "n5", "noun",
-                    "仕事を探しています。",
-                    "Estou procurando trabalho.",
-                    "<em>仕事する</em> = trabalhar. Mais formal que <em>働く</em>."
-                ],
-                [164, "約束", "やくそく", "promessa / compromisso", "n5", "noun",
-                    "約束を守ってください。",
-                    "Cumpra a promessa, por favor.",
-                    "<em>約束する</em> = prometer. <em>約束の時間</em> = horário marcado."
-                ],
-                [165, "言葉", "ことば", "palavra / linguagem", "n5", "noun",
-                    "この言葉の意味を教えてください。",
-                    "Me diga o significado desta palavra.",
-                    "<em>日本語の言葉</em> = palavras japonesas. <em>言葉遣い</em> = modo de falar."
-                ],
-                [166, "勉強", "べんきょう", "estudo", "n5", "noun",
-                    "毎日日本語の勉強をしています。",
-                    "Todo dia estudo japonês.",
-                    "<em>勉強する</em> = estudar."
-                ],
-                [167, "気", "き", "energia / humor / atenção", "n5", "noun",
-                    "気をつけてください。気分が悪い。",
-                    "Tome cuidado. Estou me sentindo mal.",
-                    "Aparece em inúmeras expressões: <em>気になる</em> = incomodar/interessar; <em>気がする</em> = ter a impressão."
-                ],
-                [168, "心", "こころ", "coração / mente", "n5", "noun",
-                    "心から感謝します。",
-                    "Agradeço de coração.",
-                    "<em>心配</em> = preocupação. <em>安心</em> = alívio."
-                ],
-                [169, "体", "からだ", "corpo", "n5", "noun",
-                    "体に気をつけてください。",
-                    "Cuide do seu corpo (saúde).",
-                    "<em>体調</em> = condição física."
-                ],
-                [170, "病院", "びょういん", "hospital", "n5", "noun",
-                    "風邪を引いたので病院に行きました。",
-                    "Peguei um resfriado e fui ao hospital.",
-                    "No Japão, clínicas (<em>クリニック</em>) são mais comuns para coisas leves."
-                ],
-                [171, "薬", "くすり", "remédio", "n5", "noun",
-                    "この薬を1日3回飲んでください。",
-                    "Tome este remédio 3 vezes ao dia.",
-                    "<em>薬を飲む</em> = tomar remédio."
-                ],
-                [172, "お茶", "おちゃ", "chá (verde)", "n5", "noun",
-                    "お茶をどうぞ。",
-                    "Aqui está o chá.",
-                    "No Japão, <em>お茶</em> geralmente se refere ao chá verde."
-                ],
-                [173, "ご飯", "ごはん", "arroz / refeição", "n5", "noun",
-                    "ご飯を食べてから出かけましょう。",
-                    "Vamos sair depois de comer.",
-                    "<em>朝ご飯</em> = café da manhã. <em>昼ご飯</em> = almoço. <em>晩ご飯</em> = jantar."
-                ],
-                [174, "肉", "にく", "carne", "n5", "noun",
-                    "肉料理が好きですか？",
-                    "Você gosta de pratos de carne?",
-                    "<em>牛肉</em> = carne bovina. <em>豚肉</em> = porco. <em>鶏肉</em> = frango."
-                ],
-                [175, "野菜", "やさい", "vegetal", "n5", "noun",
-                    "毎日野菜を食べたほうがいいです。",
-                    "É melhor comer vegetais todo dia.",
-                    "<em>野菜ジュース</em> = suco de vegetais."
-                ],
-                [176, "魚", "さかな", "peixe", "n5", "noun",
-                    "日本人はよく魚を食べます。",
-                    "Japoneses comem peixe frequentemente.",
-                    "<em>魚屋</em> = peixaria."
-                ],
-                [177, "卵", "たまご", "ovo", "n5", "noun",
-                    "卵を二つ買ってきてください。",
-                    "Compre dois ovos, por favor.",
-                    "<em>卵焼き</em> = omelete japonês."
-                ],
-                [178, "パン", "パン", "pão", "n5", "noun",
-                    "毎朝パンを食べます。",
-                    "Como pão toda manhã.",
-                    "Do português 'pão'. Muito consumido no Japão."
-                ],
-                [179, "果物", "くだもの", "fruta", "n5", "noun",
-                    "果物をたくさん食べてください。",
-                    "Coma muitas frutas, por favor.",
-                    "<em>果物屋</em> = frutaria."
-                ],
-                [180, "弁当", "べんとう", "marmita / bentô", "n5", "noun",
-                    "毎日弁当を持って行きます。",
-                    "Todo dia levo marmita.",
-                    "Muito comum no Japão. <em>弁当箱</em> = lancheira."
-                ],
-
-                // ========== EXPRESSÕES DE CONVERSAÇÃO (181-210) ==========
-                [181, "ありがとう", "ありがとう", "obrigado", "n5", "conversation",
-                    "ありがとうございます。感謝しています。",
-                    "Muito obrigado. Sou grato.",
-                    "<em>ありがとう</em> é casual. <em>ありがとうございます</em> é polido. <em>どうも</em> é bem casual."
-                ],
-                [182, "すみません", "すみません", "com licença / desculpe / obrigado", "n5", "conversation",
-                    "すみません、駅はどこですか？",
-                    "Com licença, onde fica a estação?",
-                    "Multiuso: pedir desculpas, chamar atenção, agradecer por um incômodo."
-                ],
-                [183, "ごめんなさい", "ごめんなさい", "desculpe / me perdoe", "n5", "conversation",
-                    "遅れてごめんなさい。",
-                    "Desculpe pelo atraso.",
-                    "Mais pessoal que <em>すみません</em>. <em>ごめん</em> é casual."
-                ],
-                [184, "おはよう", "おはよう", "bom dia", "n5", "conversation",
-                    "おはようございます！今日も頑張りましょう。",
-                    "Bom dia! Vamos nos esforçar hoje também.",
-                    "<em>おはよう</em> é casual. Com <em>ございます</em> é polido."
-                ],
-                [185, "こんにちは", "こんにちは", "boa tarde / olá", "n5", "conversation",
-                    "こんにちは、いい天気ですね。",
-                    "Olá, o tempo está bom, não é?",
-                    "Saudação diurna. Não se usa de manhã cedo nem à noite."
-                ],
-                [186, "こんばんは", "こんばんは", "boa noite (chegada)", "n5", "conversation",
-                    "こんばんは、お元気ですか？",
-                    "Boa noite, como vai?",
-                    "Para cumprimentar à noite. <em>おやすみ</em> é para despedida antes de dormir."
-                ],
-                [187, "おやすみ", "おやすみ", "boa noite (despedida)", "n5", "conversation",
-                    "おやすみなさい。また明日。",
-                    "Boa noite. Até amanhã.",
-                    "Dito ao se despedir à noite ou antes de dormir."
-                ],
-                [188, "いってきます", "いってきます", "tchau (quem sai de casa)", "n5", "conversation",
-                    "行ってきます！— 行ってらっしゃい。",
-                    "Vou indo! — Vá e volte.",
-                    "Dito por quem sai de casa. Resposta: <em>行ってらっしゃい</em>."
-                ],
-                [189, "ただいま", "ただいま", "cheguei (em casa)", "n5", "conversation",
-                    "ただいま！— おかえりなさい。",
-                    "Cheguei! — Bem-vindo de volta.",
-                    "Dito ao entrar em casa. Resposta: <em>おかえりなさい</em>."
-                ],
-                [190, "いただきます", "いただきます", "bom apetite / receber humildemente", "n5", "conversation",
-                    "いただきます！美味しそう！",
-                    "Vou comer! Parece delicioso!",
-                    "Dito antes de comer. Também ao receber algo."
-                ],
-                [191, "ごちそうさま", "ごちそうさま", "obrigado pela refeição", "n5", "conversation",
-                    "ごちそうさまでした。とても美味しかったです。",
-                    "Obrigado pela refeição. Estava muito gostoso.",
-                    "Dito após comer. <em>でした</em> adiciona polidez."
-                ],
-                [192, "お疲れさま", "おつかれさま", "bom trabalho / obrigado pelo esforço", "n5", "conversation",
-                    "お疲れさまです。今日も大変でしたね。",
-                    "Bom trabalho. Hoje também foi difícil, não é?",
-                    "Muito usado no trabalho. <em>お疲れ</em> é casual."
-                ],
-                [193, "よろしく", "よろしく", "prazer / conte comigo / trate bem", "n5", "conversation",
-                    "初めまして、田中です。よろしくお願いします。",
-                    "Prazer, sou Tanaka. Conto com você.",
-                    "Multiuso: ao se apresentar, ao pedir um favor, ao confiar algo a alguém."
-                ],
-                [194, "大丈夫", "だいじょうぶ", "tudo bem / seguro / não precisa", "n5", "conversation",
-                    "大丈夫ですか？— はい、大丈夫です。",
-                    "Você está bem? — Sim, estou bem.",
-                    "Também para recusar ofertas: <em>大丈夫です</em> = 'não precisa, obrigado'."
-                ],
-                [195, "ちょっと", "ちょっと", "um pouco / um momento / (recusa suave)", "n5", "conversation",
-                    "ちょっと待ってください。それはちょっと…",
-                    "Espere um momento. Isso é um pouco... (difícil).",
-                    "<em>ちょっと…</em> sem completar a frase é uma recusa educada."
-                ],
-                [196, "どうぞ", "どうぞ", "por favor / aqui está / fique à vontade", "n5", "conversation",
-                    "どうぞお入りください。",
-                    "Por favor, entre.",
-                    "Oferecer algo ou dar permissão."
-                ],
-                [197, "どうも", "どうも", "obrigado / olá / de fato (vago)", "n5", "conversation",
-                    "どうもありがとう。— どうも。",
-                    "Muito obrigado. — Obrigado (casual).",
-                    "Sozinho é um obrigado casual. Também usado como saudação vaga."
-                ],
-                [198, "さようなら", "さようなら", "adeus (formal/definitivo)", "n5", "conversation",
-                    "さようなら、お元気で。",
-                    "Adeus, cuide-se bem.",
-                    "Pouco usado no dia a dia. Prefere-se <em>またね</em> ou <em>じゃあね</em>."
-                ],
-                [199, "また", "また", "de novo / até mais", "n5", "conversation",
-                    "また明日！また会いましょう。",
-                    "Até amanhã! Vamos nos encontrar de novo.",
-                    "<em>またね</em> = até mais (casual). <em>また今度</em> = numa próxima."
-                ],
-                [200, "もしもし", "もしもし", "alô (telefone)", "n5", "conversation",
-                    "もしもし、田中ですが、花子さんいますか？",
-                    "Alô, aqui é Tanaka. A Hanako está?",
-                    "Apenas ao atender telefone. Não se usa pessoalmente."
-                ],
             ];
 
-            // ========== Preencher até ~1100 entradas com mais vocabulário N5-N3 ==========
-            const moreVocab = [
-                ["朝", "あさ", "manhã", "n5", "noun", "朝早く起きるのは苦手です。", "Não sou bom em acordar cedo."],
-                ["昼", "ひる", "meio-dia / tarde", "n5", "noun", "昼ごはんは何を食べましたか？", "O que você comeu no almoço?"],
-                ["夜", "よる", "noite", "n5", "noun", "夜遅くまで働くのは体に良くない。", "Trabalhar até tarde não faz bem."],
-                ["晩", "ばん", "noite / jantar", "n5", "noun", "今晩は何を食べたいですか？", "O que quer comer esta noite?"],
-                ["毎日", "まいにち", "todo dia", "n5", "adv", "毎日30分運動しています。", "Todo dia me exercito 30 minutos."],
-                ["毎朝", "まいあさ", "toda manhã", "n5", "adv", "毎朝コーヒーを飲みます。", "Toda manhã bebo café."],
-                ["毎晩", "まいばん", "toda noite", "n5", "adv", "毎晩寝る前に本を読みます。", "Toda noite leio antes de dormir."],
-                ["今週", "こんしゅう", "esta semana", "n5", "noun", "今週末に友達と旅行に行きます。", "Neste fim de semana vou viajar com amigos."],
-                ["来週", "らいしゅう", "semana que vem", "n5", "noun", "来週の月曜日は休みです。", "Segunda da semana que vem é folga."],
-                ["先週", "せんしゅう", "semana passada", "n5", "noun", "先週新しい仕事を始めました。", "Semana passada comecei trabalho novo."],
-                ["今年", "ことし", "este ano", "n5", "noun", "今年こそ日本語を頑張りたい。", "Este ano quero me esforçar no japonês."],
-                ["来年", "らいねん", "ano que vem", "n5", "noun", "来年日本に留学するつもりです。", "Ano que vem pretendo estudar no Japão."],
-                ["去年", "きょねん", "ano passado", "n5", "noun", "去年の夏はとても暑かったです。", "O verão do ano passado foi muito quente."],
-                ["先生", "せんせい", "professor / mestre", "n5", "noun", "先生に質問してもいいですか？", "Posso fazer uma pergunta ao professor?"],
-                ["学生", "がくせい", "estudante", "n5", "noun", "私は大学生です。", "Sou estudante universitário."],
-                ["子供", "こども", "criança", "n5", "noun", "子供の頃、よく公園で遊びました。", "Quando criança, brincava muito no parque."],
-                ["男", "おとこ", "homem", "n5", "noun", "男の人と女の人がいます。", "Há um homem e uma mulher."],
-                ["女", "おんな", "mulher", "n5", "noun", "女の子が笑っています。", "A menina está sorrindo."],
-                ["父", "ちち", "pai (meu)", "n5", "noun", "父は会社員です。", "Meu pai é funcionário de empresa."],
-                ["母", "はは", "mãe (minha)", "n5", "noun", "母は料理が上手です。", "Minha mãe cozinha bem."],
-                ["兄", "あに", "irmão mais velho", "n5", "noun", "兄は医者です。", "Meu irmão mais velho é médico."],
-                ["姉", "あね", "irmã mais velha", "n5", "noun", "姉と一緒に住んでいます。", "Moro com minha irmã mais velha."],
-                ["弟", "おとうと", "irmão mais novo", "n5", "noun", "弟はまだ学生です。", "Meu irmão mais novo ainda é estudante."],
-                ["妹", "いもうと", "irmã mais nova", "n5", "noun", "妹にプレゼントをあげました。", "Dei um presente para minha irmã mais nova."],
-                ["夫", "おっと", "marido", "n3", "noun", "夫は今出かけています。", "Meu marido saiu agora."],
-                ["妻", "つま", "esposa", "n3", "noun", "妻と相談してから決めます。", "Vou decidir depois de consultar minha esposa."],
-                ["家", "いえ", "casa", "n5", "noun", "家に帰りましょう。", "Vamos para casa."],
-                ["外", "そと", "fora", "n5", "noun", "外は寒いです。", "Lá fora está frio."],
-                ["国", "くに", "país", "n5", "noun", "自分の国が好きです。", "Gosto do meu país."],
-                ["町", "まち", "cidade / bairro", "n5", "noun", "この町は静かで住みやすい。", "Esta cidade é tranquila e fácil de morar."],
-                ["山", "やま", "montanha", "n5", "noun", "週末に山に登ります。", "No fim de semana subo a montanha."],
-                ["川", "かわ", "rio", "n5", "noun", "川で泳がないでください。", "Não nade no rio."],
-                ["海", "うみ", "mar", "n5", "noun", "夏は海に行きたいです。", "No verão quero ir ao mar."],
-                ["空", "そら", "céu", "n5", "noun", "空がとても綺麗ですね。", "O céu está muito bonito, não é?"],
-                ["花", "はな", "flor", "n5", "noun", "綺麗な花が咲いています。", "Lindas flores estão florescendo."],
-                ["木", "き", "árvore", "n5", "noun", "公園に大きな木があります。", "Há uma árvore grande no parque."],
-                ["猫", "ねこ", "gato", "n5", "noun", "猫が好きですか？", "Você gosta de gatos?"],
-                ["犬", "いぬ", "cachorro", "n5", "noun", "犬の散歩をしています。", "Estou passeando com o cachorro."],
-                ["鳥", "とり", "pássaro", "n5", "noun", "鳥が空を飛んでいます。", "Os pássaros estão voando no céu."],
-                ["服", "ふく", "roupa", "n5", "noun", "新しい服を買いに行きたい。", "Quero ir comprar roupas novas."],
-                ["靴", "くつ", "sapato", "n5", "noun", "この靴は歩きやすいです。", "Estes sapatos são confortáveis para andar."],
-                ["傘", "かさ", "guarda-chuva", "n5", "noun", "傘を持って行ったほうがいい。", "É melhor levar guarda-chuva."],
-                ["辞書", "じしょ", "dicionário", "n5", "noun", "辞書を引いて調べてください。", "Consulte o dicionário, por favor."],
-                ["新聞", "しんぶん", "jornal", "n5", "noun", "毎朝新聞を読みます。", "Leio jornal toda manhã."],
-                ["雑誌", "ざっし", "revista", "n5", "noun", "この雑誌は面白いです。", "Esta revista é interessante."],
-                ["本屋", "ほんや", "livraria", "n5", "noun", "本屋で辞書を買いました。", "Comprei um dicionário na livraria."],
-                ["喫茶店", "きっさてん", "cafeteria", "n5", "noun", "喫茶店でコーヒーを飲みませんか？", "Vamos tomar um café na cafeteria?"],
-                ["映画館", "えいがかん", "cinema", "n5", "noun", "映画館で映画を見るのが好きです。", "Gosto de ver filmes no cinema."],
-                ["図書館", "としょかん", "biblioteca", "n5", "noun", "図書館で勉強しましょう。", "Vamos estudar na biblioteca."],
-                ["病院", "びょういん", "hospital", "n5", "noun", "病院に行ったほうがいいですよ。", "É melhor você ir ao hospital."],
-                ["銀行", "ぎんこう", "banco", "n5", "noun", "銀行でお金を下ろしました。", "Saquei dinheiro no banco."],
-                ["郵便局", "ゆうびんきょく", "correios", "n5", "noun", "郵便局で切手を買いました。", "Comprei selos nos correios."],
-                ["交番", "こうばん", "posto policial", "n5", "noun", "交番で道を聞きました。", "Perguntei o caminho no posto policial."],
-                ["玄関", "げんかん", "entrada / hall", "n5", "noun", "玄関で靴を脱いでください。", "Tire os sapatos na entrada."],
-                ["台所", "だいどころ", "cozinha", "n5", "noun", "台所で料理を作っています。", "Estou cozinhando na cozinha."],
-                ["風呂", "ふろ", "banho / ofurô", "n5", "noun", "風呂に入って温まりたい。", "Quero tomar banho e me aquecer."],
-                ["冷蔵庫", "れいぞうこ", "geladeira", "n5", "noun", "冷蔵庫に何もありません。", "Não tem nada na geladeira."],
-                ["洗濯機", "せんたくき", "máquina de lavar", "n5", "noun", "洗濯機が壊れてしまいました。", "A máquina de lavar quebrou."],
-                ["鍵", "かぎ", "chave", "n5", "noun", "鍵をかけ忘れました。", "Esqueci de trancar."],
-                ["窓", "まど", "janela", "n5", "noun", "窓を開けて空気を入れ替えましょう。", "Vamos abrir a janela e trocar o ar."],
-                ["机", "つくえ", "mesa", "n5", "noun", "机の上を片付けてください。", "Arrume a mesa, por favor."],
-                ["椅子", "いす", "cadeira", "n5", "noun", "椅子に座って待ってください。", "Sente-se na cadeira e espere, por favor."],
-                ["電気", "でんき", "luz / eletricidade", "n5", "noun", "電気をつけてください。", "Acenda a luz, por favor."],
-                ["風邪", "かぜ", "resfriado", "n5", "noun", "風邪を引いてしまいました。", "Peguei um resfriado."],
-                ["休み", "やすみ", "folga / férias", "n5", "noun", "明日は休みだからゆっくりできる。", "Amanhã é folga, então posso descansar."],
-                ["天気予報", "てんきよほう", "previsão do tempo", "n4", "noun", "天気予報によると明日は雨です。", "Segundo a previsão, amanhã chove."],
-                ["宿題", "しゅくだい", "lição de casa", "n5", "noun", "宿題を忘れてしまいました。", "Esqueci a lição de casa."],
-                ["試験", "しけん", "exame / prova", "n4", "noun", "来週試験があります。", "Tenho prova na semana que vem."],
-                ["授業", "じゅぎょう", "aula", "n5", "noun", "授業は9時に始まります。", "A aula começa às 9h."],
-                ["質問", "しつもん", "pergunta", "n5", "noun", "質問があれば言ってください。", "Se tiver perguntas, diga."],
-                ["答え", "こたえ", "resposta", "n5", "noun", "答えは3番だと思います。", "Acho que a resposta é a número 3."],
-                ["意見", "いけん", "opinião", "n3", "noun", "皆の意見を聞いてから決めましょう。", "Vamos decidir depois de ouvir a opinião de todos."],
-                ["説明", "せつめい", "explicação", "n4", "noun", "もう一度説明してください。", "Explique mais uma vez, por favor."],
-                ["練習", "れんしゅう", "prática / treino", "n5", "noun", "毎日発音の練習をしています。", "Todo dia pratico a pronúncia."],
-                ["経験", "けいけん", "experiência", "n3", "noun", "日本に住んだ経験があります。", "Tenho experiência de ter morado no Japão."],
-                ["希望", "きぼう", "esperança / desejo", "n3", "noun", "希望を持って頑張ります。", "Vou me esforçar com esperança."],
-                ["準備", "じゅんび", "preparação", "n4", "noun", "旅行の準備をしています。", "Estou me preparando para a viagem."],
-                ["連絡", "れんらく", "contato / comunicação", "n4", "noun", "後で連絡します。", "Entro em contato depois."],
-                ["報告", "ほうこく", "relatório / informe", "n3", "noun", "結果を報告してください。", "Relate o resultado, por favor."],
-                ["約束", "やくそく", "promessa / compromisso", "n5", "noun", "約束を破らないでください。", "Não quebre a promessa."],
-                ["予定", "よてい", "plano / programação", "n4", "noun", "明日の予定は何ですか？", "Qual é o plano para amanhã?"],
-                ["用事", "ようじ", "assunto / compromisso", "n4", "noun", "用事があって早く帰ります。", "Tenho um compromisso e vou embora cedo."],
-                ["意味", "いみ", "significado", "n5", "noun", "この言葉の意味を教えてください。", "Me diga o significado desta palavra."],
-                ["理由", "りゆう", "razão / motivo", "n4", "noun", "遅れた理由を説明してください。", "Explique o motivo do atraso."],
-                ["原因", "げんいん", "causa", "n3", "noun", "事故の原因を調べています。", "Estão investigando a causa do acidente."],
-                ["結果", "けっか", "resultado", "n3", "noun", "結果は来週分かります。", "O resultado sai na semana que vem."],
-                ["一番", "いちばん", "o mais / número um", "n5", "adv", "これが一番好きです。", "Este é o que mais gosto."],
-                ["自分", "じぶん", "si mesmo", "n4", "noun", "自分でやってみてください。", "Tente fazer você mesmo."],
-                ["相手", "あいて", "parceiro / interlocutor", "n3", "noun", "相手の話をよく聞いてください。", "Ouça bem o que o outro diz."],
-                ["全部", "ぜんぶ", "tudo", "n5", "noun", "全部食べてもいいですか？", "Posso comer tudo?"],
-                ["半分", "はんぶん", "metade", "n5", "noun", "半分だけください。", "Me dê só a metade."],
-                ["ほとんど", "ほとんど", "quase tudo", "n4", "adv", "ほとんどの人が賛成しました。", "Quase todas as pessoas concordaram."],
-                ["たくさん", "たくさん", "muito / bastante", "n5", "adv", "たくさん食べてください。", "Coma bastante."],
-                ["もっと", "もっと", "mais", "n5", "adv", "もっと練習が必要です。", "Preciso de mais prática."],
-                ["もうすぐ", "もうすぐ", "em breve / já já", "n4", "adv", "もうすぐ春ですね。", "Já já é primavera, não é?"],
-                ["やっと", "やっと", "finalmente", "n4", "adv", "やっと仕事が終わりました。", "Finalmente o trabalho terminou."],
-                ["ぜひ", "ぜひ", "com certeza / por favor", "n4", "adv", "ぜひ遊びに来てください。", "Por favor, venha nos visitar."],
-                ["きっと", "きっと", "certamente", "n4", "adv", "きっと成功すると信じています。", "Acredito que certamente terá sucesso."],
-                ["多分", "たぶん", "talvez", "n5", "adv", "多分明日は雨が降るでしょう。", "Talvez amanhã chova."],
-                ["必ず", "かならず", "sem falta", "n5", "adv", "必ず約束を守ってください。", "Cumpra a promessa sem falta."],
-                ["絶対に", "ぜったいに", "absolutamente", "n4", "adv", "絶対に諦めないでください。", "Não desista de jeito nenhum."],
-                ["特に", "とくに", "especialmente", "n4", "adv", "特にこれが気に入りました。", "Gostei especialmente disto."],
-                ["本当に", "ほんとうに", "realmente", "n5", "adv", "本当にありがとうございます。", "Muito obrigado mesmo."],
-                ["急に", "きゅうに", "de repente", "n4", "adv", "急に雨が降り始めました。", "De repente começou a chover."],
-                ["直接", "ちょくせつ", "diretamente", "n3", "adv", "直接会って話したいです。", "Quero encontrar pessoalmente e conversar."],
-                ["なるほど", "なるほど", "entendi / realmente", "n4", "adv", "なるほど、そういうことですか。", "Entendi, é isso então."],
-                ["まず", "まず", "primeiro / antes de tudo", "n4", "adv", "まず手を洗ってください。", "Primeiro, lave as mãos."],
-                ["次に", "つぎに", "em seguida", "n4", "adv", "次に材料を混ぜます。", "Em seguida, misture os ingredientes."],
-                ["最後に", "さいごに", "por último", "n4", "adv", "最後に塩を入れてください。", "Por último, coloque sal."],
-                ["例えば", "たとえば", "por exemplo", "n5", "adv", "例えばどんな本が好きですか？", "Por exemplo, de que tipo de livro você gosta?"],
-                ["確かに", "たしかに", "certamente / de fato", "n3", "adv", "確かにその通りです。", "De fato, é isso mesmo."],
-                ["実は", "じつは", "na verdade / para falar a verdade", "n4", "adv", "実は、引っ越すことになりました。", "Na verdade, vou me mudar."],
-                ["実は", "じつは", "na verdade", "n4", "adv", "実は私もそう思います。", "Na verdade, também penso assim."],
-                ["考える", "かんがえる", "pensar / refletir", "n5", "verb", "よく考えてから返事します。", "Respondo depois de pensar bem."],
-                ["決める", "きめる", "decidir", "n5", "verb", "留学先を日本に決めました。", "Decidi fazer intercâmbio no Japão."],
-                ["選ぶ", "えらぶ", "escolher", "n5", "verb", "好きな色を選んでください。", "Escolha a cor que quiser."],
-                ["始める", "はじめる", "começar (transitivo)", "n5", "verb", "新しい趣味を始めたいです。", "Quero começar um hobby novo."],
-                ["続ける", "つづける", "continuar", "n5", "verb", "これからも勉強を続けます。", "Continuarei estudando daqui para frente."],
-                ["変える", "かえる", "mudar (transitivo)", "n5", "verb", "予定を変えなければなりません。", "Preciso mudar os planos."],
-                ["調べる", "しらべる", "pesquisar / investigar", "n5", "verb", "分からない言葉を辞書で調べます。", "Pesquiso no dicionário palavras que não sei."],
-                ["直す", "なおす", "consertar / corrigir", "n5", "verb", "壊れた時計を直しました。", "Consertei o relógio quebrado."],
-                ["助ける", "たすける", "ajudar / salvar", "n5", "verb", "困っている人を助けたいです。", "Quero ajudar pessoas em dificuldade."],
-                ["届ける", "とどける", "entregar / levar", "n4", "verb", "この荷物を届けてください。", "Entregue esta encomenda, por favor."],
-                ["送る", "おくる", "enviar", "n5", "verb", "後でメールを送ります。", "Envio um e-mail depois."],
-                ["渡す", "わたす", "entregar / passar", "n5", "verb", "この手紙を彼に渡してください。", "Entregue esta carta a ele, por favor."],
-                ["もらう", "もらう", "receber", "n5", "verb", "友達からプレゼントをもらいました。", "Recebi um presente do amigo."],
-                ["あげる", "あげる", "dar", "n5", "verb", "彼に本をあげました。", "Dei um livro para ele."],
-                ["くれる", "くれる", "me dar / dar para mim", "n5", "verb", "友達が教えてくれました。", "Meu amigo me ensinou."],
-                ["違う", "ちがう", "diferente / errado", "n5", "verb", "答えが違いますよ。", "A resposta está errada."],
-                ["間に合う", "まにあう", "chegar a tempo", "n4", "verb", "電車に間に合いました。", "Cheguei a tempo para o trem."],
-                ["遅れる", "おくれる", "atrasar-se", "n4", "verb", "約束の時間に遅れました。", "Atrasei para o compromisso."],
-                ["疲れる", "つかれる", "cansar-se", "n4", "verb", "今日はとても疲れました。", "Hoje me cansei muito."],
-                ["慣れる", "なれる", "acostumar-se", "n4", "verb", "日本の生活に慣れましたか？", "Já se acostumou com a vida no Japão?"],
-                ["驚く", "おどろく", "surpreender-se", "n5", "verb", "その知らせを聞いて驚きました。", "Me surpreendi ao ouvir a notícia."],
-                ["喜ぶ", "よろこぶ", "alegrar-se", "n5", "verb", "彼はプレゼントを喜びました。", "Ele ficou feliz com o presente."],
-                ["悲しむ", "かなしむ", "entristecer-se", "n3", "verb", "友達の死を悲しんでいます。", "Estou triste pela morte do amigo."],
-                ["楽しむ", "たのしむ", "aproveitar / divertir-se", "n5", "verb", "人生を楽しみましょう。", "Vamos aproveitar a vida."],
-                ["悩む", "なやむ", "preocupar-se / angustiar-se", "n3", "verb", "将来のことで悩んでいます。", "Estou preocupado com o futuro."],
-                ["成功する", "せいこうする", "ter sucesso", "n4", "verb", "彼はビジネスで成功しました。", "Ele teve sucesso nos negócios."],
-                ["失敗する", "しっぱいする", "falhar", "n4", "verb", "失敗を恐れないでください。", "Não tenha medo de falhar."],
-                ["努力する", "どりょくする", "esforçar-se", "n4", "verb", "夢のために努力しています。", "Estou me esforçando pelo sonho."],
-                ["我慢する", "がまんする", "aguentar / suportar", "n3", "verb", "もう我慢できません。", "Não aguento mais."],
-                ["安心する", "あんしんする", "ficar aliviado", "n4", "verb", "無事だと聞いて安心しました。", "Fiquei aliviado ao saber que está bem."],
-                ["心配する", "しんぱいする", "preocupar-se", "n4", "verb", "あまり心配しないでください。", "Não se preocupe tanto."],
-                ["賛成する", "さんせいする", "concordar / apoiar", "n3", "verb", "その意見に賛成です。", "Concordo com essa opinião."],
-                ["反対する", "はんたいする", "opor-se", "n3", "verb", "その計画に反対します。", "Sou contra esse plano."],
-                ["文句を言う", "もんくをいう", "reclamar", "n3", "verb", "いつも文句を言わないで。", "Não reclame o tempo todo."],
-                ["喧嘩する", "けんかする", "brigar", "n4", "verb", "昨日友達と喧嘩しました。", "Ontem briguei com um amigo."],
-                ["謝る", "あやまる", "pedir desculpas", "n5", "verb", "素直に謝ったほうがいい。", "É melhor pedir desculpas sinceramente."],
-                ["褒める", "ほめる", "elogiar", "n4", "verb", "先生に褒められて嬉しかった。", "Fiquei feliz por ser elogiado pelo professor."],
-                ["叱る", "しかる", "repreender", "n4", "verb", "遅刻して上司に叱られました。", "Cheguei atrasado e levei bronca do chefe."],
-                ["笑う", "わらう", "rir", "n5", "verb", "皆が大声で笑いました。", "Todos riram alto."],
-                ["泣く", "なく", "chorar", "n5", "verb", "感動して泣いてしまいました。", "Chorei de emoção."],
-                ["生まれる", "うまれる", "nascer", "n5", "verb", "私は1990年に生まれました。", "Nasci em 1990."],
-                ["死ぬ", "しぬ", "morrer", "n5", "verb", "人はいつか死にます。", "As pessoas um dia morrem."],
-                ["生きる", "いきる", "viver", "n5", "verb", "健康に生きたいです。", "Quero viver com saúde."],
-                ["結婚する", "けっこんする", "casar", "n5", "verb", "来年結婚します。", "Vou me casar no ano que vem."],
-                ["離婚する", "りこんする", "divorciar-se", "n3", "verb", "彼らは去年離婚しました。", "Eles se divorciaram no ano passado."],
-                ["引っ越す", "ひっこす", "mudar-se", "n5", "verb", "来月大阪に引っ越します。", "Mês que vem me mudo para Osaka."],
-                ["留学する", "りゅうがくする", "estudar no exterior", "n4", "verb", "日本に留学したいです。", "Quero estudar no Japão."],
-                ["卒業する", "そつぎょうする", "formar-se", "n4", "verb", "来年大学を卒業します。", "Ano que vem me formo na universidade."],
-                ["入学する", "にゅうがくする", "ingressar na escola", "n4", "verb", "4月に高校に入学します。", "Em abril ingresso no ensino médio."],
-                ["就職する", "しゅうしょくする", "conseguir emprego", "n3", "verb", "卒業後すぐに就職しました。", "Consegui emprego logo após me formar."],
-                ["退職する", "たいしょくする", "demitir-se / aposentar-se", "n3", "verb", "来月退職する予定です。", "Pretendo me aposentar no mês que vem."],
-                ["運転する", "うんてんする", "dirigir", "n5", "verb", "気をつけて運転してください。", "Dirija com cuidado."],
-                ["散歩する", "さんぽする", "passear", "n5", "verb", "夕方公園を散歩しました。", "Passei no parque ao entardecer."],
-                ["買い物する", "かいものする", "fazer compras", "n5", "verb", "週末に買い物に行きます。", "Vou fazer compras no fim de semana."],
-                ["掃除する", "そうじする", "limpar / faxinar", "n5", "verb", "部屋を綺麗に掃除しました。", "Limpei bem o quarto."],
-                ["洗濯する", "せんたくする", "lavar roupa", "n5", "verb", "今日は洗濯する日です。", "Hoje é dia de lavar roupa."],
-                ["料理する", "りょうりする", "cozinhar", "n5", "verb", "自分で料理するのが好きです。", "Gosto de cozinhar eu mesmo."],
-                ["電話する", "でんわする", "telefonar", "n5", "verb", "後で電話します。", "Ligo depois."],
-                ["返事する", "へんじする", "responder", "n4", "verb", "まだ返事が来ていません。", "A resposta ainda não veio."],
-                ["質問する", "しつもんする", "perguntar", "n5", "verb", "質問してもいいですか？", "Posso fazer uma pergunta?"],
-                ["確認する", "かくにんする", "confirmar / verificar", "n3", "verb", "もう一度確認してください。", "Confirme mais uma vez, por favor."],
-                ["注文する", "ちゅうもんする", "fazer pedido", "n4", "verb", "まだ注文していません。", "Ainda não fiz o pedido."],
-                ["支払う", "しはらう", "pagar (formal)", "n3", "verb", "カードで支払えますか？", "Posso pagar com cartão?"],
-                ["貯金する", "ちょきんする", "economizar / poupar", "n4", "verb", "旅行のために貯金しています。", "Estou economizando para a viagem."],
-                ["通勤する", "つうきんする", "ir ao trabalho (commute)", "n3", "verb", "毎日電車で通勤しています。", "Vou de trem para o trabalho todo dia."],
-                ["通学する", "つうがくする", "ir à escola (commute)", "n4", "verb", "バスで通学しています。", "Vou de ônibus para a escola."],
-                ["利用する", "りようする", "utilizar / fazer uso de", "n3", "verb", "公共交通機関を利用しましょう。", "Vamos usar o transporte público."],
-                ["参加する", "さんかする", "participar", "n3", "verb", "イベントに参加しませんか？", "Não quer participar do evento?"],
-                ["出席する", "しゅっせきする", "comparecer / estar presente", "n3", "verb", "会議に出席してください。", "Compareça à reunião, por favor."],
-                ["欠席する", "けっせきする", "faltar / ausentar-se", "n3", "verb", "病気で欠席しました。", "Faltei por doença."],
-                ["合格する", "ごうかくする", "passar (em exame)", "n4", "verb", "JLPT N3に合格したいです。", "Quero passar no JLPT N3."],
-                ["不合格する", "ふごうかくする", "reprovar", "n3", "verb", "不合格だったらまた挑戦する。", "Se reprovar, tento de novo."],
-                ["諦める", "あきらめる", "desistir", "n4", "verb", "最後まで諦めないで。", "Não desista até o final."],
-                ["頑張る", "がんばる", "esforçar-se / persistir", "n5", "verb", "一緒に頑張りましょう！", "Vamos nos esforçar juntos!"],
-                ["挨拶する", "あいさつする", "cumprimentar / saudar", "n4", "verb", "きちんと挨拶しましょう。", "Vamos cumprimentar adequadamente."],
-                ["紹介する", "しょうかいする", "apresentar / introduzir", "n4", "verb", "友達を紹介します。", "Vou apresentar meu amigo."],
-                ["案内する", "あんないする", "guiar / orientar", "n4", "verb", "街を案内してください。", "Me guie pela cidade, por favor."],
-                ["説明する", "せつめいする", "explicar", "n4", "verb", "もう一度説明していただけますか？", "Poderia explicar mais uma vez?"],
-                ["翻訳する", "ほんやくする", "traduzir", "n4", "verb", "この文章を日本語に翻訳してください。", "Traduza este texto para o japonês."],
-                ["通訳する", "つうやくする", "interpretar (oralmente)", "n3", "verb", "会議で通訳を頼まれました。", "Pediram-me para interpretar na reunião."],
-                ["予約する", "よやくする", "reservar", "n4", "verb", "ホテルを予約しましたか？", "Você reservou o hotel?"],
-                ["キャンセルする", "キャンセルする", "cancelar", "n4", "verb", "予約をキャンセルしたいです。", "Quero cancelar a reserva."],
-                ["チェックする", "チェックする", "verificar / checar", "n4", "verb", "もう一度チェックしてください。", "Verifique mais uma vez, por favor."],
-                ["コピーする", "コピーする", "copiar / fotocopiar", "n4", "verb", "この書類をコピーしてください。", "Copie este documento, por favor."],
-                ["プリントする", "プリントする", "imprimir", "n4", "verb", "資料をプリントしておきます。", "Vou imprimir o material com antecedência."],
-                ["サインする", "サインする", "assinar", "n4", "verb", "ここにサインしてください。", "Assine aqui, por favor."],
-                ["メモする", "メモする", "anotar", "n4", "verb", "大切なことをメモしてください。", "Anote as coisas importantes."],
-                ["散歩", "さんぽ", "passeio / caminhada", "n5", "noun", "散歩に行きませんか？", "Vamos fazer uma caminhada?"],
-                ["運動", "うんどう", "exercício", "n5", "noun", "運動は健康に良いです。", "Exercício faz bem à saúde."],
-                ["趣味", "しゅみ", "hobby", "n4", "noun", "趣味は読書です。", "Meu hobby é leitura."],
-                ["興味", "きょうみ", "interesse", "n3", "noun", "日本文化に興味があります。", "Tenho interesse pela cultura japonesa."],
-                ["印象", "いんしょう", "impressão", "n3", "noun", "第一印象は大切です。", "A primeira impressão é importante."],
-                ["感謝", "かんしゃ", "gratidão", "n3", "noun", "感謝の気持ちを伝えたい。", "Quero expressar meu sentimento de gratidão."],
-                ["尊敬", "そんけい", "respeito / admiração", "n3", "noun", "彼を尊敬しています。", "Eu o respeito/admiro."],
-                ["信頼", "しんらい", "confiança", "n3", "noun", "信頼できる友達です。", "É um amigo confiável."],
-                ["我慢", "がまん", "paciência / tolerância", "n3", "noun", "もう我慢の限界です。", "Já é o limite da minha paciência."],
-                ["遠慮", "えんりょ", "reserva / hesitação", "n3", "noun", "遠慮しないで食べてください。", "Não se acanhe, coma à vontade."],
-                ["迷惑", "めいわく", "incômodo / transtorno", "n3", "noun", "迷惑をかけてすみません。", "Desculpe pelo incômodo."],
-                ["お世話", "おせわ", "cuidado / assistência", "n4", "noun", "お世話になりました。", "Obrigado por tudo que fez por mim."],
-                ["きっかけ", "きっかけ", "oportunidade / gatilho", "n3", "noun", "これをきっかけに日本語を始めました。", "Isso foi o gatilho para eu começar japonês."],
-                ["きっかけ", "きっかけ", "oportunidade / motivo inicial", "n3", "noun", "何がきっかけで日本に来ましたか？", "O que te trouxe ao Japão?"],
-                ["チャンス", "チャンス", "chance / oportunidade", "n4", "noun", "これはいいチャンスです。", "Esta é uma boa chance."],
-                ["チャレンジ", "チャレンジ", "desafio / tentativa", "n4", "noun", "新しいことにチャレンジしよう。", "Vamos tentar coisas novas."],
-                ["アドバイス", "アドバイス", "conselho", "n4", "noun", "いいアドバイスをありがとう。", "Obrigado pelo bom conselho."],
-                ["イメージ", "イメージ", "imagem / impressão", "n4", "noun", "どんなイメージがありますか？", "Que imagem você tem?"],
-                ["アイデア", "アイデア", "ideia", "n4", "noun", "いいアイデアですね！", "É uma boa ideia!"],
-                ["ルール", "ルール", "regra", "n4", "noun", "ルールを守ってください。", "Cumpra as regras."],
-                ["マナー", "マナー", "etiqueta / boas maneiras", "n3", "noun", "日本のマナーを教えてください。", "Me ensine as boas maneiras japonesas."],
-                ["レベル", "レベル", "nível", "n4", "noun", "日本語のレベルはどのくらいですか？", "Qual é o seu nível de japonês?"],
-                ["プラン", "プラン", "plano", "n4", "noun", "いいプランだと思います。", "Acho que é um bom plano."],
-                ["バランス", "バランス", "equilíbrio", "n3", "noun", "仕事と生活のバランスが大切。", "O equilíbrio entre trabalho e vida é importante."],
-                ["ストレス", "ストレス", "estresse", "n4", "noun", "ストレスを減らしたいです。", "Quero reduzir o estresse."],
+            // ========== MAIS VOCABULÁRIO (compacto, múltiplas frases) ==========
+            const moreData = [
+                ["嬉しい", "うれしい", "feliz / contente", "n5", "adj", [
+                    ["プレゼントをもらって嬉しいです。", "Fiquei feliz ao receber o presente."],
+                    ["何が一番嬉しかったですか？", "O que te deixou mais feliz?"],
+                    ["会えて嬉しい！", "Fico feliz em te ver!"]
+                ]],
+                ["悲しい", "かなしい", "triste", "n5", "adj", [
+                    ["その映画は悲しかった。", "Aquele filme foi triste."],
+                    ["なぜ悲しいのですか？", "Por que você está triste?"],
+                    ["悲しい時は泣いてもいい。", "Quando estiver triste, pode chorar."]
+                ]],
+                ["楽しい", "たのしい", "divertido / prazeroso", "n5", "adj", [
+                    ["旅行はとても楽しかったです。", "A viagem foi muito divertida."],
+                    ["何をしている時が一番楽しいですか？", "Quando você se diverte mais?"],
+                    ["一緒にいると楽しいね。", "É divertido estar juntos, não é?"]
+                ]],
+                ["暑い", "あつい", "quente (clima)", "n5", "adj", [
+                    ["今日は本当に暑いですね。", "Hoje está muito quente."],
+                    ["エアコンをつけましょうか？", "Vamos ligar o ar-condicionado?"],
+                    ["夏はどのくらい暑いですか？", "Quão quente é no verão?"]
+                ]],
+                ["寒い", "さむい", "frio (clima)", "n5", "adj", [
+                    ["外は寒いからコートを着て。", "Está frio lá fora, vista o casaco."],
+                    ["寒くないですか？", "Você não está com frio?"],
+                    ["今年の冬は特に寒い。", "Este inverno está especialmente frio."]
+                ]],
+                ["強い", "つよい", "forte", "n5", "adj", [
+                    ["彼は力が強いです。", "Ele tem força / é forte."],
+                    ["誰が一番強いと思いますか？", "Quem você acha que é o mais forte?"],
+                    ["お酒に強いですか？", "Você aguenta bem bebida?"]
+                ]],
+                ["弱い", "よわい", "fraco", "n5", "adj", [
+                    ["私は寒さに弱いです。", "Sou sensível ao frio."],
+                    ["何に弱いですか？", "Ao que você é sensível?"],
+                    ["体が弱っている。", "Meu corpo está enfraquecido."]
+                ]],
+                ["新しい", "あたらしい", "novo", "n5", "adj", [
+                    ["新しい仕事を探しています。", "Estou procurando um trabalho novo."],
+                    ["何か新しいことはありますか？", "Tem alguma novidade?"],
+                    ["新しい友達ができました。", "Fiz um novo amigo."]
+                ]],
+                ["古い", "ふるい", "velho / antigo", "n5", "adj", [
+                    ["この建物は古いです。", "Este edifício é antigo."],
+                    ["古い写真を見つけました。", "Encontrei fotos antigas."],
+                    ["どのくらい古いですか？", "Quão antigo é?"]
+                ]],
+                ["広い", "ひろい", "amplo / espaçoso", "n5", "adj", [
+                    ["この公園は広くて気持ちがいい。", "Este parque é amplo e agradável."],
+                    ["もっと広い部屋が欲しいです。", "Quero um quarto mais espaçoso."],
+                    ["どのくらい広いですか？", "Quão grande é?"]
+                ]],
+                ["狭い", "せまい", "estreito / apertado", "n5", "adj", [
+                    ["東京のアパートは狭いです。", "Os apartamentos de Tóquio são apertados."],
+                    ["狭いけど居心地がいい。", "É apertado mas aconchegante."],
+                    ["ここは狭すぎませんか？", "Aqui não é apertado demais?"]
+                ]],
+                ["簡単", "かんたん", "fácil / simples", "n5", "adj", [
+                    ["この問題は簡単です。", "Este problema é fácil."],
+                    ["もっと簡単に説明してください。", "Explique de forma mais simples."],
+                    ["そんなに簡単じゃないよ。", "Não é tão simples assim."]
+                ]],
+                ["難しい", "むずかしい", "difícil", "n5", "adj", [
+                    ["日本語の文法は難しいです。", "A gramática japonesa é difícil."],
+                    ["何が一番難しいですか？", "O que é mais difícil?"],
+                    ["難しすぎて分からない。", "É difícil demais, não entendo."]
+                ]],
+                ["近い", "ちかい", "perto", "n5", "adj", [
+                    ["駅はここから近いです。", "A estação é perto daqui."],
+                    ["一番近いコンビニはどこですか？", "Onde fica a loja de conveniência mais próxima?"],
+                    ["案外近かった。", "Era mais perto do que eu pensava."]
+                ]],
+                ["遠い", "とおい", "longe", "n5", "adj", [
+                    ["実家は遠いからあまり帰れません。", "Minha cidade natal é longe, não consigo voltar muito."],
+                    ["どのくらい遠いですか？", "Quão longe é?"],
+                    ["遠くから来ました。", "Vim de longe."]
+                ]],
+                ["早い", "はやい", "cedo / rápido", "n5", "adj", [
+                    ["明日早く起きます。", "Amanhã acordo cedo."],
+                    ["彼は走るのが早い。", "Ele corre rápido."],
+                    ["早く！遅れる！", "Rápido! Vamos nos atrasar!"]
+                ]],
+                ["遅い", "おそい", "tarde / lento", "n5", "adj", [
+                    ["遅くなってすみません。", "Desculpe pelo atraso."],
+                    ["もう遅いから帰ろう。", "Já está tarde, vamos embora."],
+                    ["歩くのが遅いね。", "Você anda devagar, não é?"]
+                ]],
+                ["多い", "おおい", "muito / numeroso", "n5", "adj", [
+                    ["この町は観光客が多いです。", "Esta cidade tem muitos turistas."],
+                    ["何人くらい来ますか？—多いよ。", "Quantas pessoas vêm? — Muitas."],
+                    ["今年は雨が多い。", "Este ano chove muito."]
+                ]],
+                ["少ない", "すくない", "pouco / escasso", "n5", "adj", [
+                    ["今月はお金が少ないです。", "Este mês tenho pouco dinheiro."],
+                    ["情報が少なすぎる。", "Há muito pouca informação."],
+                    ["もう少し少なくしてください。", "Diminua um pouco mais, por favor."]
+                ]],
+                ["上手", "じょうず", "habilidoso / bom em", "n5", "adj", [
+                    ["彼女は日本語が上手です。", "Ela é boa em japonês."],
+                    ["どうやったら上手になりますか？", "Como posso melhorar?"],
+                    ["上手にできましたね！", "Você fez muito bem!"]
+                ]],
+                ["下手", "へた", "ruim em / inábil", "n5", "adj", [
+                    ["私は料理が下手です。", "Sou ruim na cozinha."],
+                    ["下手でも練習すれば上手になる。", "Mesmo sendo ruim, se praticar, melhora."],
+                    ["下手くそ！—言わないで。", "Que horrível! — Não diga isso."]
+                ]],
+                ["必要", "ひつよう", "necessário", "n4", "adj", [
+                    ["成功するには努力が必要です。", "Para ter sucesso, é necessário esforço."],
+                    ["何が必要ですか？", "O que é necessário?"],
+                    ["そんなにお金は必要ない。", "Não preciso de tanto dinheiro."]
+                ]],
+                ["大切", "たいせつ", "importante / precioso", "n5", "adj", [
+                    ["家族は私にとって一番大切です。", "A família é o mais importante para mim."],
+                    ["何が一番大切だと思いますか？", "O que você acha mais importante?"],
+                    ["これは大切な思い出です。", "Esta é uma lembrança preciosa."]
+                ]],
+                ["大丈夫", "だいじょうぶ", "tudo bem / seguro", "n5", "adj", [
+                    ["大丈夫ですか？—はい大丈夫です。", "Está bem? — Sim, estou bem."],
+                    ["これで大丈夫だと思いますか？", "Você acha que está tudo bem assim?"],
+                    ["もう大丈夫。心配しないで。", "Já está tudo bem. Não se preocupe."]
+                ]],
+                ["本当", "ほんとう", "verdade / real", "n5", "adj", [
+                    ["本当のことを言ってください。", "Diga a verdade."],
+                    ["本当ですか？信じられない！", "É verdade? Não acredito!"],
+                    ["それは本当にあった話です。", "Essa é uma história que realmente aconteceu."]
+                ]],
+                ["色々", "いろいろ", "vários / diversos", "n5", "adj", [
+                    ["色々な国を旅行してみたい。", "Quero viajar por vários países."],
+                    ["色々ありがとう。", "Obrigado por tudo."],
+                    ["色々考えたけど、やっぱり行く。", "Pensei muito, mas vou mesmo assim."]
+                ]],
+                ["残念", "ざんねん", "lamentável / pena", "n5", "adj", [
+                    ["それは残念ですね。", "Isso é uma pena."],
+                    ["残念ながら行けません。", "Infelizmente, não posso ir."],
+                    ["負けて残念だった？", "Foi frustrante perder?"]
+                ]],
+                ["便利", "べんり", "conveniente", "n5", "adj", [
+                    ["このアプリはとても便利です。", "Este aplicativo é muito conveniente."],
+                    ["どこが一番便利ですか？", "O que é mais conveniente?"],
+                    ["便利な世の中になったね。", "O mundo ficou conveniente, não é?"]
+                ]],
+                ["不便", "ふべん", "inconveniente", "n5", "adj", [
+                    ["駅から遠くて不便です。", "É inconveniente por ser longe da estação."],
+                    ["不便なことはありますか？", "Tem algo inconveniente?"],
+                    ["ここは不便だから引っ越したい。", "Aqui é inconveniente, quero me mudar."]
+                ]],
+                ["静か", "しずか", "silencioso / tranquilo", "n5", "adj", [
+                    ["図書館は静かです。", "A biblioteca é silenciosa."],
+                    ["静かにしてください。", "Faça silêncio, por favor."],
+                    ["静かな場所で話しましょう。", "Vamos conversar num lugar tranquilo."]
+                ]],
+                ["有名", "ゆうめい", "famoso", "n5", "adj", [
+                    ["彼は有名な歌手です。", "Ele é um cantor famoso."],
+                    ["何で有名ですか？", "Pelo que é famoso?"],
+                    ["ここは有名な観光地です。", "Este é um ponto turístico famoso."]
+                ]],
+                ["元気", "げんき", "bem / saudável / com energia", "n5", "adj", [
+                    ["お元気ですか？—元気です。", "Como vai? — Estou bem."],
+                    ["元気出して！", "Anime-se!"],
+                    ["最近元気がないね。", "Você não está com energia ultimamente."]
+                ]],
+                ["親切", "しんせつ", "gentil / amável", "n4", "adj", [
+                    ["彼はとても親切な人です。", "Ele é uma pessoa muito gentil."],
+                    ["親切に教えてくれてありがとう。", "Obrigado por me ensinar gentilmente."],
+                    ["誰が一番親切ですか？", "Quem é o mais gentil?"]
+                ]],
+                ["丁寧", "ていねい", "educado / cuidadoso", "n4", "adj", [
+                    ["日本語では丁寧な言葉遣いが大切です。", "Em japonês, a linguagem educada é importante."],
+                    ["もっと丁寧に話してください。", "Fale de forma mais educada."],
+                    ["丁寧に扱ってください。", "Trate com cuidado, por favor."]
+                ]],
+                ["失礼", "しつれい", "indelicado / com licença", "n5", "adj", [
+                    ["失礼ですが、お名前は？", "Com licença, qual é o seu nome?"],
+                    ["お先に失礼します。", "Com licença, vou indo (antes de você)."],
+                    ["失礼なことを言ってすみません。", "Desculpe por ter sido indelicado."]
+                ]],
+                ["丈夫", "じょうぶ", "robusto / durável", "n5", "adj", [
+                    ["この靴は丈夫で長持ちする。", "Estes sapatos são robustos e duram."],
+                    ["体が丈夫ですね。", "Você tem um corpo resistente."],
+                    ["もっと丈夫なバッグはありますか？", "Tem uma bolsa mais resistente?"]
+                ]],
+                ["結構", "けっこう", "bom o bastante / não obrigado", "n5", "adj", [
+                    ["おかわりいかがですか？—結構です。", "Quer mais? — Já está bom, obrigado."],
+                    ["結構美味しいね。", "É bem gostoso, não é?"],
+                    ["結構時間がかかりました。", "Levou bastante tempo."]
+                ]],
+                ["特別", "とくべつ", "especial", "n5", "adj", [
+                    ["今日は特別な日です。", "Hoje é um dia especial."],
+                    ["特別な人はいますか？", "Tem alguém especial?"],
+                    ["特別に安くしますよ。", "Vou fazer um preço especial."]
+                ]],
+                ["普通", "ふつう", "comum / normal / geralmente", "n5", "adj", [
+                    ["普通は何時に起きますか？", "Normalmente a que horas você acorda?"],
+                    ["普通の人には分からないかも。", "Uma pessoa comum talvez não entenda."],
+                    ["これは普通のことです。", "Isso é algo comum."]
+                ]],
+                ["確か", "たしか", "certo / se não me engano", "n5", "adj", [
+                    ["確か彼は来月結婚するはずです。", "Se não me engano, ele se casa mês que vem."],
+                    ["確かですか？", "Tem certeza?"],
+                    ["確かな情報を教えてください。", "Me dê informações precisas, por favor."]
+                ]],
+                ["多分", "たぶん", "provavelmente / talvez", "n5", "adv", [
+                    ["多分明日は雨でしょう。", "Provavelmente amanhã choverá."],
+                    ["多分大丈夫だと思う。", "Acho que provavelmente está tudo bem."],
+                    ["行きますか？—多分。", "Você vai? — Talvez."]
+                ]],
+                ["必ず", "かならず", "com certeza / sem falta", "n5", "adv", [
+                    ["必ず約束を守ってください。", "Cumpra a promessa sem falta."],
+                    ["必ず成功すると信じています。", "Acredito que certamente terá sucesso."],
+                    ["明日必ず来てくださいね。", "Venha amanhã sem falta, ok?"]
+                ]],
+                ["絶対", "ぜったい", "absolutamente", "n5", "adv", [
+                    ["絶対に諦めないで。", "Não desista de jeito nenhum."],
+                    ["それは絶対に無理だ。", "Isso é absolutamente impossível."],
+                    ["絶対に秘密だよ。", "É segredo absoluto."]
+                ]],
+                ["もちろん", "もちろん", "claro / evidentemente", "n5", "adv", [
+                    ["もちろん手伝いますよ。", "Claro, eu ajudo."],
+                    ["行きますか？—もちろん！", "Vai? — Claro!"],
+                    ["もちろん知っています。", "Claro que sei."]
+                ]],
+                ["例えば", "たとえば", "por exemplo", "n5", "adv", [
+                    ["例えばどんな本が好きですか？", "Por exemplo, que tipo de livro você gosta?"],
+                    ["例えばどうすればいいですか？", "Por exemplo, como devo fazer?"],
+                    ["例えばの話だけど…", "É só um exemplo, mas..."]
+                ]],
+                ["なるほど", "なるほど", "entendi / realmente", "n4", "adv", [
+                    ["なるほど、そういうことですか。", "Entendi, é isso então."],
+                    ["なるほどね。納得した。", "Realmente. Estou convencido."],
+                    ["なるほど、面白い考え方ですね。", "Entendi, é uma forma interessante de pensar."]
+                ]],
+                ["なぜ", "なぜ", "por que (formal)", "n5", "adv", [
+                    ["なぜ日本語を勉強しているのですか？", "Por que você estuda japonês?"],
+                    ["なぜ遅れたのですか？", "Por que você se atrasou?"],
+                    ["なぜそんなことを言うの？", "Por que você diz isso?"]
+                ]],
+                ["どうして", "どうして", "por que / como", "n5", "adv", [
+                    ["どうして来なかったの？", "Por que você não veio?"],
+                    ["どうして分かったのですか？", "Como você soube?"],
+                    ["どうしてそんなに疲れているの？", "Por que você está tão cansado?"]
+                ]],
+                ["どう", "どう", "como / de que forma", "n5", "adv", [
+                    ["これはどう使いますか？", "Como se usa isto?"],
+                    ["今日の天気はどうですか？", "Como está o tempo hoje?"],
+                    ["どう思いますか？", "O que você acha?"]
+                ]],
+                ["こんな", "こんな", "deste tipo / assim", "n5", "adj", [
+                    ["こんなに美味しい料理は初めてです。", "É a primeira vez que como comida tão gostosa."],
+                    ["こんな時どうすればいいですか？", "O que fazer numa hora dessas?"],
+                    ["こんな感じでいいですか？", "Está bom assim?"]
+                ]],
+                ["そんな", "そんな", "desse tipo", "n5", "adj", [
+                    ["そんなことはないよ。", "Não é nada disso."],
+                    ["そんなに食べて大丈夫？", "Tudo bem comer tanto assim?"],
+                    ["そんなこと言わないで。", "Não diga isso."]
+                ]],
+                ["初めて", "はじめて", "pela primeira vez", "n5", "adv", [
+                    ["初めて日本に行きました。", "Fui ao Japão pela primeira vez."],
+                    ["初めて会った時から好きでした。", "Gostei de você desde a primeira vez que te vi."],
+                    ["これは初めての経験です。", "Esta é minha primeira experiência."]
+                ]],
+                ["一緒に", "いっしょに", "junto", "n5", "adv", [
+                    ["一緒に映画を見ませんか？", "Vamos ver um filme juntos?"],
+                    ["誰と一緒に来ましたか？", "Com quem você veio?"],
+                    ["一緒に行ってもいいですか？", "Posso ir junto?"]
+                ]],
+                ["すぐ", "すぐ", "imediatamente / logo", "n5", "adv", [
+                    ["すぐ戻ります。", "Volto logo."],
+                    ["すぐに始めましょう。", "Vamos começar imediatamente."],
+                    ["駅はすぐそこです。", "A estação é logo ali."]
+                ]],
+                ["もう", "もう", "já / mais", "n5", "adv", [
+                    ["もう食べましたか？", "Já comeu?"],
+                    ["もう一度言ってください。", "Diga mais uma vez."],
+                    ["もう帰ってもいい？", "Já posso ir embora?"]
+                ]],
+                ["まだ", "まだ", "ainda", "n5", "adv", [
+                    ["宿題はまだ終わっていません。", "A lição ainda não terminou."],
+                    ["まだ時間がありますか？", "Ainda tem tempo?"],
+                    ["まだです。", "Ainda não."]
+                ]],
+                ["よく", "よく", "bem / frequentemente", "n5", "adv", [
+                    ["よくできました！", "Bom trabalho!"],
+                    ["彼はよく遅刻します。", "Ele se atrasa frequentemente."],
+                    ["よく聞こえませんでした。", "Não ouvi bem."]
+                ]],
+                ["いつも", "いつも", "sempre", "n5", "adv", [
+                    ["彼女はいつも笑顔です。", "Ela está sempre sorrindo."],
+                    ["いつもお世話になっています。", "Obrigado por sempre cuidar de mim."],
+                    ["いつも通りでお願いします。", "O de sempre, por favor."]
+                ]],
+                ["時々", "ときどき", "às vezes", "n5", "adv", [
+                    ["時々一人で映画を見に行きます。", "Às vezes vou ao cinema sozinho."],
+                    ["時々寂しくなりますか？", "Você fica solitário às vezes?"],
+                    ["時々でいいから連絡して。", "Me contate de vez em quando."]
+                ]],
+                ["あまり", "あまり", "não muito (com negativa)", "n5", "adv", [
+                    ["あまりお金がありません。", "Não tenho muito dinheiro."],
+                    ["あまり美味しくない。", "Não é muito gostoso."],
+                    ["あまり行きたくないです。", "Não quero muito ir."]
+                ]],
+                ["全然", "ぜんぜん", "totalmente (com negativa)", "n5", "adv", [
+                    ["全然問題ありません。", "Não há problema nenhum."],
+                    ["全然分からない。", "Não entendo nada."],
+                    ["全然面白くない。", "Não é nada interessante."]
+                ]],
+                ["少し", "すこし", "um pouco", "n5", "adv", [
+                    ["少し休みましょう。", "Vamos descansar um pouco."],
+                    ["日本語が少し分かります。", "Entendo um pouco de japonês."],
+                    ["少しだけください。", "Me dê só um pouco."]
+                ]],
+                ["もっと", "もっと", "mais", "n5", "adv", [
+                    ["もっと練習が必要です。", "Preciso de mais prática."],
+                    ["もっと教えてください。", "Me ensine mais."],
+                    ["もっと安いのはありますか？", "Tem um mais barato?"]
+                ]],
+                ["とても", "とても", "muito", "n5", "adv", [
+                    ["とても嬉しいです。", "Estou muito feliz."],
+                    ["これはとても大切です。", "Isto é muito importante."],
+                    ["とても面白かった。", "Foi muito interessante."]
+                ]],
+                ["一番", "いちばん", "o mais / número um", "n5", "adv", [
+                    ["これが一番好きです。", "Este é o que mais gosto."],
+                    ["誰が一番早いですか？", "Quem é o mais rápido?"],
+                    ["一番安いのをください。", "Me dê o mais barato."]
+                ]],
+                ["全部", "ぜんぶ", "tudo", "n5", "noun", [
+                    ["全部食べました。", "Comi tudo."],
+                    ["全部でいくらですか？", "Quanto é tudo?"],
+                    ["全部持って行ってください。", "Leve tudo, por favor."]
+                ]],
+                ["半分", "はんぶん", "metade", "n5", "noun", [
+                    ["半分だけください。", "Me dê só a metade."],
+                    ["ケーキを半分に切ってください。", "Corte o bolo ao meio."],
+                    ["半分以上終わった。", "Mais da metade terminou."]
+                ]],
+                ["自分", "じぶん", "si mesmo", "n4", "noun", [
+                    ["自分でやってください。", "Faça você mesmo."],
+                    ["自分の意見を言ってください。", "Diga sua própria opinião."],
+                    ["自分に自信がありますか？", "Você tem confiança em si mesmo?"]
+                ]],
+                ["相手", "あいて", "parceiro / interlocutor", "n3", "noun", [
+                    ["相手の話をよく聞いてください。", "Ouça bem o que o outro diz."],
+                    ["相手は誰ですか？", "Quem é o interlocutor?"],
+                    ["相手を思いやることが大切です。", "É importante ter consideração pelo outro."]
+                ]],
+                ["意味", "いみ", "significado", "n5", "noun", [
+                    ["この言葉の意味を教えてください。", "Me diga o significado desta palavra."],
+                    ["どういう意味ですか？", "O que significa?"],
+                    ["それはどんな意味がありますか？", "Que significado isso tem?"]
+                ]],
+                ["理由", "りゆう", "razão / motivo", "n4", "noun", [
+                    ["遅れた理由を説明してください。", "Explique o motivo do atraso."],
+                    ["なぜ？理由を教えて。", "Por quê? Me diga o motivo."],
+                    ["理由は特にありません。", "Não tem um motivo específico."]
+                ]],
+                ["経験", "けいけん", "experiência", "n3", "noun", [
+                    ["日本に住んだ経験があります。", "Tenho experiência de ter morado no Japão."],
+                    ["どんな経験をしましたか？", "Que tipo de experiência você teve?"],
+                    ["経験から学ぶことが多い。", "Aprende-se muito com a experiência."]
+                ]],
+                ["予定", "よてい", "plano / programação", "n4", "noun", [
+                    ["明日の予定は何ですか？", "Qual é o plano para amanhã?"],
+                    ["予定が変わったら連絡します。", "Se o plano mudar, eu aviso."],
+                    ["何か予定がありますか？", "Tem algum plano?"]
+                ]],
+                ["約束", "やくそく", "promessa / compromisso", "n5", "noun", [
+                    ["約束を守ってください。", "Cumpra a promessa."],
+                    ["明日約束がありますか？", "Tem compromisso amanhã?"],
+                    ["約束の時間に遅れないで。", "Não se atrase para o horário marcado."]
+                ]],
+                ["連絡", "れんらく", "contato / comunicação", "n4", "noun", [
+                    ["後で連絡します。", "Entro em contato depois."],
+                    ["連絡先を教えてください。", "Me diga seu contato."],
+                    ["何かあったら連絡して。", "Se algo acontecer, me avise."]
+                ]],
+                ["準備", "じゅんび", "preparação", "n4", "noun", [
+                    ["旅行の準備はできましたか？", "A preparação da viagem está pronta?"],
+                    ["準備にどのくらいかかりますか？", "Quanto tempo leva para preparar?"],
+                    ["まだ準備していません。", "Ainda não me preparei."]
+                ]],
+                ["説明", "せつめい", "explicação", "n4", "noun", [
+                    ["もう一度説明してください。", "Explique mais uma vez."],
+                    ["説明が分かりやすかったです。", "A explicação foi fácil de entender."],
+                    ["何か説明が必要ですか？", "Precisa de alguma explicação?"]
+                ]],
+                ["質問", "しつもん", "pergunta", "n5", "noun", [
+                    ["質問があります。", "Tenho uma pergunta."],
+                    ["質問してもいいですか？", "Posso fazer uma pergunta?"],
+                    ["どんな質問ですか？", "Que tipo de pergunta?"]
+                ]],
+                ["答え", "こたえ", "resposta", "n5", "noun", [
+                    ["答えは何ですか？", "Qual é a resposta?"],
+                    ["正しい答えを選んでください。", "Escolha a resposta correta."],
+                    ["まだ答えが出ていません。", "A resposta ainda não saiu."]
+                ]],
+                ["意見", "いけん", "opinião", "n3", "noun", [
+                    ["皆の意見を聞いてから決めましょう。", "Vamos decidir depois de ouvir a opinião de todos."],
+                    ["あなたの意見は？", "Qual é a sua opinião?"],
+                    ["意見が分かれています。", "As opiniões estão divididas."]
+                ]],
+                ["練習", "れんしゅう", "prática / treino", "n5", "noun", [
+                    ["毎日発音の練習をしています。", "Todo dia pratico pronúncia."],
+                    ["練習すれば上手になるよ。", "Se praticar, melhora."],
+                    ["どのくらい練習しましたか？", "Quanto você praticou?"]
+                ]],
+                ["勉強", "べんきょう", "estudo", "n5", "noun", [
+                    ["日本語の勉強は面白いです。", "O estudo de japonês é interessante."],
+                    ["どんな勉強をしていますか？", "Que tipo de estudo você está fazendo?"],
+                    ["もっと勉強しないと。", "Preciso estudar mais."]
+                ]],
+                ["仕事", "しごと", "trabalho", "n5", "noun", [
+                    ["仕事を探しています。", "Estou procurando trabalho."],
+                    ["どんな仕事をしていますか？", "Que tipo de trabalho você faz?"],
+                    ["仕事が忙しくて大変です。", "O trabalho está corrido e difícil."]
+                ]],
+                ["旅行", "りょこう", "viagem", "n5", "noun", [
+                    ["夏休みに旅行に行きます。", "Nas férias de verão vou viajar."],
+                    ["どこに旅行したいですか？", "Para onde você quer viajar?"],
+                    ["旅行の計画を立てよう。", "Vamos fazer planos de viagem."]
+                ]],
+                ["買い物", "かいもの", "compras", "n5", "noun", [
+                    ["週末に買い物に行きます。", "No fim de semana vou fazer compras."],
+                    ["何を買い物する予定ですか？", "O que planeja comprar?"],
+                    ["買い物に付き合ってくれませんか？", "Me acompanha nas compras?"]
+                ]],
+                ["料理", "りょうり", "culinária / prato", "n5", "noun", [
+                    ["母の料理が一番美味しい。", "A comida da minha mãe é a melhor."],
+                    ["どんな料理が得意ですか？", "Que tipo de prato você sabe fazer bem?"],
+                    ["今夜は私が料理するね。", "Hoje eu cozinho."]
+                ]],
+                ["天気", "てんき", "tempo / clima", "n5", "noun", [
+                    ["今日はいい天気ですね。", "O tempo está bom hoje."],
+                    ["明日の天気はどうですか？", "Como vai estar o tempo amanhã?"],
+                    ["天気予報を見ましたか？", "Você viu a previsão do tempo?"]
+                ]],
+                ["言葉", "ことば", "palavra / linguagem", "n5", "noun", [
+                    ["この言葉の意味を教えてください。", "Me diga o significado desta palavra."],
+                    ["言葉遣いに気をつけて。", "Cuidado com a forma de falar."],
+                    ["優しい言葉をかけてくれた。", "Me disse palavras gentis."]
+                ]],
+                ["心", "こころ", "coração / mente", "n5", "noun", [
+                    ["心から感謝します。", "Agradeço de coração."],
+                    ["心配しないでください。", "Não se preocupe."],
+                    ["心に残る言葉。", "Palavras que ficam no coração."]
+                ]],
+                ["気", "き", "energia / humor / atenção", "n5", "noun", [
+                    ["気をつけてください。", "Tome cuidado."],
+                    ["気分が悪いです。", "Não estou me sentindo bem."],
+                    ["気にしないでください。", "Não se incomode / Não ligue."]
+                ]],
+                ["体", "からだ", "corpo", "n5", "noun", [
+                    ["体に気をつけて。", "Cuide do seu corpo/saúde."],
+                    ["体調はどうですか？", "Como está sua condição física?"],
+                    ["運動は体にいいですよ。", "Exercício faz bem ao corpo."]
+                ]],
+                ["顔", "かお", "rosto", "n5", "noun", [
+                    ["朝顔を洗います。", "De manhã lavo o rosto."],
+                    ["顔色が悪いですね。大丈夫？", "Você está pálido. Tudo bem?"],
+                    ["笑顔が素敵です。", "Seu sorriso é encantador."]
+                ]],
+                ["手", "て", "mão", "n5", "noun", [
+                    ["手を洗ってください。", "Lave as mãos."],
+                    ["手伝ってくれますか？", "Pode me ajudar?"],
+                    ["手が冷たい。", "Minhas mãos estão frias."]
+                ]],
+                ["目", "め", "olho", "n5", "noun", [
+                    ["目が疲れました。", "Meus olhos estão cansados."],
+                    ["目を閉じてください。", "Feche os olhos."],
+                    ["それは目に悪いですよ。", "Isso faz mal aos olhos."]
+                ]],
+                ["口", "くち", "boca", "n5", "noun", [
+                    ["口を開けてください。", "Abra a boca."],
+                    ["口に合うかどうか分かりませんが。", "Não sei se vai agradar seu paladar."],
+                    ["悪口を言わないで。", "Não fale mal dos outros."]
+                ]],
+                ["耳", "みみ", "orelha", "n5", "noun", [
+                    ["耳が痛いです。", "Minha orelha dói."],
+                    ["よく聞いて。耳を澄まして。", "Ouça bem. Aguçe os ouvidos."],
+                    ["音楽を大音量で聞くと耳に悪い。", "Ouvir música alta faz mal aos ouvidos."]
+                ]],
+                ["足", "あし", "pé / perna", "n5", "noun", [
+                    ["一日中歩いて足が痛い。", "Andei o dia todo, meus pés doem."],
+                    ["足を怪我しました。", "Machuquei a perna/pé."],
+                    ["駅まで歩いてどのくらい足でかかりますか？", "Quanto tempo a pé até a estação?"]
+                ]],
+                ["猫", "ねこ", "gato", "n5", "noun", [
+                    ["猫が大好きです。", "Adoro gatos."],
+                    ["猫を飼っていますか？", "Você tem gato?"],
+                    ["あの猫可愛いね。", "Aquele gato é fofo, não é?"]
+                ]],
+                ["犬", "いぬ", "cachorro", "n5", "noun", [
+                    ["犬の散歩をしています。", "Estou passeando com o cachorro."],
+                    ["犬は好きですか？", "Você gosta de cachorros?"],
+                    ["この犬はよく吠える。", "Este cachorro late muito."]
+                ]],
+                ["花", "はな", "flor", "n5", "noun", [
+                    ["綺麗な花が咲いています。", "Lindas flores estão florescendo."],
+                    ["花をプレゼントしたい。", "Quero dar flores de presente."],
+                    ["どんな花が好きですか？", "De que flor você gosta?"]
+                ]],
+                ["写真", "しゃしん", "foto", "n5", "noun", [
+                    ["写真を撮ってもいいですか？", "Posso tirar uma foto?"],
+                    ["この写真を見てください。", "Olhe esta foto."],
+                    ["一緒に写真を撮りませんか？", "Vamos tirar uma foto juntos?"]
+                ]],
+                ["友達", "ともだち", "amigo", "n5", "noun", [
+                    ["友達と映画を見に行きます。", "Vou ao cinema com um amigo."],
+                    ["新しい友達ができました。", "Fiz um novo amigo."],
+                    ["一番仲のいい友達は誰ですか？", "Quem é seu melhor amigo?"]
+                ]],
+                ["家族", "かぞく", "família", "n5", "noun", [
+                    ["家族は何人ですか？", "Quantas pessoas tem na sua família?"],
+                    ["家族を大切にしています。", "Valorizo minha família."],
+                    ["家族に会いたい。", "Quero ver minha família."]
+                ]],
+                ["先生", "せんせい", "professor / mestre", "n5", "noun", [
+                    ["先生に質問があります。", "Tenho uma pergunta para o professor."],
+                    ["どんな先生が好きですか？", "De que tipo de professor você gosta?"],
+                    ["先生のおかげで合格できました。", "Passei graças ao professor."]
+                ]],
+                ["子供", "こども", "criança", "n5", "noun", [
+                    ["子供の頃、ここによく来ました。", "Quando criança, vinha muito aqui."],
+                    ["子供が何人いますか？", "Quantos filhos você tem?"],
+                    ["子供たちが公園で遊んでいます。", "As crianças estão brincando no parque."]
+                ]],
+                ["母", "はは", "mãe (minha)", "n5", "noun", [
+                    ["母は料理が上手です。", "Minha mãe cozinha bem."],
+                    ["母に電話しましたか？", "Você ligou para sua mãe?"],
+                    ["母の日にお花をあげました。", "Dei flores no Dia das Mães."]
+                ]],
+                ["父", "ちち", "pai (meu)", "n5", "noun", [
+                    ["父は会社員です。", "Meu pai é funcionário de empresa."],
+                    ["父に相談してみます。", "Vou consultar meu pai."],
+                    ["父の趣味は釣りです。", "O hobby do meu pai é pesca."]
+                ]],
+                ["家", "いえ", "casa", "n5", "noun", [
+                    ["家に帰りましょう。", "Vamos para casa."],
+                    ["家はどこですか？", "Onde é sua casa?"],
+                    ["新しい家に引っ越しました。", "Me mudei para uma casa nova."]
+                ]],
+                ["部屋", "へや", "quarto", "n5", "noun", [
+                    ["部屋を掃除しました。", "Limpei o quarto."],
+                    ["この部屋は狭いです。", "Este quarto é pequeno."],
+                    ["部屋に誰かいますか？", "Tem alguém no quarto?"]
+                ]],
+                ["店", "みせ", "loja", "n5", "noun", [
+                    ["あの店のラーメンは美味しい。", "O lámen daquela loja é delicioso."],
+                    ["この店は何時に閉まりますか？", "A que horas esta loja fecha?"],
+                    ["いい店を知っていますか？", "Conhece uma loja boa?"]
+                ]],
+                ["駅", "えき", "estação", "n5", "noun", [
+                    ["東京駅で降ります。", "Vou descer na estação de Tóquio."],
+                    ["駅はどこですか？", "Onde fica a estação?"],
+                    ["駅まで送りましょうか？", "Quer que eu te leve até a estação?"]
+                ]],
+                ["電車", "でんしゃ", "trem", "n5", "noun", [
+                    ["電車で通勤しています。", "Vou de trem para o trabalho."],
+                    ["次の電車は何時ですか？", "A que horas é o próximo trem?"],
+                    ["電車が遅れています。", "O trem está atrasado."]
+                ]],
+                ["車", "くるま", "carro", "n5", "noun", [
+                    ["新しい車を買いました。", "Comprei um carro novo."],
+                    ["車の運転ができますか？", "Você sabe dirigir?"],
+                    ["車で行きましょう。", "Vamos de carro."]
+                ]],
+                ["本", "ほん", "livro", "n5", "noun", [
+                    ["面白い本を読んでいます。", "Estou lendo um livro interessante."],
+                    ["どんな本が好きですか？", "De que tipo de livro você gosta?"],
+                    ["この本を借りてもいいですか？", "Posso pegar este livro emprestado?"]
+                ]],
+                ["電話", "でんわ", "telefone", "n5", "noun", [
+                    ["後で電話します。", "Ligo depois."],
+                    ["電話番号を教えてください。", "Me diga seu número de telefone."],
+                    ["誰から電話がありましたか？", "Quem ligou?"]
+                ]],
+                ["手紙", "てがみ", "carta", "n5", "noun", [
+                    ["友達に手紙を書きました。", "Escrevi uma carta para um amigo."],
+                    ["手紙をもらって嬉しい。", "Fiquei feliz ao receber uma carta."],
+                    ["最近手紙を書く人は少ない。", "Hoje em dia poucos escrevem cartas."]
+                ]],
+                ["映画", "えいが", "filme", "n5", "noun", [
+                    ["週末に映画を見に行こう。", "Vamos ver um filme no fim de semana."],
+                    ["どんな映画が好きですか？", "De que tipo de filme você gosta?"],
+                    ["この映画を見たことがありますか？", "Você já viu este filme?"]
+                ]],
+                ["音楽", "おんがく", "música", "n5", "noun", [
+                    ["音楽を聞くのが好きです。", "Gosto de ouvir música."],
+                    ["どんな音楽を聞きますか？", "Que tipo de música você ouve?"],
+                    ["音楽を聞きながら勉強します。", "Estudo ouvindo música."]
+                ]],
+                ["お茶", "おちゃ", "chá", "n5", "noun", [
+                    ["お茶をどうぞ。", "Aqui está o chá."],
+                    ["お茶はいかがですか？", "Gostaria de chá?"],
+                    ["毎朝お茶を飲みます。", "Bebo chá toda manhã."]
+                ]],
+                ["ご飯", "ごはん", "arroz / refeição", "n5", "noun", [
+                    ["ご飯を食べましょう。", "Vamos comer."],
+                    ["朝ご飯は何を食べましたか？", "O que você comeu no café da manhã?"],
+                    ["今日のご飯は何？", "O que tem para comer hoje?"]
+                ]],
+                ["肉", "にく", "carne", "n5", "noun", [
+                    ["肉料理が好きですか？", "Gosta de pratos de carne?"],
+                    ["この肉は柔らかい。", "Esta carne está macia."],
+                    ["肉を焼いて食べよう。", "Vamos grelhar a carne e comer."]
+                ]],
+                ["野菜", "やさい", "vegetal", "n5", "noun", [
+                    ["野菜をたくさん食べてください。", "Coma muitos vegetais."],
+                    ["新鮮な野菜は美味しい。", "Vegetais frescos são gostosos."],
+                    ["どんな野菜が好きですか？", "De que vegetal você gosta?"]
+                ]],
+                ["魚", "さかな", "peixe", "n5", "noun", [
+                    ["日本人はよく魚を食べます。", "Japoneses comem peixe frequentemente."],
+                    ["この魚は新鮮ですか？", "Este peixe é fresco?"],
+                    ["魚料理を作るのが得意です。", "Sou bom em fazer pratos de peixe."]
+                ]],
+                ["お金", "おかね", "dinheiro", "n5", "noun", [
+                    ["お金が足りません。", "Dinheiro não é suficiente."],
+                    ["お金をいくら持っていますか？", "Quanto dinheiro você tem?"],
+                    ["お金は大事に使って。", "Use o dinheiro com cuidado."]
+                ]],
+                ["時間", "じかん", "tempo / hora", "n5", "noun", [
+                    ["時間がありません。", "Não tenho tempo."],
+                    ["何時間かかりますか？", "Quantas horas leva?"],
+                    ["時間通りに来てください。", "Venha pontualmente."]
+                ]],
+                ["場所", "ばしょ", "local / lugar", "n4", "noun", [
+                    ["いい場所を知っています。", "Conheço um bom lugar."],
+                    ["待ち合わせ場所はどこですか？", "Onde é o ponto de encontro?"],
+                    ["ここは静かな場所ですね。", "Este lugar é tranquilo, não é?"]
+                ]],
+                ["学校", "がっこう", "escola", "n5", "noun", [
+                    ["学校は8時に始まります。", "A escola começa às 8h."],
+                    ["学校までどうやって行きますか？", "Como você vai à escola?"],
+                    ["学校生活は楽しいですか？", "A vida escolar é divertida?"]
+                ]],
+                ["会社", "かいしゃ", "empresa", "n5", "noun", [
+                    ["父は大きな会社で働いています。", "Meu pai trabalha numa empresa grande."],
+                    ["会社までどのくらいですか？", "Quanto tempo leva até a empresa?"],
+                    ["会社を休みたい。", "Quero faltar ao trabalho."]
+                ]],
+                ["公園", "こうえん", "parque", "n5", "noun", [
+                    ["公園で散歩しましょう。", "Vamos passear no parque."],
+                    ["この公園は広くていいですね。", "Este parque é amplo e bom."],
+                    ["近くに公園がありますか？", "Tem um parque por perto?"]
+                ]],
+                ["病院", "びょういん", "hospital", "n5", "noun", [
+                    ["病院に行ったほうがいいですよ。", "É melhor você ir ao hospital."],
+                    ["一番近い病院はどこですか？", "Onde fica o hospital mais próximo?"],
+                    ["病気で病院に行きました。", "Fui ao hospital por doença."]
+                ]],
+                ["薬", "くすり", "remédio", "n5", "noun", [
+                    ["この薬を飲んでください。", "Tome este remédio."],
+                    ["薬はもう飲みましたか？", "Já tomou o remédio?"],
+                    ["薬を忘れずに持って行って。", "Não esqueça de levar o remédio."]
+                ]],
+                ["休み", "やすみ", "folga / férias", "n5", "noun", [
+                    ["明日は休みです。", "Amanhã é folga."],
+                    ["休みの日は何をしますか？", "O que você faz nos dias de folga?"],
+                    ["一週間の休みが欲しい。", "Quero uma semana de folga."]
+                ]],
+                ["試験", "しけん", "exame / prova", "n4", "noun", [
+                    ["来週試験があります。", "Tenho prova na semana que vem."],
+                    ["試験はどうでしたか？", "Como foi a prova?"],
+                    ["試験に合格できましたか？", "Conseguiu passar no exame?"]
+                ]],
+                ["合格", "ごうかく", "aprovação / passar", "n4", "noun", [
+                    ["JLPT N3に合格したいです。", "Quero passar no JLPT N3."],
+                    ["合格発表はいつですか？", "Quando sai o resultado?"],
+                    ["合格おめでとう！", "Parabéns pela aprovação!"]
+                ]],
+                ["失敗", "しっぱい", "falha / fracasso", "n4", "noun", [
+                    ["失敗は成功のもと。", "Falha é a base do sucesso."],
+                    ["何か失敗しましたか？", "Você falhou em algo?"],
+                    ["失敗を恐れないでください。", "Não tenha medo de falhar."]
+                ]],
+                ["成功", "せいこう", "sucesso", "n4", "noun", [
+                    ["成功するためには努力が必要です。", "Para ter sucesso, é necessário esforço."],
+                    ["成功の秘訣は何ですか？", "Qual é o segredo do sucesso?"],
+                    ["成功を祈っています。", "Torço pelo seu sucesso."]
+                ]],
+                ["努力", "どりょく", "esforço / dedicação", "n4", "noun", [
+                    ["努力すれば夢は叶う。", "Se se esforçar, o sonho se realiza."],
+                    ["どんな努力をしていますか？", "Que tipo de esforço você está fazendo?"],
+                    ["努力が足りないと思う。", "Acho que o esforço não é suficiente."]
+                ]],
+                ["夢", "ゆめ", "sonho", "n4", "noun", [
+                    ["夢を諦めないで。", "Não desista do seu sonho."],
+                    ["子供の頃の夢は何でしたか？", "Qual era seu sonho de infância?"],
+                    ["昨日変な夢を見た。", "Tive um sonho estranho ontem."]
+                ]],
+                ["希望", "きぼう", "esperança / desejo", "n3", "noun", [
+                    ["希望を持って頑張ります。", "Vou me esforçar com esperança."],
+                    ["将来の希望は何ですか？", "Qual é sua esperança para o futuro?"],
+                    ["希望が叶うといいね。", "Tomara que seu desejo se realize."]
+                ]],
+                ["趣味", "しゅみ", "hobby", "n4", "noun", [
+                    ["趣味は読書です。", "Meu hobby é leitura."],
+                    ["どんな趣味がありますか？", "Que hobbies você tem?"],
+                    ["趣味を楽しむ時間が大切。", "O tempo para curtir o hobby é importante."]
+                ]],
+                ["興味", "きょうみ", "interesse", "n3", "noun", [
+                    ["日本文化に興味があります。", "Tenho interesse pela cultura japonesa."],
+                    ["何に興味を持っていますか？", "No que você tem interesse?"],
+                    ["興味深い話ですね。", "É uma história interessante."]
+                ]],
+                ["感謝", "かんしゃ", "gratidão", "n3", "noun", [
+                    ["感謝の気持ちを忘れないで。", "Não esqueça o sentimento de gratidão."],
+                    ["感謝しています。", "Sou grato(a)."],
+                    ["感謝の言葉が見つからない。", "Não encontro palavras para agradecer."]
+                ]],
+                ["我慢", "がまん", "paciência / tolerância", "n3", "noun", [
+                    ["もう我慢できない！", "Não aguento mais!"],
+                    ["どのくらい我慢できますか？", "Quanto você consegue aguentar?"],
+                    ["我慢強く待ってください。", "Aguente e espere, por favor."]
+                ]],
+                ["迷惑", "めいわく", "incômodo / transtorno", "n3", "noun", [
+                    ["迷惑をかけてすみません。", "Desculpe pelo incômodo."],
+                    ["迷惑ですか？", "Estou incomodando?"],
+                    ["迷惑メールがたくさん来る。", "Chegam muitos e-mails indesejados."]
+                ]],
+                ["遠慮", "えんりょ", "reserva / hesitação", "n3", "noun", [
+                    ["遠慮しないで食べてください。", "Não se acanhe, coma à vontade."],
+                    ["遠慮なく言ってください。", "Diga sem reservas."],
+                    ["ちょっと遠慮します。", "Vou me conter um pouco."]
+                ]],
+                ["挑戦", "ちょうせん", "desafio / tentativa", "n3", "noun", [
+                    ["新しいことに挑戦しよう。", "Vamos tentar coisas novas."],
+                    ["何に挑戦したいですか？", "O que você quer tentar?"],
+                    ["挑戦することに意味がある。", "Há significado em tentar."]
+                ]],
+                ["参加", "さんか", "participação", "n3", "noun", [
+                    ["イベントに参加しませんか？", "Quer participar do evento?"],
+                    ["参加費はいくらですか？", "Quanto é a taxa de participação?"],
+                    ["何人参加しますか？", "Quantas pessoas vão participar?"]
+                ]],
+                ["予約", "よやく", "reserva", "n4", "noun", [
+                    ["ホテルを予約しましたか？", "Reservou o hotel?"],
+                    ["予約は必要ですか？", "Precisa de reserva?"],
+                    ["予約を取りたいです。", "Quero fazer uma reserva."]
+                ]],
+                ["確認", "かくにん", "confirmação / verificação", "n3", "noun", [
+                    ["もう一度確認してください。", "Confirme mais uma vez."],
+                    ["確認が必要ですか？", "Precisa de confirmação?"],
+                    ["確認が取れ次第連絡します。", "Entro em contato assim que confirmar."]
+                ]],
+                ["挨拶", "あいさつ", "saudação / cumprimento", "n4", "noun", [
+                    ["きちんと挨拶しましょう。", "Vamos cumprimentar adequadamente."],
+                    ["朝の挨拶は大切です。", "A saudação matinal é importante."],
+                    ["挨拶を忘れないで。", "Não esqueça de cumprimentar."]
+                ]],
+                ["お世話", "おせわ", "cuidado / assistência", "n4", "noun", [
+                    ["お世話になりました。", "Obrigado por tudo que fez por mim."],
+                    ["お世話をかけてすみません。", "Desculpe pelo incômodo."],
+                    ["いつもお世話様です。", "Obrigado por sempre cuidar de mim."]
+                ]],
+                ["仕方", "しかた", "jeito / método", "n3", "noun", [
+                    ["仕方がない。", "Não tem jeito / Fazer o quê."],
+                    ["どうやって仕方を見つけますか？", "Como você encontra um jeito?"],
+                    ["これが一番いい仕方だと思う。", "Acho que este é o melhor jeito."]
+                ]],
+                ["きっかけ", "きっかけ", "oportunidade / gatilho", "n3", "noun", [
+                    ["何がきっかけで日本語を始めましたか？", "O que te fez começar japonês?"],
+                    ["これをきっかけに頑張ろう。", "Vamos usar isto como motivação."],
+                    ["いいきっかけになりました。", "Foi uma boa oportunidade."]
+                ]],
+                ["ストレス", "ストレス", "estresse", "n4", "noun", [
+                    ["ストレスが溜まっている。", "Estou acumulando estresse."],
+                    ["どうやってストレスを解消しますか？", "Como você alivia o estresse?"],
+                    ["最近ストレスが多くて大変。", "Ultimamente tem muito estresse, está difícil."]
+                ]],
+                ["チャンス", "チャンス", "chance / oportunidade", "n4", "noun", [
+                    ["これはいいチャンスです。", "Esta é uma boa chance."],
+                    ["チャンスがあれば行きたい。", "Se tiver chance, quero ir."],
+                    ["チャンスを逃さないで。", "Não perca a chance."]
+                ]],
+                ["アドバイス", "アドバイス", "conselho", "n4", "noun", [
+                    ["いいアドバイスをありがとう。", "Obrigado pelo bom conselho."],
+                    ["何かアドバイスはありますか？", "Tem algum conselho?"],
+                    ["アドバイスを聞いてよかった。", "Foi bom ter ouvido o conselho."]
+                ]],
+                ["ルール", "ルール", "regra", "n4", "noun", [
+                    ["ルールを守ってください。", "Cumpra as regras."],
+                    ["このゲームのルールを知っていますか？", "Você conhece as regras deste jogo?"],
+                    ["ルールが厳しすぎる。", "As regras são rigorosas demais."]
+                ]],
+                ["マナー", "マナー", "etiqueta / boas maneiras", "n3", "noun", [
+                    ["日本のマナーを教えてください。", "Me ensine as boas maneiras japonesas."],
+                    ["マナーを守ることは大切です。", "Seguir a etiqueta é importante."],
+                    ["それはマナー違反です。", "Isso é falta de etiqueta."]
+                ]],
+                ["レベル", "レベル", "nível", "n4", "noun", [
+                    ["日本語のレベルはどのくらいですか？", "Qual é o seu nível de japonês?"],
+                    ["もっと上のレベルを目指したい。", "Quero mirar num nível mais alto."],
+                    ["レベルが高くて驚いた。", "Fiquei surpreso com o nível alto."]
+                ]],
+                ["バランス", "バランス", "equilíbrio", "n3", "noun", [
+                    ["仕事と生活のバランスが大切。", "Equilíbrio entre trabalho e vida é importante."],
+                    ["バランスの取れた食事をしてください。", "Faça uma dieta equilibrada."],
+                    ["バランスを崩さないように。", "Cuidado para não perder o equilíbrio."]
+                ]],
+                ["イメージ", "イメージ", "imagem / impressão", "n4", "noun", [
+                    ["どんなイメージがありますか？", "Que imagem/impressão você tem?"],
+                    ["イメージが違った。", "A imagem era diferente."],
+                    ["いいイメージを持っています。", "Tenho uma boa imagem."]
+                ]],
+                ["アイデア", "アイデア", "ideia", "n4", "noun", [
+                    ["いいアイデアですね！", "É uma boa ideia!"],
+                    ["何かアイデアはありますか？", "Tem alguma ideia?"],
+                    ["そのアイデアに賛成です。", "Concordo com essa ideia."]
+                ]],
+                ["プラン", "プラン", "plano", "n4", "noun", [
+                    ["いいプランだと思います。", "Acho que é um bom plano."],
+                    ["プランを立てましょう。", "Vamos fazer um plano."],
+                    ["プラン通りに行かないこともある。", "Às vezes as coisas não saem conforme o plano."]
+                ]],
+                ["サイン", "サイン", "assinatura", "n4", "noun", [
+                    ["ここにサインしてください。", "Assine aqui."],
+                    ["サインが必要ですか？", "Precisa de assinatura?"],
+                    ["有名人にサインをもらった。", "Peguei autógrafo de uma celebridade."]
+                ]],
+                ["チェック", "チェック", "verificação / checagem", "n4", "noun", [
+                    ["もう一度チェックしてください。", "Verifique mais uma vez."],
+                    ["チェックは済みましたか？", "Já terminou de verificar?"],
+                    ["間違いがないかチェックする。", "Verifico se não há erros."]
+                ]],
+                ["コピー", "コピー", "cópia", "n4", "noun", [
+                    ["この書類をコピーしてください。", "Copie este documento."],
+                    ["コピーを取ってもいいですか？", "Posso fazer uma cópia?"],
+                    ["コピー機はどこですか？", "Onde fica a copiadora?"]
+                ]],
+                ["メモ", "メモ", "anotação / nota", "n4", "noun", [
+                    ["大切なことをメモしてください。", "Anote as coisas importantes."],
+                    ["メモを取ってもいいですか？", "Posso fazer anotações?"],
+                    ["メモを忘れずに。", "Não esqueça as anotações."]
+                ]],
+                ["リスト", "リスト", "lista", "n4", "noun", [
+                    ["買い物リストを作った。", "Fiz uma lista de compras."],
+                    ["リストに載っていますか？", "Está na lista?"],
+                    ["やることリストをチェックしよう。", "Vamos checar a lista de tarefas."]
+                ]],
+                ["パソコン", "パソコン", "computador", "n4", "noun", [
+                    ["パソコンで仕事をしています。", "Trabalho no computador."],
+                    ["新しいパソコンを買いたい。", "Quero comprar um computador novo."],
+                    ["パソコンの使い方を教えて。", "Me ensine a usar o computador."]
+                ]],
+                ["スマホ", "スマホ", "smartphone", "n4", "noun", [
+                    ["スマホを忘れてしまった。", "Esqueci meu smartphone."],
+                    ["スマホで写真を撮ろう。", "Vamos tirar foto com o smartphone."],
+                    ["どのスマホがいいですか？", "Qual smartphone é bom?"]
+                ]],
+                ["インターネット", "インターネット", "internet", "n4", "noun", [
+                    ["インターネットで調べてください。", "Pesquise na internet."],
+                    ["インターネットが遅い。", "A internet está lenta."],
+                    ["インターネットに接続できません。", "Não consigo conectar à internet."]
+                ]],
+                ["メール", "メール", "e-mail", "n4", "noun", [
+                    ["後でメールを送ります。", "Envio um e-mail depois."],
+                    ["メールアドレスを教えて。", "Me diga seu e-mail."],
+                    ["メールを確認しましたか？", "Você verificou o e-mail?"]
+                ]],
+                ["電話番号", "でんわばんごう", "número de telefone", "n5", "noun", [
+                    ["電話番号を教えてください。", "Me diga seu número de telefone."],
+                    ["電話番号は何ですか？", "Qual é o seu número de telefone?"],
+                    ["電話番号を変えました。", "Mudei meu número de telefone."]
+                ]],
+                ["住所", "じゅうしょ", "endereço", "n5", "noun", [
+                    ["住所をここに書いてください。", "Escreva seu endereço aqui."],
+                    ["住所が変わりました。", "Meu endereço mudou."],
+                    ["住所を教えてもらえますか？", "Poderia me dizer seu endereço?"]
+                ]],
+                ["名前", "なまえ", "nome", "n5", "noun", [
+                    ["お名前は何ですか？", "Qual é o seu nome?"],
+                    ["ここに名前を書いてください。", "Escreva seu nome aqui."],
+                    ["名前を呼ばれました。", "Meu nome foi chamado."]
+                ]],
+                ["誕生日", "たんじょうび", "aniversário", "n5", "noun", [
+                    ["誕生日はいつですか？", "Quando é seu aniversário?"],
+                    ["誕生日おめでとう！", "Feliz aniversário!"],
+                    ["誕生日プレゼントをありがとう。", "Obrigado pelo presente de aniversário."]
+                ]],
+                ["年齢", "ねんれい", "idade", "n4", "noun", [
+                    ["年齢を教えてください。", "Me diga sua idade."],
+                    ["年齢は関係ない。", "Idade não importa."],
+                    ["年齢より若く見える。", "Parece mais jovem do que a idade."]
+                ]],
+                ["春", "はる", "primavera", "n5", "noun", [
+                    ["春になると桜が咲きます。", "Na primavera, as cerejeiras florescem."],
+                    ["春が一番好きな季節です。", "A primavera é minha estação favorita."],
+                    ["今年の春は暖かいですね。", "Esta primavera está quente, não é?"]
+                ]],
+                ["夏", "なつ", "verão", "n5", "noun", [
+                    ["夏は海に行きたい。", "No verão quero ir ao mar."],
+                    ["日本の夏は蒸し暑い。", "O verão japonês é úmido e quente."],
+                    ["夏休みに何をしますか？", "O que você faz nas férias de verão?"]
+                ]],
+                ["秋", "あき", "outono", "n5", "noun", [
+                    ["秋は涼しくて過ごしやすい。", "O outono é fresco e agradável."],
+                    ["食欲の秋。", "Outono é estação de apetite."],
+                    ["秋の紅葉が綺麗ですね。", "As folhas de outono estão lindas."]
+                ]],
+                ["冬", "ふゆ", "inverno", "n5", "noun", [
+                    ["冬は雪が降ります。", "No inverno neva."],
+                    ["今年の冬は特に寒い。", "Este inverno está especialmente frio."],
+                    ["冬休みに温泉に行きたい。", "Nas férias de inverno quero ir a águas termais."]
+                ]],
             ];
 
-            // Construir o array completo
+            // Construir array completo
             const fullData = [...data];
             let rank = data.length + 1;
-            moreVocab.forEach(w => {
-                fullData.push([rank, w[0], w[1], w[2], w[3], w[4], w[5], w[6], ""]);
+            moreData.forEach(w => {
+                fullData.push([rank, w[0], w[1], w[2], w[3], w[4], w[5], w[6] || ""]);
                 rank++;
             });
 
@@ -1617,26 +1905,22 @@
             const loadMoreBtn = document.getElementById('loadMoreBtn');
 
             let currentFilter = 'all';
-            let displayCount = 50;
+            let displayCount = 30;
             let filteredVocab = [...fullData];
 
             function applyFilter() {
                 const searchTerm = searchInput.value.toLowerCase().trim();
                 filteredVocab = fullData.filter(item => {
-                    const [rank, kanji, kana, meaning, level, type, example, translation] = item;
-                    const matchesSearch = !searchTerm ||
-                        kanji.includes(searchTerm) ||
-                        kana.includes(searchTerm) ||
-                        meaning.toLowerCase().includes(searchTerm) ||
-                        (translation && translation.toLowerCase().includes(searchTerm)) ||
-                        (example && example.includes(searchTerm));
-                    const matchesFilter =
-                        currentFilter === 'all' ||
-                        level === currentFilter ||
-                        type === currentFilter;
+                    const [rank, kanji, kana, meaning, level, type, examples, explanation] = item;
+                    const allText = [kanji, kana, meaning, (explanation || '')].join(' ').toLowerCase();
+                    const matchesSearch = !searchTerm || allText.includes(searchTerm) || (examples &&
+                        examples.some(e => e[0].includes(searchTerm) || e[1].toLowerCase().includes(
+                            searchTerm)));
+                    const matchesFilter = currentFilter === 'all' || level === currentFilter || type ===
+                        currentFilter;
                     return matchesSearch && matchesFilter;
                 });
-                displayCount = 50;
+                displayCount = 30;
                 renderWords();
                 updateStats();
             }
@@ -1644,13 +1928,42 @@
             function renderWords() {
                 const slice = filteredVocab.slice(0, displayCount);
                 wordList.innerHTML = slice.map(item => {
-                    const [rank, kanji, kana, meaning, level, type, example, translation, explanation] = item;
+                    const [rank, kanji, kana, meaning, level, type, examples, explanation] = item;
                     const hasDetail = explanation && explanation.length > 20;
-                    const cardClass = type === 'grammar' ? 'grammar' : (type === 'particle' ? 'particle-card' :
-                        '');
+                    const cardClass = type === 'grammar' ? 'grammar-card' : (type === 'particle' ?
+                        'particle-card' : (type === 'verb' ? 'verb-card' : ''));
                     const tagClass = type === 'grammar' ? 'tag-grammar' : (type === 'particle' ? 'tag-particle' :
-                        `tag-${level}`);
-                    const tagText = type === 'grammar' ? 'GRAM' : (type === 'particle' ? 'PART' : level.toUpperCase());
+                        (type === 'verb' ? 'tag-verb' : `tag-${level}`));
+                    const tagText = type === 'grammar' ? 'GRAM' : (type === 'particle' ? 'PART' : (type ===
+                        'verb' ? 'VERB' : level.toUpperCase()));
+                    // Renderizar frases de exemplo
+                    let examplesHTML = '';
+                    if (examples && examples.length > 0) {
+                        const afirmativas = examples.slice(0, 2); // primeiras 2 são afirmativas
+                        const interrogativas = examples.filter((_, i) => i >= 2); // restantes são perguntas
+                        if (afirmativas.length > 0) {
+                            examplesHTML +=
+                                '<div class="section-title">📖 Frases de exemplo</div>';
+                            afirmativas.forEach(([jp, trad]) => {
+                                examplesHTML += `
+                            <div class="example-set">
+                                <div class="jp">${jp}</div>
+                                <div class="translation">${trad}</div>
+                            </div>`;
+                            });
+                        }
+                        if (interrogativas.length > 0) {
+                            examplesHTML +=
+                                '<div class="section-title">❓ Perguntas com esta estrutura</div>';
+                            interrogativas.forEach(([jp, trad]) => {
+                                examplesHTML += `
+                            <div class="example-set q">
+                                <div class="jp">${jp}</div>
+                                <div class="translation">${trad}</div>
+                            </div>`;
+                            });
+                        }
+                    }
                     return `
                 <div class="word-card ${cardClass}" data-index="${rank}">
                     <div class="word-header" onclick="this.parentElement.classList.toggle('open')">
@@ -1662,11 +1975,8 @@
                         <span class="arrow">▼</span>
                     </div>
                     <div class="word-body">
-                        <div class="example-block">
-                            <div class="jp">${example}</div>
-                            <div class="translation">${translation}</div>
-                        </div>
-                        ${hasDetail ? `<div class="line-explanation">${explanation}</div>` : `<div class="line-explanation">Pratique esta palavra usando a frase de exemplo acima. Preste atenção ao contexto e às partículas usadas.</div>`}
+                        ${examplesHTML}
+                        ${hasDetail ? `<div class="line-explanation">${explanation}</div>` : ''}
                     </div>
                 </div>`;
                 }).join('');
@@ -1685,15 +1995,14 @@
 
             searchInput.addEventListener('input', applyFilter);
             loadMoreBtn.addEventListener('click', () => {
-                displayCount += 50;
+                displayCount += 30;
                 if (displayCount > filteredVocab.length) displayCount = filteredVocab.length;
                 renderWords();
             });
 
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove(
-                        'active', 'grammar-active'));
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     currentFilter = this.getAttribute('data-level');
                     applyFilter();
